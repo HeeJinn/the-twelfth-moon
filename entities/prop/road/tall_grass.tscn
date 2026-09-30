@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/tall_grass.png" id="1_8mpwl"]
+
+[node name="TallGrass" type="Sprite2D" unique_id=441970334]
+z_index = -2
+texture = ExtResource("1_8mpwl")
+centered = false
+offset = Vector2(-57, -25)

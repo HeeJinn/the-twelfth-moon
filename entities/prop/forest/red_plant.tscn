@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/forest/props/red_plant.png" id="1_xx68j"]
+
+[node name="RedPlant" type="Sprite2D" unique_id=447231063]
+z_index = -2
+texture = ExtResource("1_xx68j")
+centered = false
+offset = Vector2(-7, -15)

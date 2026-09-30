@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/decor/bush_small.png" id="1_e6vuj"]
+
+[node name="BushSmall" type="Sprite2D" unique_id=1304125299]
+z_index = -2
+texture = ExtResource("1_e6vuj")
+centered = false
+offset = Vector2(-16, -16)

@@ -1,0 +1,61 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/snake.png" id="1_4a3eu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlcli"]
+atlas = ExtResource("1_4a3eu")
+region = Rect2(0, 0, 23, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7de4"]
+atlas = ExtResource("1_4a3eu")
+region = Rect2(23, 0, 23, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prapm"]
+atlas = ExtResource("1_4a3eu")
+region = Rect2(46, 0, 23, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdyrj"]
+atlas = ExtResource("1_4a3eu")
+region = Rect2(69, 0, 23, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hftm"]
+atlas = ExtResource("1_4a3eu")
+region = Rect2(92, 0, 23, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bh7p"]
+atlas = ExtResource("1_4a3eu")
+region = Rect2(115, 0, 23, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlcli")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlcli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7de4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prapm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdyrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hftm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bh7p")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 8.0
+}]

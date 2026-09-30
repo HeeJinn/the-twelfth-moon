@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/flowering_tree.png" id="1_texture"]
+[ext_resource type="Texture2D" path="res://assets/generated/petal_particle.png" id="2_petal"]
+
+[sub_resource type="Gradient" id="Gradient_fade"]
+offsets = PackedFloat32Array(0, 0.1, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.95, 1, 1, 1, 0.95, 1, 1, 1, 0)
+
+[node name="FloweringTree" type="Sprite2D"]
+z_index = -3
+texture = ExtResource("1_texture")
+centered = false
+offset = Vector2(-48, -110)
+
+[node name="FallingPetals" type="CPUParticles2D" parent="."]
+position = Vector2(0, -78)
+amount = 5
+lifetime = 6.0
+preprocess = 6.0
+texture = ExtResource("2_petal")
+emission_shape = 3
+emission_rect_extents = Vector2(34, 16)
+direction = Vector2(1, 0.4)
+spread = 30.0
+gravity = Vector2(0, 9)
+initial_velocity_min = 4.0
+initial_velocity_max = 10.0
+angular_velocity_min = -40.0
+angular_velocity_max = 40.0
+color_ramp = SubResource("Gradient_fade")

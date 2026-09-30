@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/reeds.png" id="1_x457e"]
+
+[node name="Reeds" type="Sprite2D" unique_id=678437795]
+z_index = -2
+texture = ExtResource("1_x457e")
+centered = false
+offset = Vector2(-6, -53)

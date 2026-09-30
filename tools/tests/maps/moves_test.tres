@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" format=3]
+
+[ext_resource type="Script" path="res://levels/level_data.gd" id="1_data"]
+[ext_resource type="TileSet" path="res://levels/tilesets/forest_tileset.tres" id="2_tiles"]
+
+[resource]
+script = ExtResource("1_data")
+title = "Moves test"
+map_path = "res://tools/tests/maps/moves_test.txt"
+background_color = Color(0.18, 0.3, 0.45, 1)
+tile_set = ExtResource("2_tiles")

@@ -1,0 +1,95 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/cooking_stall_sheet.png" id="1_lisvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpyiw"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khq4b"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ufj"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcjwj"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvkie"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek42m"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fru8"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaesk"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb02t"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xot4t"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ea4d"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8enqf"]
+atlas = ExtResource("1_lisvb")
+region = Rect2(704, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpyiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khq4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ufj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcjwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvkie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek42m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fru8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaesk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb02t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xot4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ea4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8enqf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]

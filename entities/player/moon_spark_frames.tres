@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/magic/spark.png" id="1_0qk23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efopc"]
+atlas = ExtResource("1_0qk23")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcled"]
+atlas = ExtResource("1_0qk23")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awive"]
+atlas = ExtResource("1_0qk23")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gar0u"]
+atlas = ExtResource("1_0qk23")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdav8"]
+atlas = ExtResource("1_0qk23")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2a7b"]
+atlas = ExtResource("1_0qk23")
+region = Rect2(64, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efopc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcled")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awive")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gar0u")
+}],
+"loop": 0,
+"name": &"burst",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdav8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2a7b")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 10.0
+}]

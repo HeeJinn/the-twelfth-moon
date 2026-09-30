@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://entities/water/water_surface_frames.tres" id="1_frames"]
+
+[node name="ShallowWater" type="Node2D"]
+z_index = -1
+
+[node name="Surface" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_frames")
+autoplay = "default"
+centered = false
+offset = Vector2(-16, -32)
+
+[node name="Deep" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.113, 0.141, 0.125, 1)

@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/bare_tree.png" id="1_2m5rx"]
+
+[node name="BareTree" type="Sprite2D" unique_id=922048076]
+z_index = -4
+texture = ExtResource("1_2m5rx")
+centered = false
+offset = Vector2(-32, -112)

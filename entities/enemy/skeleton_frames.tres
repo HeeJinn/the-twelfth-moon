@@ -1,0 +1,64 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/monster_creatures/skeleton_attack3.png" id="1_xwgcb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmirr"]
+atlas = ExtResource("1_xwgcb")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n6a4"]
+atlas = ExtResource("1_xwgcb")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np5pp"]
+atlas = ExtResource("1_xwgcb")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oonv"]
+atlas = ExtResource("1_xwgcb")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hul8"]
+atlas = ExtResource("1_xwgcb")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rou70"]
+atlas = ExtResource("1_xwgcb")
+region = Rect2(750, 0, 150, 150)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmirr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n6a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np5pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oonv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hul8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rou70")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmirr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n6a4")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 4.0
+}]

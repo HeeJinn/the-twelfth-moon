@@ -1,0 +1,58 @@
+# Chapter Three: The Long Road
+#
+# Same format as chapter_01.txt. Speakers: Mariane, Pell, Hild, Knight.
+# Knight shows as "The Shield Knight". Numbers as words: the font has no digits.
+
+[pell_road]
+Pell: You! The girl from the forest! You got past the witch?
+Mariane: She let me go, in the end. Pell, have you seen a knight in red?
+Pell: The Ember Knight? He came through at dawn, headed for the winter pass.
+Pell: A word of advice. The skeletons on this road throw their swords.
+Pell: Hold up your guard and they bounce right off. That's what I'd do. From behind a rock.
+[pell_road_again]
+Pell: Guard up when the bones throw! I'll be... supervising. From here.
+
+[hild]
+Hild: Easy now, easy... Oh! Forgive me, I took you for another of those bone-men.
+Hild: They came down from the pass last night and scattered my flock.
+Hild: Poor Clover still won't stop shaking. She's the black one.
+Mariane: Did a knight in red armor come this way?
+Hild: He did. Strangest thing. He mended my fence without a word.
+Hild: Then he said, "If a girl with a red ribbon passes, give her something warm."
+Hild: So here. Chestnut bread, still warm. Eat it on the road.
+Mariane: ...Thank you. He really said that?
+Hild: Kind hands, that one. Sad eyes. The pass is cold, dear. Snow came early this year.
+[hild_again]
+Hild: Mind the ice past the river. And if you see the red knight, tell him the fence is holding.
+
+[thought_bridge]
+Mariane: The old bridge is broken in the middle.
+Mariane: If I jump from the very edge and dash at the top, I can make it across.
+
+[thought_winter]
+Mariane: Snow? It was autumn this morning...
+Mariane: It's as if the sky is in a hurry. Six nights left. It feels like fewer.
+
+[thought_cave]
+Mariane: This stone... it's breathing. And those eyes in the dark...
+Mariane: It smells like the red moon. Something is rotting under that castle.
+
+[knight_intro]
+Knight: Halt. None pass the winter gate.
+Mariane: I'm not here to fight you. I'm looking for the Ember Knight.
+Knight: I know who you are. The girl with the red ribbon. He said you would come.
+Knight: My shield turns any sword. Strike when I lower it... if you can.
+Knight: And guard yourself. I will not hold back. Much.
+
+[knight_again]
+Knight: Again. Mind the shield, and strike when it falls.
+
+[knight_yields]
+Knight: Enough... enough. You've grown strong.
+Mariane: Why does he want me strong? What is he planning?
+Knight: That is his to tell, not mine.
+Knight: Go. He's waiting for you. He always has been.
+
+[knight_after]
+Mariane: He always has been...?
+Mariane: Ember Keep is just beyond the pass. Whatever he's hiding, I'll find it there.

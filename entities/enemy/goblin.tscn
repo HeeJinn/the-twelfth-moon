@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://entities/enemy/goblin_frames.tres" id="2_frames"]
+[ext_resource type="PackedScene" path="res://entities/enemy/goblin_bomb.tscn" id="3_bomb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(16, 30)
+
+[node name="Goblin" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_enemy")
+speed = 28.0
+patrol_distance = 96.0
+max_health = 2
+stomp_height = 14.0
+sprite_offset = Vector2(5, -26)
+attack_reach = Vector2(150, 48)
+attack_cooldown = 3.0
+release_frame = 5
+projectile_scene = ExtResource("3_bomb")
+projectile_offset = Vector2(12, -30)
+voice_bank = &"alex"
+voice_pitch = 1.45
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"walk"
+offset = Vector2(5, -26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="LedgeCheck" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(10, -2)
+target_position = Vector2(0, 10)
+collision_mask = 3
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -15)
+enabled = false
+shape = SubResource("RectangleShape2D_body")
+target_position = Vector2(0, 0)
+collision_mask = 4

@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/red_tree.png" id="1_nw4iq"]
+
+[node name="RedTree" type="Sprite2D" unique_id=827812253]
+z_index = -4
+texture = ExtResource("1_nw4iq")
+centered = false
+offset = Vector2(-63, -150)

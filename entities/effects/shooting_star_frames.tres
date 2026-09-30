@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/shooting_star.png" id="1_f1meh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fui1"]
+atlas = ExtResource("1_f1meh")
+region = Rect2(0, 0, 62, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2yqx"]
+atlas = ExtResource("1_f1meh")
+region = Rect2(62, 0, 62, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d741j"]
+atlas = ExtResource("1_f1meh")
+region = Rect2(124, 0, 62, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e66wj"]
+atlas = ExtResource("1_f1meh")
+region = Rect2(186, 0, 62, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62nh1"]
+atlas = ExtResource("1_f1meh")
+region = Rect2(248, 0, 62, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04ovj"]
+atlas = ExtResource("1_f1meh")
+region = Rect2(310, 0, 62, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtdji"]
+atlas = ExtResource("1_f1meh")
+region = Rect2(372, 0, 62, 85)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fui1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2yqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d741j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e66wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62nh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04ovj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtdji")
+}],
+"loop": 0,
+"name": &"play",
+"speed": 10.0
+}]

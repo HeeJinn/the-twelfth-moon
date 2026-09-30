@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/hint/hint.tscn" id="1_hint"]
+
+[node name="HintGuard" instance=ExtResource("1_hint")]
+text = "Hold I to raise your guard. Blows from the front can't hurt you"

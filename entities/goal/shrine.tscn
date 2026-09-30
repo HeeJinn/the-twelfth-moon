@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/goal/goal.gd" id="1_goal"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/angel_statue.png" id="2_statue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(24, 48)
+
+[node name="Shrine" type="Area2D"]
+collision_layer = 64
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_goal")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_statue")
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_area")

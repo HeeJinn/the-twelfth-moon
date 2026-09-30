@@ -1,0 +1,198 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://levels/backgrounds/road_background.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/road/background/autumn_layer_5.png" id="2_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/autumn_layer_4.png" id="3_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/autumn_castle.png" id="4_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/autumn_layer_3.png" id="5_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/autumn_layer_2.png" id="6_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/autumn_layer_1.png" id="7_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/wood_back.png" id="8_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/wood_mid.png" id="9_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_5.png" id="10_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_4.png" id="11_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_castle.png" id="12_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_3.png" id="13_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_2.png" id="14_tex"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_1.png" id="15_tex"]
+[ext_resource type="Texture2D" path="res://assets/generated/red_moon.png" id="16_tex"]
+[ext_resource type="SpriteFrames" path="res://levels/backgrounds/blizzard_frames.tres" id="90_blizzard"]
+[ext_resource type="Texture2D" path="res://assets/road/cave_wall.png" id="91_cave_wall"]
+
+[node name="RoadBackground" type="Node2D"]
+z_index = -100
+script = ExtResource("1_script")
+
+[node name="RedMoon" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="RedMoon"]
+modulate = Color(1, 1, 1, 0.7)
+position = Vector2(372, 42)
+texture = ExtResource("16_tex")
+
+[node name="Autumn" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sky" type="Parallax2D" parent="Autumn"]
+z_index = -1
+scroll_scale = Vector2(0.02, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Autumn/Sky"]
+position = Vector2(0, -76)
+texture = ExtResource("2_tex")
+centered = false
+
+[node name="Mountains" type="Parallax2D" parent="Autumn"]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Autumn/Mountains"]
+position = Vector2(0, -40)
+texture = ExtResource("3_tex")
+centered = false
+
+[node name="Castle" type="Parallax2D" parent="Autumn"]
+scroll_scale = Vector2(0.12, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Autumn/Castle"]
+position = Vector2(0, -40)
+texture = ExtResource("4_tex")
+centered = false
+
+[node name="FarForest" type="Parallax2D" parent="Autumn"]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Autumn/FarForest"]
+position = Vector2(0, -8)
+texture = ExtResource("5_tex")
+centered = false
+
+[node name="MidForest" type="Parallax2D" parent="Autumn"]
+scroll_scale = Vector2(0.32, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Autumn/MidForest"]
+position = Vector2(0, 22)
+texture = ExtResource("6_tex")
+centered = false
+
+[node name="NearForest" type="Parallax2D" parent="Autumn"]
+scroll_scale = Vector2(0.45, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Autumn/NearForest"]
+position = Vector2(0, 50)
+texture = ExtResource("7_tex")
+centered = false
+
+[node name="Wood" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="WoodBack" type="Parallax2D" parent="Wood"]
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wood/WoodBack"]
+position = Vector2(0, -15)
+texture = ExtResource("8_tex")
+centered = false
+
+[node name="WoodMid" type="Parallax2D" parent="Wood"]
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wood/WoodMid"]
+position = Vector2(0, -15)
+texture = ExtResource("9_tex")
+centered = false
+
+[node name="Winter" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sky" type="Parallax2D" parent="Winter"]
+z_index = -1
+scroll_scale = Vector2(0.02, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Winter/Sky"]
+position = Vector2(0, -76)
+texture = ExtResource("10_tex")
+centered = false
+
+[node name="Mountains" type="Parallax2D" parent="Winter"]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Winter/Mountains"]
+position = Vector2(0, -40)
+texture = ExtResource("11_tex")
+centered = false
+
+[node name="Castle" type="Parallax2D" parent="Winter"]
+scroll_scale = Vector2(0.12, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Winter/Castle"]
+position = Vector2(0, -40)
+texture = ExtResource("12_tex")
+centered = false
+
+[node name="FarForest" type="Parallax2D" parent="Winter"]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Winter/FarForest"]
+position = Vector2(0, -8)
+texture = ExtResource("13_tex")
+centered = false
+
+[node name="MidForest" type="Parallax2D" parent="Winter"]
+scroll_scale = Vector2(0.32, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Winter/MidForest"]
+position = Vector2(0, 22)
+texture = ExtResource("14_tex")
+centered = false
+
+[node name="NearForest" type="Parallax2D" parent="Winter"]
+scroll_scale = Vector2(0.45, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Winter/NearForest"]
+position = Vector2(0, 50)
+texture = ExtResource("15_tex")
+centered = false
+
+[node name="CaveDark" type="Parallax2D" parent="."]
+unique_name_in_owner = true
+visible = false
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(80, 0)
+repeat_times = 3
+
+[node name="Wall" type="Sprite2D" parent="CaveDark"]
+modulate = Color(0.42, 0.44, 0.58, 1)
+texture_repeat = 2
+position = Vector2(-80, -20)
+texture = ExtResource("91_cave_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 320)
+
+[node name="Weather" type="Parallax2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_as_relative = false
+z_index = 40
+scroll_scale = Vector2(0, 0)
+
+[node name="Blizzard" type="AnimatedSprite2D" parent="Weather"]
+position = Vector2(-2, -2)
+sprite_frames = ExtResource("90_blizzard")
+autoplay = "default"
+centered = false

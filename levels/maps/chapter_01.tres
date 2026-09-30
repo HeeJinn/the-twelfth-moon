@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LevelData" format=3]
+
+[ext_resource type="Script" path="res://levels/level_data.gd" id="1_data"]
+[ext_resource type="TileSet" path="res://levels/tilesets/village_tileset.tres" id="2_tiles"]
+[ext_resource type="PackedScene" path="res://levels/backgrounds/village_background.tscn" id="3_background"]
+
+[resource]
+script = ExtResource("1_data")
+title = "Chapter One"
+subtitle = "The Village"
+night_text = "Twelve nights remain"
+map_path = "res://levels/maps/chapter_01.txt"
+dialogue_path = "res://story/chapter_01.txt"
+hero_starts_asleep = true
+background_color = Color(0.77, 0.92, 0.95, 1)
+tile_set = ExtResource("2_tiles")
+terrain = 0
+background_scene = ExtResource("3_background")
+step_surface = "dirt"

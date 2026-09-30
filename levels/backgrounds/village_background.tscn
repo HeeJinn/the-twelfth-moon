@@ -1,0 +1,123 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/background/village_layer_5.png" id="1_sky"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/background/village_layer_4.png" id="2_mountains"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/background/village_layer_3.png" id="3_far_forest"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/background/village_layer_2.png" id="4_mid_forest"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/background/village_layer_1.png" id="5_near_forest"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/sun.png" id="6_sun"]
+[ext_resource type="Texture2D" path="res://assets/generated/red_moon_small.png" id="7_moon"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/cloud_1.png" id="8_cloud_1"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/cloud_2.png" id="9_cloud_2"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/cloud_3.png" id="10_cloud_3"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/cloud_5.png" id="11_cloud_5"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/hot_air_balloon.png" id="12_balloon"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/birds_1.png" id="13_birds_1"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/sky/birds_2.png" id="14_birds_2"]
+
+[node name="VillageBackground" type="Node2D"]
+z_index = -100
+
+[node name="Sky" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.02, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+position = Vector2(0, -76)
+texture = ExtResource("1_sky")
+centered = false
+
+[node name="SunAndMoon" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+
+[node name="Sun" type="Sprite2D" parent="SunAndMoon"]
+position = Vector2(400, 34)
+texture = ExtResource("6_sun")
+
+[node name="RedMoon" type="Sprite2D" parent="SunAndMoon"]
+modulate = Color(1, 1, 1, 0.45)
+position = Vector2(150, 30)
+texture = ExtResource("7_moon")
+
+[node name="Clouds" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.06, 0)
+repeat_size = Vector2(900, 0)
+autoscroll = Vector2(-5, 0)
+
+[node name="Cloud1" type="Sprite2D" parent="Clouds"]
+position = Vector2(60, 60)
+texture = ExtResource("10_cloud_3")
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds"]
+position = Vector2(230, 22)
+texture = ExtResource("9_cloud_2")
+
+[node name="Cloud3" type="Sprite2D" parent="Clouds"]
+position = Vector2(390, 70)
+texture = ExtResource("8_cloud_1")
+
+[node name="Cloud4" type="Sprite2D" parent="Clouds"]
+position = Vector2(560, 36)
+texture = ExtResource("11_cloud_5")
+
+[node name="Cloud5" type="Sprite2D" parent="Clouds"]
+position = Vector2(760, 58)
+texture = ExtResource("10_cloud_3")
+
+[node name="Balloon" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.08, 0)
+repeat_size = Vector2(1400, 0)
+autoscroll = Vector2(-3, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloon"]
+position = Vector2(300, 44)
+texture = ExtResource("12_balloon")
+
+[node name="Birds" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.15, 0)
+repeat_size = Vector2(1100, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="Flock1" type="Sprite2D" parent="Birds"]
+position = Vector2(200, 56)
+texture = ExtResource("13_birds_1")
+
+[node name="Flock2" type="Sprite2D" parent="Birds"]
+position = Vector2(720, 34)
+texture = ExtResource("14_birds_2")
+
+[node name="Mountains" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
+position = Vector2(0, -40)
+texture = ExtResource("2_mountains")
+centered = false
+
+[node name="FarForest" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="FarForest"]
+position = Vector2(0, -8)
+texture = ExtResource("3_far_forest")
+centered = false
+
+[node name="MidForest" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.32, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MidForest"]
+position = Vector2(0, 22)
+texture = ExtResource("4_mid_forest")
+centered = false
+
+[node name="NearForest" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.45, 0)
+repeat_size = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="NearForest"]
+position = Vector2(0, 50)
+texture = ExtResource("5_near_forest")
+centered = false

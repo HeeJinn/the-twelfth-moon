@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/hint/hint.tscn" id="1_hint"]
+
+[node name="HintAttack" instance=ExtResource("1_hint")]
+text = "Swing your sword with J. Keep pressing for a three-slash combo"

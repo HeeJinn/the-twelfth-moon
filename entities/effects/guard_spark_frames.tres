@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/guard_spark.png" id="1_r7hgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1lst"]
+atlas = ExtResource("1_r7hgi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afxir"]
+atlas = ExtResource("1_r7hgi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te73u"]
+atlas = ExtResource("1_r7hgi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4j6l"]
+atlas = ExtResource("1_r7hgi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfjtm"]
+atlas = ExtResource("1_r7hgi")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1lst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afxir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te73u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4j6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfjtm")
+}],
+"loop": 0,
+"name": &"play",
+"speed": 22.0
+}]

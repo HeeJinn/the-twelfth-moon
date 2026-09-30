@@ -1,0 +1,118 @@
+[gd_resource type="Resource" script_class="LevelData" format=3]
+
+[ext_resource type="Script" path="res://levels/level_data.gd" id="1_data"]
+[ext_resource type="TileSet" path="res://levels/tilesets/village_tileset.tres" id="2_tiles"]
+[ext_resource type="PackedScene" path="res://levels/backgrounds/road_background.tscn" id="3_background"]
+[ext_resource type="PackedScene" path="res://entities/ladder/wooden_ladder.tscn" id="10_s"]
+[ext_resource type="PackedScene" path="res://entities/enemy/skeleton.tscn" id="11_s"]
+[ext_resource type="PackedScene" path="res://entities/enemy/flying_eye.tscn" id="12_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_03/shield_arena.tscn" id="13_s"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/pell_road.tscn" id="14_s"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/hild.tscn" id="15_s"]
+[ext_resource type="PackedScene" path="res://entities/critter/frog.tscn" id="16_s"]
+[ext_resource type="PackedScene" path="res://entities/critter/snake.tscn" id="17_s"]
+[ext_resource type="PackedScene" path="res://entities/critter/leaping_fish.tscn" id="18_s"]
+[ext_resource type="PackedScene" path="res://entities/hazard/frost_spikes.tscn" id="19_s"]
+[ext_resource type="PackedScene" path="res://entities/water/shallow_water.tscn" id="20_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_03/thought_bridge.tscn" id="21_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_03/thought_winter.tscn" id="22_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_03/thought_cave.tscn" id="23_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/oak_sway.tscn" id="24_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/pine_tall_sway.tscn" id="25_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/pine_sway.tscn" id="26_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/grass_sway.tscn" id="27_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/wheat.tscn" id="28_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/tall_grass.tscn" id="29_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/red_pine.tscn" id="30_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/teal_pine.tscn" id="31_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/teal_fir.tscn" id="32_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/teal_fir_small.tscn" id="33_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/bare_tree.tscn" id="34_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/fence.tscn" id="35_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/fence_snow.tscn" id="36_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/snow_bush.tscn" id="37_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/snow_bush_small.tscn" id="38_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/snow_mound.tscn" id="39_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/signpost.tscn" id="40_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/hollow_stump.tscn" id="41_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/bush_gold.tscn" id="42_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/bush_round.tscn" id="43_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/red_mushrooms.tscn" id="44_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/cattail.tscn" id="45_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/bush_low.tscn" id="46_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/ice_crystals.tscn" id="47_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/ice_urchin.tscn" id="48_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/ice_column.tscn" id="49_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/icicle.tscn" id="50_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/vein_statue.tscn" id="51_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/little_eyes_1.tscn" id="52_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/vein_a1.tscn" id="53_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/ice_glints.tscn" id="54_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/fireflies_jar.tscn" id="55_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/barrels.tscn" id="56_s"]
+
+[resource]
+script = ExtResource("1_data")
+title = "Chapter Three"
+subtitle = "The Long Road"
+night_text = "Six nights remain"
+map_path = "res://levels/maps/chapter_03.txt"
+dialogue_path = "res://story/chapter_03.txt"
+outro_scene = "res://story/memories/memory_ribbon.tscn"
+background_color = Color(0.82, 0.72, 0.52, 1)
+tile_set = ExtResource("2_tiles")
+terrain = 1
+background_scene = ExtResource("3_background")
+terrain_switch_column = 117
+terrain_after_switch = 2
+step_surface = "dirt"
+step_surface_after_switch = "snow"
+spawn_overrides = Dictionary[String, PackedScene]({
+"|": ExtResource("10_s"),
+"B": ExtResource("11_s"),
+"Y": ExtResource("12_s"),
+"W": ExtResource("13_s"),
+"N": ExtResource("14_s"),
+"A": ExtResource("15_s"),
+"F": ExtResource("16_s"),
+"J": ExtResource("17_s"),
+"f": ExtResource("18_s"),
+"Q": ExtResource("19_s"),
+"-": ExtResource("20_s"),
+"(": ExtResource("21_s"),
+")": ExtResource("22_s"),
+"[": ExtResource("23_s"),
+"O": ExtResource("24_s"),
+"T": ExtResource("25_s"),
+"t": ExtResource("26_s"),
+"g": ExtResource("27_s"),
+"w": ExtResource("28_s"),
+"i": ExtResource("29_s"),
+"R": ExtResource("30_s"),
+"L": ExtResource("31_s"),
+"U": ExtResource("32_s"),
+"I": ExtResource("33_s"),
+"V": ExtResource("34_s"),
+"e": ExtResource("35_s"),
+"d": ExtResource("36_s"),
+"n": ExtResource("37_s"),
+"m": ExtResource("38_s"),
+"a": ExtResource("39_s"),
+"x": ExtResource("40_s"),
+"z": ExtResource("41_s"),
+"u": ExtResource("42_s"),
+"v": ExtResource("43_s"),
+"c": ExtResource("44_s"),
+"b": ExtResource("45_s"),
+"l": ExtResource("46_s"),
+"k": ExtResource("47_s"),
+"p": ExtResource("48_s"),
+":": ExtResource("49_s"),
+"!": ExtResource("50_s"),
+"%": ExtResource("51_s"),
+"&": ExtResource("52_s"),
+"$": ExtResource("53_s"),
+";": ExtResource("54_s"),
+"/": ExtResource("55_s"),
+"\\": ExtResource("56_s")
+})

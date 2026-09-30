@@ -1,0 +1,154 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/monster_creatures/goblin_projectile.png" id="1_6igji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtcj7"]
+atlas = ExtResource("1_6igji")
+region = Rect2(900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04jfg"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1000, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnhy7"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsrt3"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrmp4"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a82pn"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0f2y"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpup5"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcopk"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghgal"]
+atlas = ExtResource("1_6igji")
+region = Rect2(1800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdfxc"]
+atlas = ExtResource("1_6igji")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1y4e"]
+atlas = ExtResource("1_6igji")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayx4x"]
+atlas = ExtResource("1_6igji")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfeco"]
+atlas = ExtResource("1_6igji")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpif1"]
+atlas = ExtResource("1_6igji")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ootwk"]
+atlas = ExtResource("1_6igji")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7id7o"]
+atlas = ExtResource("1_6igji")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aijw"]
+atlas = ExtResource("1_6igji")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36p3i"]
+atlas = ExtResource("1_6igji")
+region = Rect2(200, 0, 100, 100)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtcj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04jfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnhy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsrt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrmp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a82pn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0f2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpup5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcopk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghgal")
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdfxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1y4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayx4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfeco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpif1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ootwk")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7id7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aijw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36p3i")
+}],
+"loop": 1,
+"name": &"fuse",
+"speed": 12.0
+}]

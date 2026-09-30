@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/red_pine_small.png" id="1_r2q5m"]
+
+[node name="RedPineSmall" type="Sprite2D" unique_id=744157653]
+z_index = -4
+texture = ExtResource("1_r2q5m")
+centered = false
+offset = Vector2(-43, -128)

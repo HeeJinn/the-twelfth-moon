@@ -1,0 +1,93 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/monster_creatures/mushroom_attack3.png" id="1_jsye6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_age5h"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0jka"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm8h4"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jds3x"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t13p1"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tagsi"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(1200, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny44j"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(1350, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stwhi"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(1500, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okly0"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr728"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b31oe"]
+atlas = ExtResource("1_jsye6")
+region = Rect2(300, 0, 150, 150)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_age5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0jka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm8h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jds3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t13p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tagsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny44j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stwhi")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okly0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr728")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b31oe")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]

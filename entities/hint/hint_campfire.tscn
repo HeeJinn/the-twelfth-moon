@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/hint/hint.tscn" id="1_hint"]
+
+[node name="HintCampfire" instance=ExtResource("1_hint")]
+text = "Light a campfire to rest. If you fall, you wake up here"

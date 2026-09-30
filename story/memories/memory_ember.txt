@@ -1,0 +1,17 @@
+# A past-life memory, after Chapter Two. "Her" and "Him" show as "???".
+
+[memory_opening]
+A memory. Spring, a thousand years ago.
+
+[memory_ember]
+Him: Ow! Ow, ow... hot, hot, hot!
+Her: Are you all right? You're the blacksmith's new boy, aren't you?
+Him: Apprentice. I make horseshoes. Mostly I just burn my fingers.
+Her: Here, put them in the water bucket, silly.
+Him: ...Thank you. I'm, um...
+Her: You're always covered in sparks. I'm going to call you Ember.
+Him: Ember. ...I like that.
+
+[memory_wake]
+Mariane: Ember...
+Mariane: Why does that name feel so warm?

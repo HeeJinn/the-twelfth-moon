@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/fish.png" id="1_wd2np"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u0w4"]
+atlas = ExtResource("1_wd2np")
+region = Rect2(0, 0, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2veos"]
+atlas = ExtResource("1_wd2np")
+region = Rect2(29, 0, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iti0"]
+atlas = ExtResource("1_wd2np")
+region = Rect2(58, 0, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l1v5"]
+atlas = ExtResource("1_wd2np")
+region = Rect2(87, 0, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xcxh"]
+atlas = ExtResource("1_wd2np")
+region = Rect2(116, 0, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dor1g"]
+atlas = ExtResource("1_wd2np")
+region = Rect2(145, 0, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe336"]
+atlas = ExtResource("1_wd2np")
+region = Rect2(174, 0, 29, 17)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u0w4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2veos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iti0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l1v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xcxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dor1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe336")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 12.0
+}]

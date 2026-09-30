@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/question.png" id="1_16wg0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4da4p"]
+atlas = ExtResource("1_16wg0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uanf"]
+atlas = ExtResource("1_16wg0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hys3u"]
+atlas = ExtResource("1_16wg0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xw05"]
+atlas = ExtResource("1_16wg0")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4da4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uanf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hys3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xw05")
+}],
+"loop": 1,
+"name": &"play",
+"speed": 6.0
+}]

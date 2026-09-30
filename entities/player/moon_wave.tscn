@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/player/moon_projectile.gd" id="1_projectile"]
+[ext_resource type="Texture2D" path="res://assets/magic/moon_wave.png" id="2_wave"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wave"]
+size = Vector2(12, 26)
+
+[node name="MoonWave" type="Node2D"]
+z_index = 1
+script = ExtResource("1_projectile")
+kind = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_wave")
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+enabled = false
+shape = SubResource("RectangleShape2D_wave")
+target_position = Vector2(0, 0)
+collision_mask = 9

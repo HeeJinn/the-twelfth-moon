@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LevelData" format=3]
+
+[ext_resource type="Script" path="res://levels/level_data.gd" id="1_data"]
+[ext_resource type="TileSet" path="res://levels/tilesets/forest_tileset.tres" id="2_tiles"]
+[ext_resource type="PackedScene" path="res://levels/backgrounds/forest_background.tscn" id="3_background"]
+
+[resource]
+script = ExtResource("1_data")
+title = "Chapter Two"
+subtitle = "The Lantern Forest"
+night_text = "Nine nights remain"
+map_path = "res://levels/maps/chapter_02.txt"
+dialogue_path = "res://story/chapter_02.txt"
+outro_scene = "res://story/memories/memory_ember.tscn"
+background_color = Color(0.1, 0.14, 0.24, 1)
+tile_set = ExtResource("2_tiles")
+terrain = 0
+background_scene = ExtResource("3_background")
+step_surface = "dirt"

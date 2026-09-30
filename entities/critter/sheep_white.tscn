@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/critter/critter.gd" id="1_critter"]
+[ext_resource type="SpriteFrames" path="res://entities/critter/sheep_white_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(16, 12)
+
+[node name="SheepWhite" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_critter")
+speed = 10.0
+wander_distance = 40.0
+rest_chance = 0.35
+rest_animation = &"sleep"
+shy_distance = 36.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"idle"
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_body")

@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/fence_snow.png" id="1_pp5db"]
+
+[node name="FenceSnow" type="Sprite2D" unique_id=1098585763]
+z_index = -2
+texture = ExtResource("1_pp5db")
+centered = false
+offset = Vector2(-24, -20)

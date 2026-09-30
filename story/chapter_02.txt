@@ -1,0 +1,45 @@
+# Chapter Two: The Lantern Forest
+#
+# Same format as chapter_01.txt. Speakers: Mariane, Wren, Pell, Witch.
+# Numbers as words: the font has no digits.
+
+[wren]
+Wren: Oh! A traveler, this late? You must be very brave, or very lost.
+Mariane: I'm following a knight in red armor. Have you seen him?
+Wren: The Ember Knight... He came through here three nights ago.
+Wren: Strangest thing. He lit every lantern along the road as he went.
+Wren: I'm the lantern keeper, you see. That's my job. He did it for me.
+Mariane: A villain who lights lanterns?
+Wren: The forest is restless tonight, dear. Follow the lanterns and don't stray.
+[wren_again]
+Wren: Follow the lanterns. They'll show you the way.
+
+[pell]
+Pell: Careful, friend! The clearing ahead... something's in there. A witch, I think.
+Pell: She's been casting spells all night. Like she's waiting for someone.
+Mariane: Waiting for whom?
+Pell: Didn't ask. I'm rather fond of my eyebrows.
+Pell: If she throws those purple lights, duck! Or slide, or jump. Just don't stand there.
+[pell_again]
+Pell: Purple lights: duck, slide or jump. And hit her while she's catching her breath!
+
+[witch_intro]
+Witch: So you're the one. Smaller than I expected.
+Mariane: Where is the Ember Knight? What is he planning?
+Witch: Planning? Hah. You'll have to earn your answers, girl.
+Witch: Show me you can survive the moon's own magic!
+
+[witch_again]
+Witch: Back already? Good. Again!
+
+[witch_defeated]
+Witch: Enough... enough. You're stronger than you look.
+Mariane: Why did you attack me? Who sent you?
+Witch: He told us to make you stronger... not to break you.
+Witch: Strange orders, for a villain.
+Mariane: He... what?
+Witch: The ember road runs north, to the winter pass. He'll be waiting. He always is.
+
+[witch_after]
+Mariane: Make me stronger...?
+Mariane: Why would he want that?

@@ -1,0 +1,23 @@
+# Prologue: a memory from a thousand years ago.
+# Same format as chapter_01.txt. "Her" and "Him" show as "???".
+
+[prologue_opening]
+Once in a thousand years, a red moon rises. The Twelfth Moon.
+On the twelfth night of the tenth month, it falls on the one soul it has marked.
+
+[prologue_1]
+Her: Look... the moon is turning red.
+Him: Don't look at it. Look at me.
+Her: It's choosing someone. I can feel it.
+Her: Promise me something.
+Him: Anything.
+Her: If it takes me tonight... find me again.
+Him: I promise. In this life, and the next, and every one after.
+
+[prologue_2]
+Him: No... no, no, no.
+Him: I'll find you. I swear it.
+Him: And next time, I'll be the one who falls.
+
+[prologue_wake]
+Tomas: Mariane... Mariane!

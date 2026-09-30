@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/decor/basket.png" id="1_pt3q8"]
+
+[node name="Basket" type="Sprite2D" unique_id=401180326]
+z_index = -2
+texture = ExtResource("1_pt3q8")
+centered = false
+offset = Vector2(-8, -14)

@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/decor/barrel.png" id="1_se70g"]
+
+[node name="Barrel" type="Sprite2D" unique_id=346069844]
+z_index = -2
+texture = ExtResource("1_se70g")
+centered = false
+offset = Vector2(-7, -17)

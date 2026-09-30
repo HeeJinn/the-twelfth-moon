@@ -1,0 +1,154 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://story/memories/memory_scene.gd" id="1_memory"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_5.png" id="2_sky"]
+[ext_resource type="TileSet" path="res://levels/tilesets/village_tileset.tres" id="3_tiles"]
+[ext_resource type="PackedScene" path="res://entities/prop/house.tscn" id="4_house"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_4.png" id="5_mountains"]
+[ext_resource type="Texture2D" path="res://assets/road/background/winter_layer_3.png" id="6_far_forest"]
+[ext_resource type="SpriteFrames" path="res://entities/npc/frames/past_girl_frames.tres" id="7_her"]
+[ext_resource type="SpriteFrames" path="res://entities/npc/frames/past_boy_frames.tres" id="8_him"]
+[ext_resource type="Shader" path="res://story/prologue/memory_tint.gdshader" id="9_tint"]
+[ext_resource type="PackedScene" path="res://ui/dialogue/dialogue_box.tscn" id="10_dialogue"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/teal_pine.tscn" id="11_pine"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/teal_fir.tscn" id="12_fir"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/fence_snow.tscn" id="13_fence"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/fireflies_jar.tscn" id="14_lantern"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/snow_bush_small.tscn" id="15_bush"]
+[ext_resource type="SpriteFrames" path="res://levels/backgrounds/blizzard_frames.tres" id="16_snow"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/snow_mound.tscn" id="17_mound"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tint"]
+shader = ExtResource("9_tint")
+shader_parameter/fade = 0.65
+shader_parameter/tint = Color(0.9, 0.95, 1.05, 1)
+shader_parameter/vignette = 1.0
+
+[node name="MemoryRibbon" type="Node2D"]
+script = ExtResource("1_memory")
+conversations = PackedStringArray("memory_opening", "memory_ribbon")
+wake_conversation = "memory_wake"
+ground_terrain = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(240, 180)
+
+[node name="Sky" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(-160, -31)
+texture = ExtResource("2_sky")
+centered = false
+
+[node name="Mountains" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(-160, 5)
+texture = ExtResource("5_mountains")
+centered = false
+
+[node name="FarForest" type="Sprite2D" parent="."]
+z_index = -8
+position = Vector2(-160, 37)
+texture = ExtResource("6_far_forest")
+centered = false
+
+[node name="Ground" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+tile_set = ExtResource("3_tiles")
+
+[node name="House" parent="." instance=ExtResource("4_house")]
+position = Vector2(96, 224)
+
+[node name="PineLeft" parent="." instance=ExtResource("11_pine")]
+position = Vector2(-10, 224)
+
+[node name="FirRight" parent="." instance=ExtResource("12_fir")]
+position = Vector2(372, 224)
+
+[node name="PineRight" parent="." instance=ExtResource("11_pine")]
+position = Vector2(450, 224)
+
+[node name="Fence" parent="." instance=ExtResource("13_fence")]
+position = Vector2(318, 224)
+
+[node name="LanternOnFence" parent="." instance=ExtResource("14_lantern")]
+position = Vector2(300, 212)
+
+[node name="LanternOnFence2" parent="." instance=ExtResource("14_lantern")]
+position = Vector2(336, 212)
+
+[node name="LanternByHouse" parent="." instance=ExtResource("14_lantern")]
+position = Vector2(176, 224)
+
+[node name="Bush" parent="." instance=ExtResource("15_bush")]
+position = Vector2(200, 224)
+
+[node name="Mound" parent="." instance=ExtResource("17_mound")]
+position = Vector2(412, 224)
+
+[node name="Her" type="AnimatedSprite2D" parent="."]
+position = Vector2(236, 224)
+sprite_frames = ExtResource("7_her")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -32)
+flip_h = true
+
+[node name="Him" type="AnimatedSprite2D" parent="."]
+position = Vector2(266, 224)
+sprite_frames = ExtResource("8_him")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -32)
+
+[node name="Snowfall" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.35)
+z_index = 10
+position = Vector2(-2, 43)
+sprite_frames = ExtResource("16_snow")
+autoplay = "default"
+centered = false
+
+[node name="MemoryTint" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="MemoryTint"]
+material = SubResource("ShaderMaterial_tint")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FlashLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Flash" type="ColorRect" parent="FlashLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="DialogueBox" parent="." instance=ExtResource("10_dialogue")]
+script_path = "res://story/memories/memory_ribbon.txt"
+
+[node name="HintLayer" type="CanvasLayer" parent="."]
+layer = 21
+
+[node name="SkipLabel" type="Label" parent="HintLayer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.7)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 0
+text = "Esc to skip"
+horizontal_alignment = 2

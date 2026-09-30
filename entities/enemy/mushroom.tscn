@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://entities/enemy/mushroom_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(18, 28)
+
+[node name="Mushroom" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_enemy")
+speed = 20.0
+patrol_distance = 72.0
+max_health = 3
+stomp_height = 13.0
+sprite_offset = Vector2(1, -26)
+attack_reach = Vector2(40, 24)
+attack_cooldown = 2.5
+burst_frames = PackedInt32Array(4, 5, 6)
+burst_radius = 30.0
+voice_bank = &"alex"
+voice_pitch = 0.78
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"walk"
+offset = Vector2(1, -26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="LedgeCheck" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(10, -2)
+target_position = Vector2(0, 8)
+collision_mask = 3
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -14)
+enabled = false
+shape = SubResource("RectangleShape2D_body")
+target_position = Vector2(0, 0)
+collision_mask = 4

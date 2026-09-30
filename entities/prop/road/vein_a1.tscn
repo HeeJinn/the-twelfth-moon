@@ -1,0 +1,103 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/vein_a1.png" id="1_e1ji8"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_msyho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyknw"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k87a5"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di08h"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvtp2"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fa02"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v4ny"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfwb2"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wv2a"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_basm8"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rteev"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p63ir"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(64, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxjlf"]
+atlas = ExtResource("1_e1ji8")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ia85s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyknw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k87a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di08h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvtp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fa02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v4ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfwb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wv2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_basm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rteev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p63ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxjlf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="VeinA1" type="AnimatedSprite2D" unique_id=1114916105]
+z_index = -3
+sprite_frames = SubResource("SpriteFrames_ia85s")
+centered = false
+offset = Vector2(-16, -8)
+script = ExtResource("2_msyho")

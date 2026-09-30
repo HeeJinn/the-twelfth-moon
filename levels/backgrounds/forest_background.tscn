@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/forest/starry_sky.png" id="1_sky"]
+[ext_resource type="Texture2D" path="res://assets/forest/starry_far.png" id="2_far"]
+[ext_resource type="Texture2D" path="res://assets/forest/starry_mid.png" id="3_mid"]
+[ext_resource type="Texture2D" path="res://assets/forest/starry_near.png" id="4_near"]
+[ext_resource type="Texture2D" path="res://assets/generated/red_moon_small.png" id="5_moon"]
+[ext_resource type="PackedScene" path="res://levels/backgrounds/shooting_stars.tscn" id="6_stars"]
+
+[node name="ForestBackground" type="Node2D"]
+z_index = -100
+
+[node name="Sky" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.02, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+position = Vector2(-40, 0)
+texture = ExtResource("1_sky")
+centered = false
+
+[node name="RedMoon" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="RedMoon"]
+modulate = Color(1, 1, 1, 0.6)
+position = Vector2(390, 34)
+texture = ExtResource("5_moon")
+
+[node name="Stars" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+
+[node name="ShootingStars" parent="Stars" instance=ExtResource("6_stars")]
+
+[node name="Far" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.05, 0)
+repeat_size = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Far"]
+texture = ExtResource("2_far")
+centered = false
+
+[node name="Mid" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mid"]
+texture = ExtResource("3_mid")
+centered = false
+
+[node name="Near" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.18, 0)
+repeat_size = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Near"]
+texture = ExtResource("4_near")
+centered = false

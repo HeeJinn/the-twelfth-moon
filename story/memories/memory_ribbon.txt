@@ -1,0 +1,17 @@
+# A past-life memory, after Chapter Three. "Her" and "Him" show as "???".
+
+[memory_opening]
+A memory. Winter, a thousand years ago. The solstice fair.
+
+[memory_ribbon]
+Her: Ember! You'll freeze out here. What are you hiding behind your back?
+Him: It's... for you. For the fair.
+Her: A ribbon? Red as your forge.
+Her: Ember, this must have cost a whole month of horseshoes.
+Him: Two months. ...So I can always find you in the snow. Wherever you are.
+Her: Then you'd better always look for me.
+Him: Always.
+
+[memory_wake]
+Mariane: This ribbon... Grandpa says I've worn one since I was little.
+Mariane: "So I can always find you." ...Who were you?

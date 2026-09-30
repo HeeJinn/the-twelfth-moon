@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/decor/chopping_block.png" id="1_3cwg1"]
+
+[node name="ChoppingBlock" type="Sprite2D" unique_id=2103306755]
+z_index = -2
+texture = ExtResource("1_3cwg1")
+centered = false
+offset = Vector2(-10, -20)

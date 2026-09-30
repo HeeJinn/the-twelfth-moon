@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/wheat.png" id="1_1nd73"]
+
+[node name="Wheat" type="Sprite2D" unique_id=2041336497]
+z_index = -2
+texture = ExtResource("1_1nd73")
+centered = false
+offset = Vector2(-57, -25)

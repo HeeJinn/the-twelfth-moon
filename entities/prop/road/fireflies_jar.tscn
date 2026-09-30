@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/fireflies_jar.png" id="1_4blmd"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_w3x3n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf0eo"]
+atlas = ExtResource("1_4blmd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7y5n"]
+atlas = ExtResource("1_4blmd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkbcb"]
+atlas = ExtResource("1_4blmd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gssa"]
+atlas = ExtResource("1_4blmd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ofipa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf0eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7y5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkbcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gssa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="FirefliesJar" type="AnimatedSprite2D" unique_id=1005173745]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_ofipa")
+centered = false
+offset = Vector2(-8, -15)
+script = ExtResource("2_w3x3n")

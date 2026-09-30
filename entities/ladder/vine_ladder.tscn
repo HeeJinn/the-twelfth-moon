@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/ladder/vine_ladder.gd" id="1_ladder"]
+[ext_resource type="Texture2D" path="res://assets/forest/vine_ladder.png" id="2_vine"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cell"]
+size = Vector2(10, 16)
+
+[node name="VineLadder" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_ladder")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+texture = ExtResource("2_vine")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_cell")

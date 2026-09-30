@@ -1,0 +1,171 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://levels/level_loader.gd" id="1_loader"]
+[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://entities/collectible/petal.tscn" id="3_petal"]
+[ext_resource type="PackedScene" path="res://entities/enemy/goblin.tscn" id="4_goblin"]
+[ext_resource type="PackedScene" path="res://entities/checkpoint/campfire.tscn" id="5_campfire"]
+[ext_resource type="PackedScene" path="res://entities/goal/shrine.tscn" id="6_shrine"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_move.tscn" id="7_hint_move"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_jump.tscn" id="8_hint_jump"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_attack.tscn" id="9_hint_attack"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_campfire.tscn" id="10_hint_campfire"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_high_jump.tscn" id="11_hint_high_jump"]
+[ext_resource type="PackedScene" path="res://entities/prop/house.tscn" id="12_house"]
+[ext_resource type="PackedScene" path="res://entities/prop/flowering_tree.tscn" id="13_flowering"]
+[ext_resource type="PackedScene" path="res://entities/prop/tree_1.tscn" id="14_tree_1"]
+[ext_resource type="PackedScene" path="res://entities/prop/tree_2.tscn" id="15_tree_2"]
+[ext_resource type="PackedScene" path="res://entities/prop/weeping_willow.tscn" id="16_willow"]
+[ext_resource type="PackedScene" path="res://entities/prop/tall_grass.tscn" id="17_grass"]
+[ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="18_hud"]
+[ext_resource type="PackedScene" path="res://ui/dialogue/dialogue_box.tscn" id="19_dialogue"]
+[ext_resource type="PackedScene" path="res://story/chapter_01/shrine_cutscene.tscn" id="20_shrine_scene"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/tomas.tscn" id="21_tomas"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/rosa.tscn" id="22_rosa"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/lina.tscn" id="23_lina"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/mara.tscn" id="24_mara"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/joss.tscn" id="25_joss"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/bram.tscn" id="26_bram"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/theo.tscn" id="27_theo"]
+[ext_resource type="PackedScene" path="res://entities/prop/barrels.tscn" id="28_barrels"]
+[ext_resource type="PackedScene" path="res://entities/prop/crates.tscn" id="29_crates"]
+[ext_resource type="PackedScene" path="res://entities/prop/crate.tscn" id="30_crate"]
+[ext_resource type="PackedScene" path="res://entities/prop/apple_stand.tscn" id="31_apple_stand"]
+[ext_resource type="PackedScene" path="res://entities/prop/log_pile.tscn" id="32_log_pile"]
+[ext_resource type="PackedScene" path="res://entities/prop/cooking_stall.tscn" id="33_cooking"]
+[ext_resource type="PackedScene" path="res://entities/prop/tent_large.tscn" id="34_tent_large"]
+[ext_resource type="PackedScene" path="res://entities/prop/tent_small.tscn" id="35_tent_small"]
+[ext_resource type="PackedScene" path="res://entities/prop/rocks.tscn" id="36_rocks"]
+[ext_resource type="PackedScene" path="res://entities/prop/rocks_big.tscn" id="37_rocks_big"]
+[ext_resource type="PackedScene" path="res://entities/prop/bush.tscn" id="38_bush"]
+[ext_resource type="PackedScene" path="res://entities/prop/bush_small.tscn" id="39_bush_small"]
+[ext_resource type="PackedScene" path="res://entities/prop/scarecrow.tscn" id="40_scarecrow"]
+[ext_resource type="PackedScene" path="res://entities/prop/wheat_bundle.tscn" id="41_wheat"]
+[ext_resource type="PackedScene" path="res://entities/prop/laundry.tscn" id="42_laundry"]
+[ext_resource type="PackedScene" path="res://entities/prop/flower_pot_purple.tscn" id="43_pot_purple"]
+[ext_resource type="PackedScene" path="res://entities/prop/flower_pot_green.tscn" id="44_pot_green"]
+[ext_resource type="PackedScene" path="res://entities/prop/pumpkin.tscn" id="45_pumpkin"]
+[ext_resource type="PackedScene" path="res://entities/prop/basket.tscn" id="46_basket"]
+[ext_resource type="PackedScene" path="res://entities/prop/butterfly.tscn" id="47_butterfly"]
+[ext_resource type="PackedScene" path="res://entities/prop/chopping_block.tscn" id="48_chopping"]
+[ext_resource type="PackedScene" path="res://entities/ladder/vine_ladder.tscn" id="49_ladder"]
+[ext_resource type="PackedScene" path="res://entities/enemy/mushroom.tscn" id="50_mushroom"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/wren.tscn" id="51_wren"]
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/pell.tscn" id="52_pell"]
+[ext_resource type="PackedScene" path="res://story/chapter_02/witch_arena.tscn" id="53_witch_arena"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/lantern_vine.tscn" id="54_lantern_vine"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/lantern_vine_long.tscn" id="55_lantern_vine_long"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/coral_tree.tscn" id="56_coral_tree"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/coral_tree_small.tscn" id="57_coral_tree_small"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/bush_dark.tscn" id="58_bush_dark"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/bush_wide.tscn" id="59_bush_wide"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/rock_purple.tscn" id="60_rock_purple"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/red_plant.tscn" id="61_red_plant"]
+[ext_resource type="PackedScene" path="res://entities/prop/forest/sprout.tscn" id="62_sprout"]
+[ext_resource type="PackedScene" path="res://entities/prop/fireflies.tscn" id="63_fireflies"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_slide.tscn" id="64_hint_slide"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_dash.tscn" id="65_hint_dash"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_dash_attack.tscn" id="66_hint_dash_attack"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_climb.tscn" id="67_hint_climb"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_ledge.tscn" id="68_hint_ledge"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_wall.tscn" id="69_hint_wall"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_charge.tscn" id="90_hint_charge"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_guard.tscn" id="91_hint_guard"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_spark.tscn" id="92_hint_spark"]
+[ext_resource type="PackedScene" path="res://entities/water/water.tscn" id="93_water"]
+[ext_resource type="PackedScene" path="res://entities/critter/sheep_white.tscn" id="94_sheep_white"]
+[ext_resource type="PackedScene" path="res://entities/critter/sheep_black.tscn" id="95_sheep_black"]
+[ext_resource type="PackedScene" path="res://entities/prop/house_b.tscn" id="70_house_b"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_loader")
+player_scene = ExtResource("2_player")
+spawn_table = Dictionary[String, PackedScene]({
+"1": ExtResource("7_hint_move"),
+"2": ExtResource("8_hint_jump"),
+"3": ExtResource("9_hint_attack"),
+"4": ExtResource("10_hint_campfire"),
+"5": ExtResource("11_hint_high_jump"),
+"A": ExtResource("21_tomas"),
+"B": ExtResource("22_rosa"),
+"C": ExtResource("3_petal"),
+"D": ExtResource("23_lina"),
+"E": ExtResource("4_goblin"),
+"F": ExtResource("24_mara"),
+"G": ExtResource("6_shrine"),
+"J": ExtResource("25_joss"),
+"K": ExtResource("5_campfire"),
+"R": ExtResource("26_bram"),
+"S": ExtResource("20_shrine_scene"),
+"T": ExtResource("15_tree_2"),
+"V": ExtResource("27_theo"),
+"a": ExtResource("31_apple_stand"),
+"b": ExtResource("28_barrels"),
+"c": ExtResource("29_crates"),
+"d": ExtResource("42_laundry"),
+"e": ExtResource("44_pot_green"),
+"f": ExtResource("13_flowering"),
+"g": ExtResource("17_grass"),
+"h": ExtResource("12_house"),
+"i": ExtResource("46_basket"),
+"j": ExtResource("45_pumpkin"),
+"k": ExtResource("33_cooking"),
+"l": ExtResource("32_log_pile"),
+"m": ExtResource("34_tent_large"),
+"n": ExtResource("35_tent_small"),
+"o": ExtResource("37_rocks_big"),
+"p": ExtResource("43_pot_purple"),
+"q": ExtResource("41_wheat"),
+"r": ExtResource("36_rocks"),
+"s": ExtResource("40_scarecrow"),
+"t": ExtResource("14_tree_1"),
+"u": ExtResource("38_bush"),
+"v": ExtResource("39_bush_small"),
+"w": ExtResource("16_willow"),
+"x": ExtResource("30_crate"),
+"y": ExtResource("47_butterfly"),
+"z": ExtResource("48_chopping"),
+"|": ExtResource("49_ladder"),
+"M": ExtResource("50_mushroom"),
+"N": ExtResource("51_wren"),
+"O": ExtResource("52_pell"),
+"W": ExtResource("53_witch_arena"),
+"L": ExtResource("54_lantern_vine"),
+"Q": ExtResource("55_lantern_vine_long"),
+"X": ExtResource("56_coral_tree"),
+"Z": ExtResource("57_coral_tree_small"),
+"U": ExtResource("58_bush_dark"),
+"I": ExtResource("59_bush_wide"),
+"%": ExtResource("60_rock_purple"),
+"&": ExtResource("61_red_plant"),
+"!": ExtResource("62_sprout"),
+"Y": ExtResource("63_fireflies"),
+"6": ExtResource("64_hint_slide"),
+"7": ExtResource("65_hint_dash"),
+"^": ExtResource("66_hint_dash_attack"),
+"+": ExtResource("90_hint_charge"),
+"@": ExtResource("91_hint_guard"),
+"*": ExtResource("92_hint_spark"),
+"~": ExtResource("93_water"),
+"<": ExtResource("94_sheep_white"),
+">": ExtResource("95_sheep_black"),
+"8": ExtResource("67_hint_climb"),
+"9": ExtResource("68_hint_ledge"),
+"0": ExtResource("69_hint_wall"),
+"$": ExtResource("70_house_b")
+})
+platform_source_id = 1
+
+[node name="TerrainLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="PlatformLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Entities" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="HUD" parent="." instance=ExtResource("18_hud")]
+
+[node name="DialogueBox" parent="." instance=ExtResource("19_dialogue")]
+unique_name_in_owner = true

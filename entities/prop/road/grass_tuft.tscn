@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/grass_tuft.png" id="1_jenm7"]
+
+[node name="GrassTuft" type="Sprite2D" unique_id=746252805]
+z_index = -2
+texture = ExtResource("1_jenm7")
+centered = false
+offset = Vector2(-16, -23)

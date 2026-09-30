@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/teal_tree.png" id="1_yihv7"]
+
+[node name="TealTree" type="Sprite2D" unique_id=1613754560]
+z_index = -4
+texture = ExtResource("1_yihv7")
+centered = false
+offset = Vector2(-63, -150)

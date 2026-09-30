@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/npc/villagers/pell.tscn" id="1_pell"]
+
+[node name="Pell" instance=ExtResource("1_pell")]
+dialogue_id = "pell_road"
+auto_talk = true
+start_delay = 3.0
+barks = PackedStringArray("Guard up when the bones throw!", "Is that snow up there? Already?")

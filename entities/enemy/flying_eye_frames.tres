@@ -1,0 +1,73 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/monster_creatures/flying_eye_attack3.png" id="1_welgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loihc"]
+atlas = ExtResource("1_welgf")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk51c"]
+atlas = ExtResource("1_welgf")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cjl5"]
+atlas = ExtResource("1_welgf")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dffha"]
+atlas = ExtResource("1_welgf")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_istki"]
+atlas = ExtResource("1_welgf")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4xtr"]
+atlas = ExtResource("1_welgf")
+region = Rect2(0, 0, 150, 150)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loihc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk51c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cjl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dffha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_istki")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4xtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cjl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dffha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_istki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dffha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cjl5")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]

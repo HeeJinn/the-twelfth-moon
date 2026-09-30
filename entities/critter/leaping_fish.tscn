@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/critter/leaping_fish.gd" id="1_fish"]
+[ext_resource type="SpriteFrames" path="res://entities/critter/fish_frames.tres" id="2_frames"]
+
+[node name="LeapingFish" type="Node2D"]
+z_index = 2
+script = ExtResource("1_fish")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"walk"

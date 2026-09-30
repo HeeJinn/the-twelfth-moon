@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/landing_dust.png" id="1_76x8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4x3l"]
+atlas = ExtResource("1_76x8k")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj6sf"]
+atlas = ExtResource("1_76x8k")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yate7"]
+atlas = ExtResource("1_76x8k")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5m56"]
+atlas = ExtResource("1_76x8k")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhetu"]
+atlas = ExtResource("1_76x8k")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnjrr"]
+atlas = ExtResource("1_76x8k")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tn86"]
+atlas = ExtResource("1_76x8k")
+region = Rect2(288, 0, 48, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4x3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj6sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yate7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5m56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhetu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnjrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tn86")
+}],
+"loop": 0,
+"name": &"play",
+"speed": 20.0
+}]

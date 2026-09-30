@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/ice_crystals.png" id="1_2d473"]
+
+[node name="IceCrystals" type="Sprite2D" unique_id=1507737650]
+z_index = -2
+texture = ExtResource("1_2d473")
+centered = false
+offset = Vector2(-23, -27)

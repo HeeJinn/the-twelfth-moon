@@ -1,0 +1,217 @@
+[gd_resource type="Resource" script_class="SpeakerLibrary" format=3]
+
+[ext_resource type="Script" path="res://story/speaker_library.gd" id="1_library"]
+[ext_resource type="Script" path="res://story/speaker.gd" id="2_speaker"]
+[ext_resource type="Texture2D" path="res://assets/heroine/idle_2.png" id="3_mariane"]
+[ext_resource type="Texture2D" path="res://assets/fire_knight/idle/fire_knight_idle_00.png" id="4_kael"]
+[ext_resource type="Texture2D" path="res://assets/villagers/tomas.png" id="5_tomas"]
+[ext_resource type="Texture2D" path="res://assets/villagers/rosa.png" id="6_rosa"]
+[ext_resource type="Texture2D" path="res://assets/villagers/lina.png" id="7_lina"]
+[ext_resource type="Texture2D" path="res://assets/villagers/mara.png" id="8_mara"]
+[ext_resource type="Texture2D" path="res://assets/villagers/joss.png" id="9_joss"]
+[ext_resource type="Texture2D" path="res://assets/villagers/bram.png" id="10_bram"]
+[ext_resource type="Texture2D" path="res://assets/villagers/theo.png" id="11_theo"]
+[ext_resource type="Texture2D" path="res://assets/villagers/past_girl.png" id="12_past_girl"]
+[ext_resource type="Texture2D" path="res://assets/villagers/past_boy.png" id="13_past_boy"]
+[ext_resource type="Texture2D" path="res://assets/villagers/wren.png" id="14_wren"]
+[ext_resource type="Texture2D" path="res://assets/villagers/pell.png" id="15_pell"]
+[ext_resource type="Texture2D" path="res://assets/witch/witch_idle.png" id="16_witch"]
+[ext_resource type="Texture2D" path="res://assets/villagers/hild.png" id="17_hild"]
+[ext_resource type="Texture2D" path="res://assets/knight/knight_idle.png" id="18_knight"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mariane"]
+atlas = ExtResource("3_mariane")
+region = Rect2(36, 15, 20, 20)
+
+[sub_resource type="Resource" id="Resource_mariane"]
+script = ExtResource("2_speaker")
+display_name = "Mariane"
+portrait = SubResource("AtlasTexture_mariane")
+name_color = Color(1, 0.72, 0.82, 1)
+voice_bank = &"mariane"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kael"]
+atlas = ExtResource("4_kael")
+region = Rect2(135, 78, 20, 20)
+
+[sub_resource type="Resource" id="Resource_kael"]
+script = ExtResource("2_speaker")
+display_name = "Kael"
+shown_as = "The Ember Knight"
+portrait = SubResource("AtlasTexture_kael")
+name_color = Color(1, 0.55, 0.35, 1)
+voice_bank = &"ian"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tomas"]
+atlas = ExtResource("5_tomas")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_tomas"]
+script = ExtResource("2_speaker")
+display_name = "Tomas"
+shown_as = "Grandpa Tomas"
+portrait = SubResource("AtlasTexture_tomas")
+name_color = Color(0.85, 0.85, 1, 1)
+voice_bank = &"sean"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rosa"]
+atlas = ExtResource("6_rosa")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_rosa"]
+script = ExtResource("2_speaker")
+display_name = "Rosa"
+portrait = SubResource("AtlasTexture_rosa")
+name_color = Color(0.7, 1, 0.7, 1)
+voice_bank = &"karen"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lina"]
+atlas = ExtResource("7_lina")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_lina"]
+script = ExtResource("2_speaker")
+display_name = "Lina"
+portrait = SubResource("AtlasTexture_lina")
+name_color = Color(1, 0.95, 0.6, 1)
+voice_bank = &"karen"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mara"]
+atlas = ExtResource("8_mara")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_mara"]
+script = ExtResource("2_speaker")
+display_name = "Mara"
+shown_as = "Old Mara"
+portrait = SubResource("AtlasTexture_mara")
+name_color = Color(0.85, 0.75, 1, 1)
+voice_bank = &"karen"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joss"]
+atlas = ExtResource("9_joss")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_joss"]
+script = ExtResource("2_speaker")
+display_name = "Joss"
+portrait = SubResource("AtlasTexture_joss")
+name_color = Color(1, 0.8, 0.55, 1)
+voice_bank = &"alex"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bram"]
+atlas = ExtResource("10_bram")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_bram"]
+script = ExtResource("2_speaker")
+display_name = "Bram"
+portrait = SubResource("AtlasTexture_bram")
+name_color = Color(0.65, 0.85, 1, 1)
+voice_bank = &"alex"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_theo"]
+atlas = ExtResource("11_theo")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_theo"]
+script = ExtResource("2_speaker")
+display_name = "Theo"
+portrait = SubResource("AtlasTexture_theo")
+name_color = Color(0.7, 1, 0.85, 1)
+voice_bank = &"alex"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_her"]
+atlas = ExtResource("12_past_girl")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_her"]
+script = ExtResource("2_speaker")
+display_name = "Her"
+shown_as = "???"
+portrait = SubResource("AtlasTexture_her")
+name_color = Color(1, 0.8, 0.85, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_him"]
+atlas = ExtResource("13_past_boy")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_him"]
+script = ExtResource("2_speaker")
+display_name = "Him"
+shown_as = "???"
+portrait = SubResource("AtlasTexture_him")
+name_color = Color(1, 0.7, 0.55, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wren"]
+atlas = ExtResource("14_wren")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_wren"]
+script = ExtResource("2_speaker")
+display_name = "Wren"
+shown_as = "Wren, the lantern keeper"
+portrait = SubResource("AtlasTexture_wren")
+name_color = Color(1, 0.8, 0.5, 1)
+voice_bank = &"karen"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pell"]
+atlas = ExtResource("15_pell")
+region = Rect2(30, 19, 20, 20)
+
+[sub_resource type="Resource" id="Resource_pell"]
+script = ExtResource("2_speaker")
+display_name = "Pell"
+portrait = SubResource("AtlasTexture_pell")
+name_color = Color(0.75, 0.9, 1, 1)
+voice_bank = &"sean"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_witch"]
+atlas = ExtResource("16_witch")
+region = Rect2(30, 10, 20, 20)
+
+[sub_resource type="Resource" id="Resource_witch"]
+script = ExtResource("2_speaker")
+display_name = "Witch"
+shown_as = "The Moon Witch"
+portrait = SubResource("AtlasTexture_witch")
+name_color = Color(0.8, 0.7, 1, 1)
+voice_bank = &"karen"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hild"]
+atlas = ExtResource("17_hild")
+region = Rect2(30, 18, 20, 20)
+
+[sub_resource type="Resource" id="Resource_hild"]
+script = ExtResource("2_speaker")
+display_name = "Hild"
+shown_as = "Hild, the shepherdess"
+portrait = SubResource("AtlasTexture_hild")
+name_color = Color(0.75, 1, 0.7, 1)
+voice_bank = &"karen"
+greets = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knight"]
+atlas = ExtResource("18_knight")
+region = Rect2(54, 11, 20, 20)
+
+[sub_resource type="Resource" id="Resource_knight"]
+script = ExtResource("2_speaker")
+display_name = "Knight"
+shown_as = "The Shield Knight"
+portrait = SubResource("AtlasTexture_knight")
+name_color = Color(1, 0.9, 0.55, 1)
+voice_bank = &"ian"
+
+[resource]
+script = ExtResource("1_library")
+speakers = Array[ExtResource("2_speaker")]([SubResource("Resource_mariane"), SubResource("Resource_kael"), SubResource("Resource_tomas"), SubResource("Resource_rosa"), SubResource("Resource_lina"), SubResource("Resource_mara"), SubResource("Resource_joss"), SubResource("Resource_bram"), SubResource("Resource_theo"), SubResource("Resource_her"), SubResource("Resource_him"), SubResource("Resource_wren"), SubResource("Resource_pell"), SubResource("Resource_witch"), SubResource("Resource_hild"), SubResource("Resource_knight")])

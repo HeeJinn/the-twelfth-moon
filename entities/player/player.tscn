@@ -1,0 +1,241 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_player"]
+[ext_resource type="Resource" path="res://entities/player/player_stats.tres" id="2_stats"]
+[ext_resource type="SpriteFrames" path="res://entities/player/player_frames.tres" id="3_frames"]
+[ext_resource type="Script" path="res://entities/player/states/player_state_machine.gd" id="4_machine"]
+[ext_resource type="Script" path="res://entities/player/states/idle.gd" id="5_idle"]
+[ext_resource type="Script" path="res://entities/player/states/run.gd" id="6_run"]
+[ext_resource type="Script" path="res://entities/player/states/crouch.gd" id="7_crouch"]
+[ext_resource type="Script" path="res://entities/player/states/slide.gd" id="8_slide"]
+[ext_resource type="Script" path="res://entities/player/states/jump.gd" id="9_jump"]
+[ext_resource type="Script" path="res://entities/player/states/fall.gd" id="10_fall"]
+[ext_resource type="Script" path="res://entities/player/states/wall_slide.gd" id="11_wall_slide"]
+[ext_resource type="Script" path="res://entities/player/states/ledge_hang.gd" id="12_ledge_hang"]
+[ext_resource type="Script" path="res://entities/player/states/ledge_climb.gd" id="13_ledge_climb"]
+[ext_resource type="Script" path="res://entities/player/states/climb.gd" id="14_climb"]
+[ext_resource type="Script" path="res://entities/player/states/dash.gd" id="15_dash"]
+[ext_resource type="Script" path="res://entities/player/states/dash_attack.gd" id="16_dash_attack"]
+[ext_resource type="Script" path="res://entities/player/states/attack.gd" id="17_attack"]
+[ext_resource type="Script" path="res://entities/player/states/hurt.gd" id="18_hurt"]
+[ext_resource type="Script" path="res://entities/player/states/dead.gd" id="19_dead"]
+[ext_resource type="Script" path="res://entities/player/states/crouch_attack.gd" id="20_crouch_attack"]
+[ext_resource type="Script" path="res://entities/player/states/charge.gd" id="21_charge"]
+[ext_resource type="Script" path="res://entities/player/states/moon_slash.gd" id="22_moon_slash"]
+[ext_resource type="Script" path="res://entities/player/states/cast.gd" id="23_cast"]
+[ext_resource type="Script" path="res://entities/player/states/guard.gd" id="24_guard"]
+[ext_resource type="Script" path="res://entities/player/states/rest.gd" id="25_rest"]
+[ext_resource type="Script" path="res://entities/player/states/asleep.gd" id="26_asleep"]
+[ext_resource type="Script" path="res://entities/player/states/get_up.gd" id="27_get_up"]
+[ext_resource type="PackedScene" path="res://entities/player/moon_spark.tscn" id="28_spark"]
+[ext_resource type="PackedScene" path="res://entities/player/moon_wave.tscn" id="29_wave"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stand"]
+size = Vector2(12, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_headroom"]
+size = Vector2(10, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_low"]
+size = Vector2(12, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sword"]
+size = Vector2(34, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lunge"]
+size = Vector2(46, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_low_sword"]
+size = Vector2(30, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crescent"]
+size = Vector2(38, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ladder_body"]
+size = Vector2(4, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ladder_below"]
+size = Vector2(4, 6)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_player")
+stats = ExtResource("2_stats")
+spark_scene = ExtResource("28_spark")
+moon_wave_scene = ExtResource("29_wave")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("3_frames")
+animation = &"idle"
+offset = Vector2(-4, -16)
+
+[node name="StandShape" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_stand")
+
+[node name="LowShape" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_low")
+disabled = true
+
+[node name="StandCheck" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -17)
+enabled = false
+shape = SubResource("RectangleShape2D_headroom")
+target_position = Vector2(0, 0)
+collision_mask = 1
+
+[node name="AttackHitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(18, -16)
+enabled = false
+shape = SubResource("RectangleShape2D_sword")
+target_position = Vector2(0, 0)
+collision_mask = 8
+
+[node name="DashAttackHitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(26, -14)
+enabled = false
+shape = SubResource("RectangleShape2D_lunge")
+target_position = Vector2(0, 0)
+collision_mask = 8
+
+[node name="LowAttackHitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(18, -10)
+enabled = false
+shape = SubResource("RectangleShape2D_low_sword")
+target_position = Vector2(0, 0)
+collision_mask = 8
+
+[node name="SlashHitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(18, -15)
+enabled = false
+shape = SubResource("RectangleShape2D_crescent")
+target_position = Vector2(0, 0)
+collision_mask = 8
+
+[node name="WallRay" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+target_position = Vector2(10, 0)
+collision_mask = 1
+
+[node name="HeadRay" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -30)
+target_position = Vector2(10, 0)
+collision_mask = 1
+
+[node name="LedgeTopRay" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(10, -30)
+target_position = Vector2(0, 16)
+collision_mask = 1
+
+[node name="LadderDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_ladder_body")
+
+[node name="LadderBelow" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderBelow"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ladder_below")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -24)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("4_machine")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_idle")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("6_run")
+
+[node name="Crouch" type="Node" parent="StateMachine"]
+script = ExtResource("7_crouch")
+
+[node name="CrouchAttack" type="Node" parent="StateMachine"]
+script = ExtResource("20_crouch_attack")
+
+[node name="Slide" type="Node" parent="StateMachine"]
+script = ExtResource("8_slide")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("9_jump")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("10_fall")
+
+[node name="WallSlide" type="Node" parent="StateMachine"]
+script = ExtResource("11_wall_slide")
+
+[node name="LedgeHang" type="Node" parent="StateMachine"]
+script = ExtResource("12_ledge_hang")
+
+[node name="LedgeClimb" type="Node" parent="StateMachine"]
+script = ExtResource("13_ledge_climb")
+
+[node name="Climb" type="Node" parent="StateMachine"]
+script = ExtResource("14_climb")
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("15_dash")
+
+[node name="DashAttack" type="Node" parent="StateMachine"]
+script = ExtResource("16_dash_attack")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("17_attack")
+
+[node name="Charge" type="Node" parent="StateMachine"]
+script = ExtResource("21_charge")
+
+[node name="MoonSlash" type="Node" parent="StateMachine"]
+script = ExtResource("22_moon_slash")
+
+[node name="Cast" type="Node" parent="StateMachine"]
+script = ExtResource("23_cast")
+
+[node name="Guard" type="Node" parent="StateMachine"]
+script = ExtResource("24_guard")
+
+[node name="Rest" type="Node" parent="StateMachine"]
+script = ExtResource("25_rest")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("18_hurt")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("19_dead")
+
+[node name="Asleep" type="Node" parent="StateMachine"]
+script = ExtResource("26_asleep")
+
+[node name="GetUp" type="Node" parent="StateMachine"]
+script = ExtResource("27_get_up")

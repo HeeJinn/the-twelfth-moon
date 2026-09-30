@@ -1,0 +1,68 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://story/chapter_01/shrine_cutscene.gd" id="1_scene"]
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/angel_statue.png" id="2_statue"]
+[ext_resource type="Texture2D" path="res://assets/generated/moon_shard.png" id="3_shard"]
+[ext_resource type="Texture2D" path="res://assets/generated/glow_pink.png" id="4_glow"]
+[ext_resource type="SpriteFrames" path="res://entities/effects/sparkle_frames.tres" id="5_sparkle"]
+[ext_resource type="SpriteFrames" path="res://story/actors/kael_frames.tres" id="6_kael"]
+[ext_resource type="SpriteFrames" path="res://entities/npc/frames/tomas_frames.tres" id="7_tomas"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(16, 96)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
+blend_mode = 1
+
+[node name="ShrineCutscene" type="Area2D"]
+collision_layer = 64
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_scene")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-190, -48)
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+enabled = false
+
+[node name="Shrine" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -2
+texture = ExtResource("2_statue")
+offset = Vector2(0, -32)
+
+[node name="Shard" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(0, -78)
+
+[node name="Glow" type="Sprite2D" parent="Shard"]
+modulate = Color(1, 1, 1, 0.8)
+material = SubResource("CanvasItemMaterial_add")
+texture = ExtResource("4_glow")
+
+[node name="Sparkle" type="AnimatedSprite2D" parent="Shard"]
+sprite_frames = ExtResource("5_sparkle")
+animation = &"play"
+autoplay = "play"
+
+[node name="Crystal" type="Sprite2D" parent="Shard"]
+texture = ExtResource("3_shard")
+
+[node name="Kael" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(60, 0)
+sprite_frames = ExtResource("6_kael")
+animation = &"idle"
+offset = Vector2(0, -64)
+flip_h = true
+
+[node name="Tomas" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+sprite_frames = ExtResource("7_tomas")
+animation = &"idle"
+offset = Vector2(0, -32)

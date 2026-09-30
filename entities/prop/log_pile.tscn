@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/decor/log_pile.png" id="1_mf71e"]
+
+[node name="LogPile" type="Sprite2D" unique_id=1250386619]
+z_index = -2
+texture = ExtResource("1_mf71e")
+centered = false
+offset = Vector2(-23, -20)

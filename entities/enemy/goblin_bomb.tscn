@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/enemy/goblin_bomb.gd" id="1_bomb"]
+[ext_resource type="SpriteFrames" path="res://entities/enemy/goblin_bomb_frames.tres" id="2_frames"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bomb"]
+radius = 4.0
+
+[node name="GoblinBomb" type="CharacterBody2D"]
+z_index = 2
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_bomb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"fly"
+offset = Vector2(-2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bomb")

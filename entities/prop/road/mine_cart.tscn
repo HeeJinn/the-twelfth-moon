@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/mine_cart.png" id="1_ejmoa"]
+
+[node name="MineCart" type="Sprite2D" unique_id=769716756]
+z_index = -2
+texture = ExtResource("1_ejmoa")
+centered = false
+offset = Vector2(-15, -16)

@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/bush_round.png" id="1_2b0ai"]
+
+[node name="BushRound" type="Sprite2D" unique_id=111287237]
+z_index = -2
+texture = ExtResource("1_2b0ai")
+centered = false
+offset = Vector2(-20, -24)

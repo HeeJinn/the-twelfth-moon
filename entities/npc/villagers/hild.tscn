@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/npc/npc.tscn" id="1_npc"]
+[ext_resource type="SpriteFrames" path="res://entities/npc/frames/hild_frames.tres" id="2_frames"]
+
+[node name="Hild" instance=ExtResource("1_npc")]
+dialogue_id = "hild"
+face_left = true
+wander_distance = 40.0
+walk_speed = 16.0
+barks = PackedStringArray("Come on, Clover, nobody's going to eat you.", "Count them again... one, two...", "Snow already. The sky's in a hurry.")
+
+[node name="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"idle"

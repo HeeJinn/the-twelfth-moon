@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/npc/npc.tscn" id="1_npc"]
+[ext_resource type="SpriteFrames" path="res://entities/npc/frames/lina_frames.tres" id="2_frames"]
+
+[node name="Lina" instance=ExtResource("1_npc")]
+dialogue_id = "lina"
+wander_distance = 20.0
+barks = PackedStringArray("Strawberries or cherries...?", "La la la...")
+
+[node name="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"idle"

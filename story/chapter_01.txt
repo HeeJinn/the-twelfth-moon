@@ -1,0 +1,82 @@
+# Chapter One: The Village
+#
+# Every line of dialogue in this chapter. Edit freely.
+#   [name]          starts a conversation (the game refers to it by name)
+#   Speaker: text   a spoken line
+#   text            a line with no speaker is narration
+#   [name_again]    what someone says if you talk to them a second time
+# Speakers: Mariane, Tomas, Rosa, Lina, Mara, Joss, Bram, Theo, Kael.
+# Keep lines short (about two lines in the box). The font has no digits,
+# so write numbers as words.
+
+[wake_up]
+Tomas: Mariane! There you are, asleep under the blossom tree again.
+Mariane: Grandpa Tomas... I had that dream again.
+Mariane: The flowering tree. A red moon. Someone holding my hand.
+Tomas: Hmph. Too many of Old Mara's stories before bed, if you ask me.
+Tomas: Now, be a dear and take the morning offering to the shrine.
+Tomas: It's at the east end of the village, past the wheat fields.
+Mariane: Of course. I'll be back before lunch.
+Tomas: And keep your sword close. Joss swears he saw goblins out there.
+
+[lina]
+Lina: Mariane! Twelve more days until your birthday, right?
+Lina: I'm baking you a strawberry cake. Don't you dare peek!
+Mariane: I would never. ...Maybe a little.
+[lina_again]
+Lina: No peeking! Go on, the shrine won't visit itself.
+
+[rosa]
+Rosa: Morning, sweetheart! Stew's on, warm from the fire.
+Rosa: Did you see the moon last night? It had a red ring around it.
+Rosa: My mother used to say that means the moon is choosing someone.
+[rosa_again]
+Rosa: Don't mind my old wives' tales. Eat something before you go!
+
+[mara]
+Mara: Come here, child. Let an old woman tell you a story.
+Mara: Once in a thousand years, a red moon rises. The Twelfth Moon.
+Mara: On the twelfth night of the tenth month, it falls on the soul it has marked.
+Mariane: The twelfth night of the tenth month... That's my birthday.
+Mara: Is it now? Then you'd best make a very good wish, dear.
+[mara_again]
+Mara: Stories are just stories. Mostly.
+
+[theo]
+Theo: Morning, Mariane! Off to the shrine again?
+Theo: Say a prayer for my wheat, would you? The crows are bold this year.
+[theo_again]
+Theo: If you see any crows, tell them I said shoo.
+
+[bram]
+Bram: Hold up, Mariane. The road east isn't safe today.
+Bram: Something has the monsters stirred up. More of them every night.
+Mariane: The offering can't wait, Bram. I'll be careful.
+Bram: Stubborn as your grandpa. Light the campfires along the road, they'll keep you safe.
+[bram_again]
+Bram: I'll hold the village. You watch yourself out there.
+
+[joss]
+Joss: Mariane! Goblins! A whole pack of them, in the wheat fields!
+Joss: They chased me all the way from the scarecrow!
+Mariane: Get inside, Joss. I'll handle them.
+
+[shrine_arrive]
+Mariane: The shrine... Why is the air so warm?
+
+[shrine_kael]
+Mariane: Hey! Get away from the shrine!
+Kael: ...
+Kael: Twelve nights, Mariane.
+Mariane: How do you know my name?
+
+[shrine_after]
+Tomas: Mariane! Are you hurt? I saw the fire from the village.
+Mariane: A knight in red armor. He took the shard from the shrine.
+Tomas: The Ember Knight... So the old stories were true.
+Tomas: He's gathering the moon's shards. When he has them all, the Twelfth Moon will fall.
+Tomas: On the twelfth night. Your birthday, child.
+Mariane: Then I won't let him have them. I'll find him and take them back.
+Tomas: ...You always did have your grandmother's fire.
+Tomas: Take the forest road, and come home safe. Promise me.
+Mariane: I promise.

@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/gandalfhardcore/decor/crates.png" id="1_tcc2f"]
+
+[node name="Crates" type="Sprite2D" unique_id=144487047]
+z_index = -2
+texture = ExtResource("1_tcc2f")
+centered = false
+offset = Vector2(-13, -31)

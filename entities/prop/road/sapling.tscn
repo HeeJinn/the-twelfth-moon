@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/props/sapling.png" id="1_fsx2x"]
+
+[node name="Sapling" type="Sprite2D" unique_id=1585538525]
+z_index = -2
+texture = ExtResource("1_fsx2x")
+centered = false
+offset = Vector2(-14, -26)

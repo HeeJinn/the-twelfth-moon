@@ -1,0 +1,89 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/road/ice_glints.png" id="1_wy57v"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_er5n6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx0nq"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(0, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40r32"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(20, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhp2s"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(40, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl1s3"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(60, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fot16"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(80, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uupbo"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(100, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76q4g"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(120, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4csb"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(140, 0, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w56dg"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(0, 44, 20, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3iaa"]
+atlas = ExtResource("1_wy57v")
+region = Rect2(20, 44, 20, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wuxdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx0nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40r32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhp2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl1s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fot16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uupbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76q4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4csb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w56dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3iaa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="IceGlints" type="AnimatedSprite2D" unique_id=69287007]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_wuxdd")
+centered = false
+offset = Vector2(-10, -43)
+script = ExtResource("2_er5n6")

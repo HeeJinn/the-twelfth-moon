@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/forest/props/bush_wide.png" id="1_wm4e1"]
+
+[node name="BushWide" type="Sprite2D" unique_id=1992415471]
+z_index = -2
+texture = ExtResource("1_wm4e1")
+centered = false
+offset = Vector2(-33, -18)
