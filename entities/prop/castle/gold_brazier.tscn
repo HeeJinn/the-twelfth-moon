@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/castle/gold_brazier.png" id="1_fcrne"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_b50e2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxbp0"]
+atlas = ExtResource("1_fcrne")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv87l"]
+atlas = ExtResource("1_fcrne")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1bq1"]
+atlas = ExtResource("1_fcrne")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt3ph"]
+atlas = ExtResource("1_fcrne")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yrgqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxbp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv87l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1bq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt3ph")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="GoldBrazier" type="AnimatedSprite2D" unique_id=500550206]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_yrgqc")
+offset = Vector2(0, -7)
+script = ExtResource("2_b50e2")

@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/hazard/frost_spikes.gd" id="1_spikes"]
+[ext_resource type="SpriteFrames" path="res://entities/hazard/mouth_frames.tres" id="2_frames"]
+[ext_resource type="Texture2D" path="res://assets/depths/mouth_closed.png" id="3_closed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bite"]
+size = Vector2(40, 16)
+
+[node name="Mouth" type="Node2D"]
+script = ExtResource("1_spikes")
+calm_time = 1.6
+
+[node name="Closed" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_closed")
+offset = Vector2(0, -27)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"warn"
+offset = Vector2(0, -27)
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -9)
+enabled = false
+shape = SubResource("RectangleShape2D_bite")
+target_position = Vector2(0, 0)
+collision_mask = 4

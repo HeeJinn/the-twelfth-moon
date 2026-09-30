@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/hint/hint.tscn" id="1_hint"]
+
+[node name="HintVent" instance=ExtResource("1_hint")]
+text = "A ring means fire is coming. Wait for the flames to fade, then run or dash through"

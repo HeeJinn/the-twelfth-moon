@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/castle/castle_wall.png" id="1_wall"]
+[ext_resource type="Texture2D" path="res://assets/castle/castle_vignette.png" id="2_vignette"]
+
+[node name="CastleBackground" type="Node2D"]
+z_index = -100
+
+[node name="Wall" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.35, 0)
+repeat_size = Vector2(96, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+texture = ExtResource("1_wall")
+centered = false
+
+[node name="Vignette" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Vignette"]
+texture = ExtResource("2_vignette")
+centered = false

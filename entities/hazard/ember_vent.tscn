@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/hazard/frost_spikes.gd" id="1_spikes"]
+[ext_resource type="SpriteFrames" path="res://entities/hazard/ember_vent_frames.tres" id="2_frames"]
+[ext_resource type="Texture2D" path="res://assets/castle/ember_grate.png" id="3_grate"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dome"]
+size = Vector2(34, 30)
+
+[node name="EmberVent" type="Node2D"]
+z_index = 1
+script = ExtResource("1_spikes")
+calm_time = 2.2
+
+[node name="Grate" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_grate")
+offset = Vector2(0, -3)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"warn"
+offset = Vector2(0, -25)
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -18)
+enabled = false
+shape = SubResource("RectangleShape2D_dome")
+target_position = Vector2(0, 0)
+collision_mask = 4

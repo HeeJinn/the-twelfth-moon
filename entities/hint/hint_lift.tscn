@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/hint/hint.tscn" id="1_hint"]
+
+[node name="HintLift" instance=ExtResource("1_hint")]
+text = "Stone lifts carry you. Step on, ride up, and jump off at the top"

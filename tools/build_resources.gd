@@ -83,6 +83,7 @@ func _init() -> void:
 	_build_campfire_frames()
 	_build_village_tileset()
 	_build_forest_tileset()
+	_build_castle_tileset()
 	_build_villager_frames()
 	_build_kael_frames()
 	_build_effect_frames()
@@ -91,6 +92,8 @@ func _init() -> void:
 	_build_witch_frames()
 	_build_forest_props()
 	_build_road_resources()
+	_build_castle_resources()
+	_build_depths_resources()
 	print("build_resources: done")
 	quit()
 
@@ -661,9 +664,30 @@ func _build_village_tileset() -> void:
 ## one tile per neighbour mask (256), so every cell has an exact match, plus
 ## the stringstar plank platform (left end, middle, right end, single).
 func _build_forest_tileset() -> void:
-	const FOREST_TILE: int = 16
+	_save(_build_block_tileset("res://assets/forest/forest_terrain.png",
+			"res://assets/forest/forest_platform.png", "moss", Color(0.2, 0.4, 0.35)),
+			"res://levels/tilesets/forest_tileset.tres")
+
+
+## Ember Keep: 16 px stone blocks drawn by import_castle_assets.py, one tile per
+## neighbour mask (256), plus its one-way stone ledge (left end, middle, right end,
+## single), built the same way as the forest's.
+func _build_castle_tileset() -> void:
+	var tile_set: TileSet = _build_block_tileset("res://assets/castle/castle_terrain.png",
+			"res://assets/castle/castle_platform.png", "stone", Color(0.5, 0.47, 0.4))
+	# The undercroft's slate (import_depths_assets.py) is terrain 1: chapter_04.tres
+	# switches "#" to it at the chasm, where the two never touch.
+	_add_block_terrain(tile_set, "res://assets/depths/depths_terrain.png", 2, "slate",
+			Color(0.35, 0.36, 0.5))
+	_save(tile_set, "res://levels/tilesets/castle_tileset.tres")
+
+
+## A 16 px tileset with one block terrain (source 0) and a one-way ledge (source 1).
+func _build_block_tileset(terrain_path: String, platform_path: String, terrain_name: String,
+		terrain_color: Color) -> TileSet:
+	const BLOCK_TILE: int = 16
 	var tile_set: TileSet = TileSet.new()
-	tile_set.tile_size = Vector2i(FOREST_TILE, FOREST_TILE)
+	tile_set.tile_size = Vector2i(BLOCK_TILE, BLOCK_TILE)
 	tile_set.add_physics_layer()
 	tile_set.set_physics_layer_collision_layer(0, 1)  # "world"
 	tile_set.set_physics_layer_collision_mask(0, 0)
@@ -672,35 +696,12 @@ func _build_forest_tileset() -> void:
 	tile_set.set_physics_layer_collision_mask(1, 0)
 	tile_set.add_terrain_set()
 	tile_set.set_terrain_set_mode(0, TileSet.TERRAIN_MODE_MATCH_CORNERS_AND_SIDES)
-	tile_set.add_terrain(0)
-	tile_set.set_terrain_name(0, 0, "moss")
-	tile_set.set_terrain_color(0, 0, Color(0.2, 0.4, 0.35))
-
-	var ground: TileSetAtlasSource = TileSetAtlasSource.new()
-	ground.texture = load("res://assets/forest/forest_terrain.png")
-	ground.texture_region_size = Vector2i(FOREST_TILE, FOREST_TILE)
-	tile_set.add_source(ground, 0)
-	var half: float = FOREST_TILE / 2.0
-	var square: PackedVector2Array = PackedVector2Array([
-		Vector2(-half, -half), Vector2(half, -half), Vector2(half, half), Vector2(-half, half),
-	])
-	# Mask bits, in the order import_forest_assets.py uses: N, NE, E, SE, S, SW, W, NW.
-	var neighbors: Array[TileSet.CellNeighbor] = [N, NE, E, SE, S, SW, W, NW]
-	for mask: int in 256:
-		var coords: Vector2i = Vector2i(mask % 16, mask / 16)
-		ground.create_tile(coords)
-		var data: TileData = ground.get_tile_data(coords, 0)
-		data.terrain_set = 0
-		data.terrain = 0
-		for bit: int in neighbors.size():
-			if mask & (1 << bit):
-				data.set_terrain_peering_bit(neighbors[bit], 0)
-		data.add_collision_polygon(0)
-		data.set_collision_polygon_points(0, 0, square)
+	_add_block_terrain(tile_set, terrain_path, 0, terrain_name, terrain_color)
+	var half: float = BLOCK_TILE / 2.0
 
 	var planks: TileSetAtlasSource = TileSetAtlasSource.new()
-	planks.texture = load("res://assets/forest/forest_platform.png")
-	planks.texture_region_size = Vector2i(FOREST_TILE, FOREST_TILE)
+	planks.texture = load(platform_path)
+	planks.texture_region_size = Vector2i(BLOCK_TILE, BLOCK_TILE)
 	tile_set.add_source(planks, 1)
 	for i: int in 4:
 		planks.create_tile(Vector2i(i, 0))
@@ -711,7 +712,39 @@ func _build_forest_tileset() -> void:
 			Vector2(-half, -half + 5.0),
 		]))
 		plank.set_collision_polygon_one_way(1, 0, true)
-	_save(tile_set, "res://levels/tilesets/forest_tileset.tres")
+	return tile_set
+
+
+## Adds a terrain to terrain set 0 from a 256-tile neighbour-mask atlas (tile index =
+## mask, bits N, NE, E, SE, S, SW, W, NW as the importers draw them), as atlas source
+## `source_id`, every tile a full square on the "world" physics layer.
+func _add_block_terrain(tile_set: TileSet, texture_path: String, source_id: int,
+		terrain_name: String, terrain_color: Color) -> void:
+	var terrain: int = tile_set.get_terrains_count(0)
+	tile_set.add_terrain(0)
+	tile_set.set_terrain_name(0, terrain, terrain_name)
+	tile_set.set_terrain_color(0, terrain, terrain_color)
+	var size: int = tile_set.tile_size.x
+	var ground: TileSetAtlasSource = TileSetAtlasSource.new()
+	ground.texture = load(texture_path)
+	ground.texture_region_size = Vector2i(size, size)
+	tile_set.add_source(ground, source_id)
+	var half: float = size / 2.0
+	var square: PackedVector2Array = PackedVector2Array([
+		Vector2(-half, -half), Vector2(half, -half), Vector2(half, half), Vector2(-half, half),
+	])
+	var neighbors: Array[TileSet.CellNeighbor] = [N, NE, E, SE, S, SW, W, NW]
+	for mask: int in 256:
+		var coords: Vector2i = Vector2i(mask % 16, mask / 16)
+		ground.create_tile(coords)
+		var data: TileData = ground.get_tile_data(coords, 0)
+		data.terrain_set = 0
+		data.terrain = terrain
+		for bit: int in neighbors.size():
+			if mask & (1 << bit):
+				data.set_terrain_peering_bit(neighbors[bit], terrain)
+		data.add_collision_polygon(0)
+		data.set_collision_polygon_points(0, 0, square)
 
 
 ## Atlas coords (grass rows) -> neighbors that are ground, read off the art in
@@ -800,3 +833,124 @@ func _save(resource: Resource, path: String) -> void:
 		push_error("Could not save %s: %s" % [path, error_string(error)])
 	else:
 		print("saved ", path)
+
+
+## Ember Keep (import_castle_assets.py, import_skeleton_assets.py): the keep guard,
+## the ember vents, the animated lights and the red-moon windows.
+func _build_castle_resources() -> void:
+	# The keep guard, from the Skeleton Sprite Pack: 56x40 frames with the body at x = 14.
+	var guard: SpriteFrames = SpriteFrames.new()
+	guard.remove_animation(&"default")
+	# animation -> [sheet, frame count, fps, loops]
+	var guard_sheets: Dictionary[String, Array] = {
+		"walk": ["walk", 13, 10.0, true],
+		"attack": ["attack", 18, 12.0, false],
+		"hurt": ["hit", 8, 24.0, false],
+		"death": ["dead", 15, 14.0, false],
+	}
+	for animation: String in guard_sheets:
+		var spec: Array = guard_sheets[animation]
+		var sheet: Texture2D = load("res://assets/skeleton/skeleton_%s.png" % spec[0])
+		_add_animation(guard, StringName(animation),
+				_row(sheet, 0, spec[1], Vector2(56, 40)), spec[2], spec[3])
+	_save(guard, "res://entities/enemy/keep_guard_frames.tres")
+
+	# The ember vent, from Magic Pack 9's Fire-bomb (14 of 64x64): 0-3 a shrinking blue
+	# ring and 4-7 a spark are the warning, 8-13 the dome of fire is the burst.
+	var bomb: Array[Texture2D] = _row(load("res://assets/effects/fire_bomb.png"), 0, 14,
+			Vector2(64, 64))
+	var vent: SpriteFrames = SpriteFrames.new()
+	vent.remove_animation(&"default")
+	_add_animation(vent, &"warn", _frames_between(bomb, 0, 8), 10.0, false)
+	_add_animation(vent, &"burst", _frames_between(bomb, 8, 14), 14.0, false)
+	_add_animation(vent, &"sink", _frames_between(bomb, 13, 14), 10.0, false)
+	_save(vent, "res://entities/hazard/ember_vent_frames.tres")
+
+	# Animated lights: name -> [frames, frame size, fps, anchor]. Hanging lights hang
+	# from the top of their cell, the rest stand on the bottom of it.
+	var lights: Dictionary[String, Array] = {
+		"lantern": [6, Vector2(48, 32), 8.0, "top"],
+		"chandelier": [5, Vector2(64, 64), 6.0, "top"],
+		"brazier": [4, Vector2(32, 16), 8.0, "bottom"],
+		"gold_brazier": [4, Vector2(16, 16), 8.0, "bottom"],
+		"sconce_a": [3, Vector2(16, 16), 8.0, "bottom"],
+		"sconce_b": [3, Vector2(16, 16), 8.0, "bottom"],
+		"sconce_c": [3, Vector2(16, 16), 8.0, "bottom"],
+		"sconce_d": [3, Vector2(16, 16), 8.0, "bottom"],
+		"candles": [3, Vector2(16, 16), 6.0, "bottom"],
+	}
+	var sway: Script = load("res://entities/prop/sway.gd")
+	for light: String in lights:
+		var spec: Array = lights[light]
+		var size: Vector2 = spec[1]
+		var frames: SpriteFrames = SpriteFrames.new()
+		frames.remove_animation(&"default")
+		var sheet: Texture2D = load("res://assets/castle/%s.png" % light)
+		_add_animation(frames, &"default", _row(sheet, 0, spec[0], size), spec[2], true)
+		var sprite: AnimatedSprite2D = AnimatedSprite2D.new()
+		sprite.name = light.to_pascal_case()
+		sprite.sprite_frames = frames
+		sprite.set_script(sway)
+		sprite.offset = Vector2(0.0, -16.0 + size.y / 2.0) if spec[3] == "top" 				else Vector2(0.0, -size.y / 2.0 + 1.0)
+		sprite.z_index = -2
+		_save_scene(sprite, "res://entities/prop/castle/%s.tscn" % light)
+
+	# The windows with the red moon behind them, standing on the bottom of their cell.
+	for window: String in ["window_tall", "window_arch", "window_twin"]:
+		var texture: Texture2D = load("res://assets/castle/%s.png" % window)
+		var sprite: Sprite2D = Sprite2D.new()
+		sprite.name = window.to_pascal_case()
+		sprite.texture = texture
+		sprite.offset = Vector2(0.0, -texture.get_height() / 2.0 + 1.0)
+		sprite.z_index = -3
+		_save_scene(sprite, "res://entities/prop/castle/%s.tscn" % window)
+
+
+## The undercroft (import_depths_assets.py): the tentacle, the mouth in the floor,
+## the floating rock, the Amalgam, and the statues, urn, vein column and book altar.
+func _build_depths_resources() -> void:
+	# The tentacle (21 of 32x64): 0-3 the rumble at its crack, 4-16 rising and
+	# swaying (it hurts), 17-20 sinking. Played by the frost spikes' script.
+	var tentacle: Array[Texture2D] = _row(load("res://assets/depths/tentacle.png"), 0, 21,
+			Vector2(32, 64))
+	var rise: SpriteFrames = SpriteFrames.new()
+	rise.remove_animation(&"default")
+	_add_animation(rise, &"warn", _frames_between(tentacle, 0, 4), 6.0, false)
+	_add_animation(rise, &"burst", _frames_between(tentacle, 4, 17), 12.0, false)
+	_add_animation(rise, &"sink", _frames_between(tentacle, 17, 21), 12.0, false)
+	_save(rise, "res://entities/hazard/tentacle_frames.tres")
+
+	# The mouth (18 of 64x64): 13-17 then 0-2 it opens and bares its teeth (the
+	# warning), 3-7 it snaps shut (it hurts), 8 it lies closed again.
+	var mouth: Array[Texture2D] = _row(load("res://assets/depths/mouth.png"), 0, 18,
+			Vector2(64, 64))
+	var snap: SpriteFrames = SpriteFrames.new()
+	snap.remove_animation(&"default")
+	var opening: Array[Texture2D] = _frames_between(mouth, 13, 18)
+	opening.append_array(_frames_between(mouth, 0, 3))
+	_add_animation(snap, &"warn", opening, 8.0, false)
+	_add_animation(snap, &"burst", _frames_between(mouth, 3, 8), 14.0, false)
+	_add_animation(snap, &"sink", _frames_between(mouth, 8, 9), 10.0, false)
+	_save(snap, "res://entities/hazard/mouth_frames.tres")
+
+	var amalgam: SpriteFrames = SpriteFrames.new()
+	amalgam.remove_animation(&"default")
+	_add_animation(amalgam, &"walk", _row(load("res://assets/depths/amalgam.png"), 0, 9,
+			Vector2(64, 64)), 7.0, true)
+	_save(amalgam, "res://entities/enemy/amalgam_frames.tres")
+
+	var rock: SpriteFrames = SpriteFrames.new()
+	rock.remove_animation(&"default")
+	_add_animation(rock, &"default", _row(load("res://assets/depths/floating_rock.png"), 0, 6,
+			Vector2(32, 32)), 6.0, true)
+	_save(rock, "res://entities/platform/floating_rock_frames.tres")
+
+	# Standing props, on the bottom of their cell, behind the gameplay.
+	for prop: String in ["book_altar", "statue_a1", "statue_b1", "urn_1", "vein_column_tall"]:
+		var texture: Texture2D = load("res://assets/depths/%s.png" % prop)
+		var sprite: Sprite2D = Sprite2D.new()
+		sprite.name = prop.to_pascal_case()
+		sprite.texture = texture
+		sprite.offset = Vector2(0.0, -texture.get_height() / 2.0 + 1.0)
+		sprite.z_index = -3
+		_save_scene(sprite, "res://entities/prop/depths/%s.tscn" % prop)

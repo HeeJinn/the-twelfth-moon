@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="LevelData" format=3]
+
+[ext_resource type="Script" path="res://levels/level_data.gd" id="1_data"]
+[ext_resource type="TileSet" path="res://levels/tilesets/castle_tileset.tres" id="2_tiles"]
+[ext_resource type="PackedScene" path="res://levels/backgrounds/castle_background.tscn" id="3_background"]
+[ext_resource type="PackedScene" path="res://entities/enemy/keep_guard.tscn" id="10_s"]
+[ext_resource type="PackedScene" path="res://entities/enemy/flying_eye.tscn" id="11_s"]
+[ext_resource type="PackedScene" path="res://entities/hazard/ember_vent.tscn" id="12_s"]
+[ext_resource type="PackedScene" path="res://entities/platform/lift_up.tscn" id="13_s"]
+[ext_resource type="PackedScene" path="res://entities/platform/lift_down.tscn" id="14_s"]
+[ext_resource type="PackedScene" path="res://entities/platform/lift_side.tscn" id="15_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/window_arch.tscn" id="16_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/window_tall.tscn" id="17_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/window_twin.tscn" id="18_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/lantern.tscn" id="19_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/chandelier.tscn" id="20_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/brazier.tscn" id="21_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/gold_brazier.tscn" id="22_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/sconce_a.tscn" id="23_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/sconce_b.tscn" id="24_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/sconce_c.tscn" id="25_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/sconce_d.tscn" id="26_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/candles.tscn" id="27_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_gate.tscn" id="28_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_windows.tscn" id="29_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_lifts.tscn" id="30_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_vents.tscn" id="31_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_stair.tscn" id="32_s"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_lift.tscn" id="33_s"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_vent.tscn" id="34_s"]
+
+[ext_resource type="PackedScene" path="res://entities/platform/lift_up_short.tscn" id="90_s"]
+[ext_resource type="PackedScene" path="res://entities/platform/floating_rock.tscn" id="100_s"]
+[ext_resource type="PackedScene" path="res://entities/hazard/mouth.tscn" id="101_s"]
+[ext_resource type="PackedScene" path="res://entities/hazard/tentacle.tscn" id="102_s"]
+[ext_resource type="PackedScene" path="res://entities/enemy/amalgam.tscn" id="103_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/depths/eldritch_entity.tscn" id="104_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/depths/depths_backdrop.tscn" id="105_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/depths/book_altar.tscn" id="106_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/depths/statue_a1.tscn" id="107_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/depths/statue_b1.tscn" id="108_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/depths/urn_1.tscn" id="109_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/depths/vein_column_tall.tscn" id="110_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/vein_statue.tscn" id="111_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/little_eyes_1.tscn" id="112_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/road/vein_a1.tscn" id="113_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_undercroft.tscn" id="114_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_entity.tscn" id="115_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/thought_altar.tscn" id="116_s"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_mouth.tscn" id="117_s"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_tentacle.tscn" id="118_s"]
+
+[resource]
+script = ExtResource("1_data")
+title = "Chapter Four"
+subtitle = "Ember Keep"
+night_text = "Three nights remain"
+map_path = "res://levels/maps/chapter_04.txt"
+dialogue_path = "res://story/chapter_04.txt"
+background_color = Color(0.08, 0.04, 0.1, 1)
+tile_set = ExtResource("2_tiles")
+terrain = 0
+background_scene = ExtResource("3_background")
+step_surface = "tiles"
+terrain_switch_column = 248
+terrain_after_switch = 1
+spawn_overrides = Dictionary[String, PackedScene]({
+"o": ExtResource("100_s"),
+"m": ExtResource("101_s"),
+"t": ExtResource("102_s"),
+"M": ExtResource("103_s"),
+"X": ExtResource("104_s"),
+"D": ExtResource("105_s"),
+"b": ExtResource("106_s"),
+"j": ExtResource("107_s"),
+"k": ExtResource("108_s"),
+"e": ExtResource("109_s"),
+"f": ExtResource("110_s"),
+"%": ExtResource("111_s"),
+"&": ExtResource("112_s"),
+"$": ExtResource("113_s"),
+"}": ExtResource("114_s"),
+"<": ExtResource("115_s"),
+">": ExtResource("116_s"),
+"u": ExtResource("117_s"),
+"i": ExtResource("118_s"),
+"B": ExtResource("10_s"),
+"Y": ExtResource("11_s"),
+"V": ExtResource("12_s"),
+"A": ExtResource("90_s"),
+"a": ExtResource("13_s"),
+"d": ExtResource("14_s"),
+"s": ExtResource("15_s"),
+"w": ExtResource("16_s"),
+"W": ExtResource("17_s"),
+"Q": ExtResource("18_s"),
+"L": ExtResource("19_s"),
+"h": ExtResource("20_s"),
+"r": ExtResource("21_s"),
+"g": ExtResource("22_s"),
+"x": ExtResource("23_s"),
+"y": ExtResource("24_s"),
+"z": ExtResource("25_s"),
+"q": ExtResource("26_s"),
+"c": ExtResource("27_s"),
+"(": ExtResource("28_s"),
+")": ExtResource("29_s"),
+"[": ExtResource("30_s"),
+"]": ExtResource("31_s"),
+"{": ExtResource("32_s"),
+"l": ExtResource("33_s"),
+"v": ExtResource("34_s")
+})

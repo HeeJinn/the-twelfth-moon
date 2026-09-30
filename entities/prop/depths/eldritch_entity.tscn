@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/prop/depths/eldritch_entity.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/depths/eldritch_dormant.png" id="2_dormant"]
+[ext_resource type="Texture2D" path="res://assets/depths/eldritch_awake.png" id="3_awake"]
+
+[node name="EldritchEntity" type="Node2D"]
+z_index = -3
+script = ExtResource("1_script")
+awake_texture = ExtResource("3_awake")
+
+[node name="Face" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_dormant")
+offset = Vector2(0, -97)

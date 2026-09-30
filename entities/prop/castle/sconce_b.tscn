@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/castle/sconce_b.png" id="1_wupvo"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_my68b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po6d1"]
+atlas = ExtResource("1_wupvo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtrph"]
+atlas = ExtResource("1_wupvo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo5v2"]
+atlas = ExtResource("1_wupvo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0jrq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po6d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtrph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo5v2")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="SconceB" type="AnimatedSprite2D" unique_id=615586045]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_j0jrq")
+offset = Vector2(0, -7)
+script = ExtResource("2_my68b")

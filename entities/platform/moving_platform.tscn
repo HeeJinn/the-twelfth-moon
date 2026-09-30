@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/platform/moving_platform.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/castle/castle_lift.png" id="2_lift"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+size = Vector2(80, 5)
+
+[node name="MovingPlatform" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 0
+sync_to_physics = true
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lift")
+centered = false
+offset = Vector2(-40, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_top")
+one_way_collision = true

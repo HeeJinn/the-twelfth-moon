@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="SpriteFrames" path="res://entities/enemy/amalgam_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(36, 22)
+
+[node name="Amalgam" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_enemy")
+speed = 10.0
+max_health = 5
+stomp_height = 12.0
+sprite_offset = Vector2(0, -32)
+patrol_distance = 64.0
+alert_height = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"walk"
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="LedgeCheck" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(20, -2)
+target_position = Vector2(0, 10)
+collision_mask = 3
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -11)
+enabled = false
+shape = SubResource("RectangleShape2D_body")
+target_position = Vector2(0, 0)
+collision_mask = 4

@@ -23,6 +23,7 @@ const LEVELS: Array[LevelData] = [
 	preload("res://levels/maps/chapter_01.tres"),
 	preload("res://levels/maps/chapter_02.tres"),
 	preload("res://levels/maps/chapter_03.tres"),
+	preload("res://levels/maps/chapter_04.tres"),
 ]
 
 ## Where progress is saved. Tests point this at a scratch file so they never

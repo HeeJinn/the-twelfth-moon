@@ -1,0 +1,35 @@
+# Chapter Four: Ember Keep
+#
+# Same format as chapter_03.txt. Speaker: Mariane. Numbers as words: the font has no digits.
+
+[thought_gate]
+Mariane: The Ember Keep. He went in ahead of me.
+Mariane: The moon looks bigger from here. As if the whole sky leaned closer to watch.
+
+[thought_lifts]
+Mariane: Stone lifts, still turning. Someone keeps them oiled.
+Mariane: Someone who expected company.
+
+[thought_vents]
+Mariane: Embers that glow and ring before they burst. Every trap in this place warns me first.
+Mariane: Who builds a castle like that?
+
+[thought_windows]
+Mariane: Every window holds the red moon, and every one is bigger than the last.
+Mariane: It isn't watching me. It's watching him.
+
+[thought_stair]
+Mariane: The stair goes down, under the keep. The moon's light bleeds through the stone.
+Mariane: Whatever he's hiding, it's down there.
+
+[thought_undercroft]
+Mariane: Under the keep the stone is soft and warm, like something breathing.
+Mariane: The moon's light got in here somehow. It soaked into everything.
+
+[thought_entity]
+Mariane: It opened its eyes. But it isn't watching me.
+Mariane: It's watching the way back up. Toward him.
+
+[thought_altar]
+Mariane: A book, left open on the altar. Every page says the same thing, in the same hand.
+Mariane: "In every life."

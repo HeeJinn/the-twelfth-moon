@@ -1,0 +1,59 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/castle/lantern.png" id="1_v1v2r"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_qp74v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s20kd"]
+atlas = ExtResource("1_v1v2r")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_112cb"]
+atlas = ExtResource("1_v1v2r")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chy3m"]
+atlas = ExtResource("1_v1v2r")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uooou"]
+atlas = ExtResource("1_v1v2r")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1ipi"]
+atlas = ExtResource("1_v1v2r")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjpoq"]
+atlas = ExtResource("1_v1v2r")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vn0d0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s20kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_112cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chy3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uooou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1ipi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjpoq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Lantern" type="AnimatedSprite2D" unique_id=1707987000]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_vn0d0")
+script = ExtResource("2_qp74v")

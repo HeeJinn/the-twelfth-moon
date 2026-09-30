@@ -148,6 +148,8 @@ func take_hit(amount: int, source_position: Vector2) -> void:
 		_alert.hide()
 		_play(&"walk")
 	_stun_timer = STUN_TIME
+	if _sprite.sprite_frames.has_animation(&"hurt"):
+		_sprite.play(&"hurt")
 	var away: float = signf(global_position.x - source_position.x)
 	velocity.x = (away if away != 0.0 else 1.0) * KNOCKBACK_SPEED
 	var tween: Tween = create_tween()
@@ -163,6 +165,10 @@ func die() -> void:
 	_alert.hide()
 	set_physics_process(false)
 	set_deferred("collision_layer", 0)
+	if _sprite.sprite_frames.has_animation(&"death"):
+		# It has its own collapse: play it, then let the bones fade.
+		_sprite.play(&"death")
+		return
 	var puff: AnimatedSprite2D = AnimatedSprite2D.new()
 	puff.sprite_frames = DEATH_PUFF
 	puff.z_index = 2
@@ -259,7 +265,16 @@ func _play(animation: StringName) -> void:
 
 
 func _on_animation_finished() -> void:
-	if _sprite.animation == &"attack" and _attacking:
+	if _is_dead:
+		if _sprite.animation == &"death":
+			var tween: Tween = create_tween()
+			tween.tween_interval(0.6)
+			tween.tween_property(_sprite, "modulate:a", 0.0, 0.4)
+			tween.tween_callback(queue_free)
+		return
+	if _sprite.animation == &"hurt":
+		_play(&"walk")
+	elif _sprite.animation == &"attack" and _attacking:
 		_attacking = false
 		_alert.hide()
 		_cooldown = attack_cooldown

@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/castle/candles.png" id="1_s411v"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_i7jrk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3wa2"]
+atlas = ExtResource("1_s411v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2el3"]
+atlas = ExtResource("1_s411v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr5kq"]
+atlas = ExtResource("1_s411v")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hnj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3wa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2el3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr5kq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Candles" type="AnimatedSprite2D" unique_id=178279944]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_5hnj7")
+offset = Vector2(0, -7)
+script = ExtResource("2_i7jrk")

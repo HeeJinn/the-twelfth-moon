@@ -2,7 +2,8 @@ extends Node
 ## Headless check of the story's flow from Chapter Two to the end: finishing
 ## Chapter Two plays the Ember memory and then loads Chapter Three; finishing
 ## Chapter Three plays the Red Ribbon memory (read all the way through) and
-## then shows the end screen. Progress is saved to a scratch file.
+## then loads Chapter Four, Ember Keep; finishing that shows the end screen.
+## Progress is saved to a scratch file.
 ##
 ## The checks run on a watcher node added to the root, because the scene
 ## changes free this node.
@@ -52,11 +53,17 @@ class Watcher:
 		EventBus.level_completed.emit()
 		await _until_scene(RIBBON_MEMORY, 400)
 		_expect(_scene_is(RIBBON_MEMORY), "finishing Chapter Three plays the Red Ribbon memory")
-		await _read_until_scene(GameManager.END_SCREEN_PATH, 6000)
-		_expect(_scene_is(GameManager.END_SCREEN_PATH), "the memory leads to the end screen")
+		await _read_until_scene(GameManager.LEVEL_SCENE_PATH, 6000)
+		await _frames(30)
+		_expect(GameManager.current_level_index == 3
+				and GameManager.get_current_level().title == "Chapter Four",
+				"the memory leads into Chapter Four, Ember Keep")
 		_expect(dialogues.has("memory_ribbon") and dialogues.has("memory_wake"),
 				"the whole Red Ribbon memory was read")
-		_expect(GameManager.highest_unlocked_level == 2, "Chapter Three stays unlocked")
+		EventBus.level_completed.emit()
+		await _until_scene(GameManager.END_SCREEN_PATH, 400)
+		_expect(_scene_is(GameManager.END_SCREEN_PATH), "finishing Chapter Four shows the end screen")
+		_expect(GameManager.highest_unlocked_level == 3, "Chapter Four stays unlocked")
 		_expect(FileAccess.file_exists(SCRATCH_SAVE), "progress went to the scratch save")
 
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SCRATCH_SAVE))

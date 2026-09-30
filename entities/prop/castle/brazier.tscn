@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/castle/brazier.png" id="1_ndwgq"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_duqw1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgdu4"]
+atlas = ExtResource("1_ndwgq")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjmpt"]
+atlas = ExtResource("1_ndwgq")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efc47"]
+atlas = ExtResource("1_ndwgq")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd4w6"]
+atlas = ExtResource("1_ndwgq")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hkuf4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgdu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjmpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efc47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd4w6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Brazier" type="AnimatedSprite2D" unique_id=1455981917]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_hkuf4")
+offset = Vector2(0, -7)
+script = ExtResource("2_duqw1")

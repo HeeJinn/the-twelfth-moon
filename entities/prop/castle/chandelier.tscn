@@ -1,0 +1,53 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/castle/chandelier.png" id="1_aou2x"]
+[ext_resource type="Script" path="res://entities/prop/sway.gd" id="2_ube5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iprg"]
+atlas = ExtResource("1_aou2x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qofma"]
+atlas = ExtResource("1_aou2x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdw6h"]
+atlas = ExtResource("1_aou2x")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkoa4"]
+atlas = ExtResource("1_aou2x")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvrig"]
+atlas = ExtResource("1_aou2x")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hopw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iprg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qofma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdw6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkoa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvrig")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Chandelier" type="AnimatedSprite2D" unique_id=797306661]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_6hopw")
+offset = Vector2(0, 16)
+script = ExtResource("2_ube5s")
