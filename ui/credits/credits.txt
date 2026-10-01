@@ -70,6 +70,8 @@ Pixelmax font
 
 [Music]
 All from OpenGameArt.org
+Re-encoded at a lower bitrate for the web;
+"A Lucid Dream" shortened with a fade.
 
 "Fairytale Dream" by Spencer Y.K.
 CC BY 4.0

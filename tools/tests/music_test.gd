@@ -75,10 +75,10 @@ func _ready() -> void:
 	_expect(stand_ins.is_empty(), "every nice-to-have track has its own file")
 	Music.play(&"kael_sword", 0.0)
 	await _frames(2)
-	_expect(_playing_file() == "boss.mp3", "Kael's fight plays the boss track for now")
+	_expect(_playing_file() == "boss.ogg", "Kael's fight plays the boss track for now")
 	Music.play(&"credits", 0.0)
 	await _frames(2)
-	_expect(_playing_file() == "title.mp3", "the credits play the title's track")
+	_expect(_playing_file() == "title.ogg", "the credits play the title's track")
 	Music.play(&"memory", 0.0)
 	await _frames(2)
 	var memory: AudioStreamWAV = _playing_stream() as AudioStreamWAV
