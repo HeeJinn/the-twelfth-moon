@@ -1,10 +1,11 @@
 extends Node
-## Saves six screenshots of Chapter Three's first flail skeleton swinging at
-## Mariane: walking, the flail raised under its "!", the slam, the drag back.
+## Saves six screenshots of an enemy attacking Mariane (by default Chapter
+## Three's first flail skeleton): walking, then five moments of its attack.
 ## Needs a window (not headless).
 ##
 ## Run from the project folder:
 ##   godot --path . res://tools/tests/skeleton_screenshots.tscn -- <output folder>
+##       [chapter index] [enemy scene file] [attack frames, comma separated]
 
 const FIRST_SKELETON: Vector2 = Vector2(32.5 * 32.0, 0.0)
 
@@ -13,9 +14,12 @@ class Shooter:
 	extends Node
 
 	var output_dir: String = ""
+	var chapter: int = 2
+	var scene_name: String = "skeleton.tscn"
+	var attack_frames: Array[int] = [4, 10, 13, 16, 20]
 
 	func run() -> void:
-		GameManager.go_to_level(2)
+		GameManager.go_to_level(chapter)
 		for i: int in 600:
 			if GameManager.is_playing() and not SceneManager.is_transitioning():
 				break
@@ -24,7 +28,7 @@ class Shooter:
 		var skeleton: Enemy = null
 		for node: Node in get_tree().current_scene.find_children("*", "", true, false):
 			var enemy: Enemy = node as Enemy
-			if enemy != null and enemy.scene_file_path.ends_with("skeleton.tscn") and (skeleton == null
+			if enemy != null and enemy.scene_file_path.ends_with(scene_name) and (skeleton == null
 					or absf(enemy.global_position.x - FIRST_SKELETON.x)
 					< absf(skeleton.global_position.x - FIRST_SKELETON.x)):
 				skeleton = enemy
@@ -42,7 +46,7 @@ class Shooter:
 			if sprite.animation == &"attack":
 				break
 			await get_tree().physics_frame
-		for frame: int in [4, 10, 13, 16, 20]:
+		for frame: int in attack_frames:
 			for i: int in 200:
 				if sprite.animation != &"attack" or sprite.frame >= frame:
 					break
@@ -64,5 +68,12 @@ func _ready() -> void:
 	var args: PackedStringArray = OS.get_cmdline_user_args()
 	var shooter: Shooter = Shooter.new()
 	shooter.output_dir = args[0] if args.size() > 0 else OS.get_user_data_dir()
+	if args.size() > 2:
+		shooter.chapter = args[1].to_int()
+		shooter.scene_name = args[2]
+	if args.size() > 3:
+		shooter.attack_frames.clear()
+		for frame: String in args[3].split(","):
+			shooter.attack_frames.append(frame.to_int())
 	get_tree().root.add_child.call_deferred(shooter)
 	shooter.ready.connect(shooter.run)

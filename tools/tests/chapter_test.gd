@@ -120,8 +120,12 @@ func _check_sword() -> void:
 		await _frames(2)
 		Input.action_release("attack")
 		await _frames(16)
-	await _frames(30)
-	_expect(not is_instance_valid(goblin), "sword defeats a goblin")
+	# It falls, lies still and fades before it is gone.
+	for i: int in 240:
+		if not is_instance_valid(goblin):
+			break
+		await get_tree().physics_frame
+	_expect(not is_instance_valid(goblin), "sword defeats a soldier")
 
 
 func _check_petal() -> void:

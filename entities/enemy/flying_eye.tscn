@@ -14,21 +14,21 @@ script = ExtResource("1_enemy")
 speed = 30.0
 max_health = 2
 stomp_height = 8.0
-sprite_offset = Vector2(-5, -16)
+sprite_offset = Vector2(0, -10)
 patrol_distance = 90.0
 flies = true
-alert_height = 30.0
+alert_height = 26.0
 attack_reach = Vector2(150, 120)
 attack_cooldown = 3.4
-release_frame = 2
+release_frame = 5
 projectile_scene = ExtResource("3_spit")
-projectile_offset = Vector2(8, -8)
+projectile_offset = Vector2(10, -10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = ExtResource("2_frames")
 animation = &"walk"
-offset = Vector2(-5, -16)
+offset = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

@@ -176,8 +176,12 @@ func _check_dash_attack() -> void:
 	print("  after attack tap: ", _player.state_name())
 	await _frames(3)
 	_expect(_player.state_name() == &"DashAttack", "attack during a dash lunges")
-	await _frames(40)
-	_expect(not is_instance_valid(goblin), "the lunge defeats a goblin in one hit")
+	# It falls, lies still and fades before it is gone.
+	for i: int in 240:
+		if not is_instance_valid(goblin):
+			break
+		await get_tree().physics_frame
+	_expect(not is_instance_valid(goblin), "the lunge defeats a soldier in one hit")
 
 
 func _check_combo() -> void:

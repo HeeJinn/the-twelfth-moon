@@ -413,24 +413,28 @@ func _build_road_monster_frames() -> void:
 	_add_animation(frames, &"burst", _frames_between(sword, 3, 8), 16.0, false)
 	_save(frames, "res://entities/enemy/skeleton_sword_frames.tres")
 
-	# Flying eye "Attack3" (6 frames of 150): 0 wings folded, 1-2 a squint
-	# (the wind-up), 3 wings flare, 4-5 wings up. Flapping: 0, 3, 4, 5.
-	var eye: Array[Texture2D] = _row(
-			load("res://assets/monster_creatures/flying_eye_attack3.png"), 0, 6, Vector2(150, 150))
+	# The moon-eye (import_moon_eye.py; flying_eye.tscn kept its first name): 28
+	# frames of 32x32. 0-20 it looks about as it floats; its attack is a blink:
+	# 21-24 it shuts, 25-27 it opens wide and spits, then it holds a moment.
+	var eye: Array[Texture2D] = _grid(load("res://assets/depths/moon_eye.png"), 28, Vector2(32, 32))
 	frames = SpriteFrames.new()
 	frames.remove_animation(&"default")
-	var flap: Array[Texture2D] = [eye[0], eye[3], eye[4], eye[5], eye[4], eye[3]]
-	_add_animation(frames, &"walk", flap, 10.0, true)
-	_add_animation(frames, &"attack", _frames_between(eye, 1, 6), 6.0, false)
+	_add_animation(frames, &"walk", _frames_between(eye, 0, 21), 8.0, true)
+	var blink: Array[Texture2D] = _frames_between(eye, 21, 28)
+	blink.append_array([eye[0], eye[0]])
+	_add_animation(frames, &"attack", blink, 8.0, false)
 	_save(frames, "res://entities/enemy/flying_eye_frames.tres")
 
-	# The spit (8 frames of 48): 0-2 a spinning glob, 3-7 a splatter.
-	var spit: Array[Texture2D] = _row(
-			load("res://assets/monster_creatures/flying_eye_projectile.png"), 0, 8, Vector2(48, 48))
+	# Its spit: the Moon Witch's violet orb, bursting into the hit sparks.
 	frames = SpriteFrames.new()
 	frames.remove_animation(&"default")
-	_add_animation(frames, &"fly", _frames_between(spit, 0, 3), 12.0, true)
-	_add_animation(frames, &"burst", _frames_between(spit, 3, 8), 16.0, false)
+	var orb: Array[Texture2D] = [load("res://assets/forest/witch_orb.png")]
+	_add_animation(frames, &"fly", orb, 1.0, true)
+	var sparks: SpriteFrames = load("res://entities/effects/hit_spark_frames.tres")
+	var burst: Array[Texture2D] = []
+	for i: int in sparks.get_frame_count(&"play"):
+		burst.append(sparks.get_frame_texture(&"play", i))
+	_add_animation(frames, &"burst", burst, 22.0, false)
 	_save(frames, "res://entities/enemy/eye_spit_frames.tres")
 
 
@@ -591,14 +595,23 @@ func _build_player_frames() -> void:
 
 
 func _build_goblin_frames() -> void:
-	# The goblin's "Attack3" sheet (12 frames): 1-5 are its stance, used as a
-	# shuffling walk; 5-11 light a bomb and throw it (frame 10 is the throw).
-	var sheet: Texture2D = load("res://assets/monster_creatures/goblin_attack3.png")
-	var all: Array[Texture2D] = _row(sheet, 0, 12, Vector2(150, 150))
+	# Kael's soldier (import_ember_soldier.py; goblin.tscn kept its first name):
+	# 64x44 frames, eight to a row, the body at x 28. Attack: 0-4 the sword raised
+	# and drawn back (the warning), 5-7 a slash, 8 a breath, 9-11 a second slash.
 	var frames: SpriteFrames = SpriteFrames.new()
 	frames.remove_animation(&"default")
-	_add_animation(frames, &"walk", _frames_between(all, 1, 6), 6.0, true)
-	_add_animation(frames, &"attack", _frames_between(all, 5, 12), 8.0, false)
+	# animation -> [sheet, frame count, fps, loops]
+	var soldier_sheets: Dictionary[String, Array] = {
+		"walk": ["walk", 8, 8.0, true],
+		"attack": ["attack", 12, 7.0, false],
+		"hurt": ["hurt", 4, 10.0, false],
+		"death": ["death", 11, 12.0, false],
+	}
+	for animation: String in soldier_sheets:
+		var spec: Array = soldier_sheets[animation]
+		var sheet: Texture2D = load("res://assets/ember_soldier/%s.png" % spec[0])
+		_add_animation(frames, StringName(animation), _grid(sheet, spec[1], Vector2(64, 44)),
+				spec[2], spec[3])
 	_save(frames, "res://entities/enemy/goblin_frames.tres")
 
 	# The bomb (19 frames of 100x100): 0-2 lit fuse, 3-8 spinning, 9-18 blast.

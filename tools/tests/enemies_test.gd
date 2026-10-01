@@ -1,7 +1,8 @@
 extends Node
-## Headless check of the monsters' attacks on the moves test course: the
-## goblin throws a bomb that lands and explodes, the mushroom bursts spores
-## up close, and a sword hit interrupts an attack.
+## Headless check of the monsters' attacks on the moves test course: Kael's
+## soldier (goblin.tscn) raises its sword under a "!" and its slash lands up
+## close, the mushroom bursts spores up close, and a sword hit interrupts an
+## attack.
 ##
 ## Run from the project folder:
 ##   godot --headless --path . res://tools/tests/enemies_test.tscn
@@ -27,7 +28,7 @@ func _ready() -> void:
 	add_child(_level)
 	await _frames(20)
 	_player = _level.player
-	await _check_goblin_bomb()
+	await _check_soldier_slash()
 	await _check_mushroom_burst()
 	await _check_interrupt()
 	# A cry cut off by quitting would be reported as a leak on exit.
@@ -43,19 +44,18 @@ func _goblin() -> Enemy:
 	return null
 
 
-func _check_goblin_bomb() -> void:
-	var goblin: Enemy = _goblin()
-	_player.respawn(goblin.global_position + Vector2(-100.0, 0.0))
-	await _frames(5)
+func _check_soldier_slash() -> void:
+	var soldier: Enemy = _goblin()
+	var sprite: AnimatedSprite2D = soldier.get_node("%AnimatedSprite2D") as AnimatedSprite2D
+	_player.respawn(soldier.global_position + Vector2(-30.0, 0.0))
+	await _frames(100)  # Past the respawn blink.
+	_player.heal_full()
 	var start_health: int = _health
-	var saw_bomb: bool = false
-	for i: int in 180:
-		for child: Node in _level.get_node("%Entities").get_children():
-			if child is GoblinBomb:
-				saw_bomb = true
-		await get_tree().physics_frame
-	_expect(saw_bomb, "the goblin throws a bomb when she's in range")
-	_expect(_health < start_health, "a bomb that lands beside her explodes and hurts")
+	var raised: bool = await _until(func() -> bool: return sprite.animation == &"attack", 300)
+	_expect(raised, "the soldier raises its sword when she's close")
+	var hurt: bool = await _until(func() -> bool: return _health < start_health, 200)
+	_expect(hurt, "and its slash lands")
+	await _frames(100)
 
 
 func _check_mushroom_burst() -> void:
@@ -86,7 +86,7 @@ func _check_interrupt() -> void:
 	_expect(sprite.animation == &"attack", "the goblin winds up an attack")
 	goblin.take_hit(1, _player.global_position)
 	await _frames(2)
-	_expect(sprite.animation == &"walk", "a sword hit interrupts it")
+	_expect(sprite.animation != &"attack", "a sword hit interrupts it")
 
 
 func _until(condition: Callable, limit: int) -> bool:

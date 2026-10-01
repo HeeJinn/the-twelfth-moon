@@ -17,7 +17,7 @@ Tomas: Hmph. Too many of Old Mara's stories before bed, if you ask me.
 Tomas: Now, be a dear and take the morning offering to the shrine.
 Tomas: It's at the east end of the village, past the wheat fields.
 Mariane: Of course. I'll be back before lunch.
-Tomas: And keep your sword close. Joss swears he saw goblins out there.
+Tomas: And keep your sword close. Joss swears he saw soldiers in red out there.
 
 [lina]
 Lina: Mariane! Twelve more days until your birthday, right?
@@ -57,7 +57,7 @@ Bram: Stubborn as your grandpa. Light the campfires along the road, they'll keep
 Bram: I'll hold the village. You watch yourself out there.
 
 [joss]
-Joss: Mariane! Goblins! A whole pack of them, in the wheat fields!
+Joss: Mariane! Soldiers! In red armour, in the wheat fields!
 Joss: They chased me all the way from the scarecrow!
 Mariane: Get inside, Joss. I'll handle them.
 
