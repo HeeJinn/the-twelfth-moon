@@ -27,12 +27,14 @@ func is_transitioning() -> bool:
 	return _is_transitioning
 
 
-## Fades out, swaps the current scene, then fades back in.
+## Fades out, swaps the current scene, then fades back in. `color` is the
+## colour faded through (black unless a scene needs, say, white).
 ## Calls made while a transition is running are ignored.
-func change_scene(path: String) -> void:
+func change_scene(path: String, color: Color = Color.BLACK) -> void:
 	if _is_transitioning:
 		return
 	_is_transitioning = true
+	_fade_rect.color = color
 	# Swallow clicks while the screen is black.
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	await _fade_to(1.0)
@@ -50,6 +52,7 @@ func change_scene(path: String) -> void:
 
 ## Fades the screen to black without changing scene.
 func fade_out() -> void:
+	_fade_rect.color = Color.BLACK
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	await _fade_to(1.0)
 

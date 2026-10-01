@@ -1,6 +1,6 @@
 extends Control
-## Shown after the last chapter in GameManager.LEVELS. While the story is
-## being built it says "to be continued"; the real ending replaces it later.
+## The very last screen, after the ending, the credits and the after-credits
+## scene: a closing message, how many petals she found, and the way back.
 ##
 ## Scene: EndScreen (Control, full rect)
 ##   CenterContainer > VBoxContainer
@@ -16,7 +16,7 @@ const NUMBER_WORDS: Array[String] = [
 ]
 
 ## The message. Edit it in the Inspector of end_screen.tscn.
-@export_multiline var message: String = "To be continued..."
+@export_multiline var message: String = "The End"
 
 @onready var _message_label: Label = %MessageLabel
 @onready var _stats_label: Label = %StatsLabel

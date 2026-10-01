@@ -9,14 +9,17 @@ OpenGameArt page (the file carried no tags). Changes made: none, except that
 title.mp3 (also the credits)   "Fairytale Dream", by Spencer Y.K. (spenceryk99).
                                Licence: CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
                                https://opengameart.org/content/fairytale-dream
-memory.wav                     "Together". Author and licence: to confirm. Link: to add.
+memory.wav                     "Together", by hothxcc. Licence: CC0.
+                               https://opengameart.org/content/together
 village.mp3                    "Caketown 1", by Matthew Pablo (www.matthewpablo.com).
                                Licence: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/
                                https://opengameart.org/content/caketown-cuteplayful
 lantern_forest.ogg             "Medieval", by Miguel Herrero.
                                Licence: CC BY-SA 3.0 (in the file's tags),
                                https://creativecommons.org/licenses/by-sa/3.0/. Link: to add.
-boss.mp3 (also Kael's fight)   "The Big Fight". Author and licence: to confirm. Link: to add.
+boss.mp3 (also Kael's fight)   "The Big Fight", by AigarsOz.
+                               Licence: CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+                               https://opengameart.org/content/the-big-fight
 long_road.ogg                  "Stage 1", from "Chiptune Adventures" by Juhani Junkala.
                                Licence: CC0 (says the pack's INFO.txt). https://juhanijunkala.com/
 ember_keep.ogg                 "Bleeding Out", by Brandon Morris. Licence: CC0 (or OGA-BY 3.0).

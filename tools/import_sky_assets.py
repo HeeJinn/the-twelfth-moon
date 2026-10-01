@@ -26,6 +26,7 @@ The falling-star GIF becomes a strip of its seven frames (62x85 each).
   the title puts the red moon there: the sky is drawn in horizontal bands, so
   each row inside the crescent's box is refilled from the pixel to its left.
   demo04 (purple stars) is the end screen sky.
+  demo03 (deep blue stars) is the ending's night, where the moon shatters.
 The packs are never edited; this only copies, crops and repacks.
 """
 from PIL import Image
@@ -86,6 +87,9 @@ def cut_title_skies() -> None:
     stars = Image.open(DIGITAL_MOONS / "demo04_PixelSky.png").convert("RGB")
     stars.resize((480, 270), Image.NEAREST).save(SKIES / "end_stars.png")
     print("demo04 -> assets/skies/end_stars.png")
+    night = Image.open(DIGITAL_MOONS / "demo03_PixelSky.png").convert("RGB")
+    night.resize((480, 270), Image.NEAREST).save(SKIES / "ending_night.png")
+    print("demo03 -> assets/skies/ending_night.png")
 
 
 if __name__ == "__main__":

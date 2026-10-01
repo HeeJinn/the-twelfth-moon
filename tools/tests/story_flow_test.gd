@@ -4,7 +4,7 @@ extends Node
 ## Chapter Three plays the Red Ribbon memory (read all the way through) and
 ## then loads Chapter Four, Ember Keep; finishing that plays the Oath memory
 ## (read all the way through) and then loads Chapter Five, the Twelfth Night;
-## finishing that shows the end screen.
+## finishing that plays the ending.
 ## Progress is saved to a scratch file.
 ##
 ## The checks run on a watcher node added to the root, because the scene
@@ -73,8 +73,9 @@ class Watcher:
 				"the memory leads into Chapter Five, the Twelfth Night")
 		_expect(dialogues.has("memory_oath"), "the whole Oath memory was read")
 		EventBus.level_completed.emit()
-		await _until_scene(GameManager.END_SCREEN_PATH, 400)
-		_expect(_scene_is(GameManager.END_SCREEN_PATH), "finishing Chapter Five shows the end screen")
+		await _until_scene(GameManager.ENDING_PATH, 400)
+		_expect(_scene_is(GameManager.ENDING_PATH),
+				"finishing Chapter Five plays the ending (ending_test covers the rest)")
 		_expect(GameManager.highest_unlocked_level == 4, "Chapter Five stays unlocked")
 		_expect(FileAccess.file_exists(SCRATCH_SAVE), "progress went to the scratch save")
 

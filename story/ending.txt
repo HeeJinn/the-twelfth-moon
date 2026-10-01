@@ -1,0 +1,36 @@
+# The ending, the after-credits scene and the closing card.
+#
+# Same format as chapter_01.txt. Plain lines are narration.
+# "Him" is the young man after the credits (shows as "???").
+# Numbers as words: the font has no digits.
+
+[ending_sky]
+The Twelfth Moon broke apart above Ember Keep.
+It did not fall as a curse. It fell as light.
+
+[ending_dawn]
+Dawn, on the twelfth day of the tenth month.
+The village had kept every lantern burning through the night.
+
+[ending_village]
+Tomas: Mariane! There you are.
+Rosa: The whole sky came down last night, sweetheart, and not one star touched the ground.
+Joss: It was the best thing I've ever seen! Better than goblins!
+Mara: Once in a thousand years, child. And you were the one under it.
+Lina: I kept your strawberry cake safe the whole time. I didn't even peek!
+Tomas: Twelve nights, and now it's the twelfth day.
+Tomas: Happy birthday, Mariane.
+Mariane: ...Thank you. All of you.
+
+[ending_sky_again]
+Mariane: You gave me this morning, Ember.
+Mariane: I'll make it count.
+
+[after_spring]
+Spring.
+On the hill above the village, where she laid his sword to rest, a flowering tree has grown.
+
+[after_meeting]
+Him: Sorry... have we met before?
+Mariane: ...
+Mariane: I think we have.

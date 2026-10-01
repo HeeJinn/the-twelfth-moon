@@ -17,6 +17,9 @@ extends Resource
 ## Scene played after the chapter ends (a past-life memory, say). It calls
 ## GameManager.finish_outro() when it's done. Optional.
 @export_file("*.tscn") var outro_scene: String = ""
+## The colour the screen fades through on the way to the outro (Chapter Five
+## ends in white as the moon cracks, and the ending opens from that white).
+@export var outro_fade: Color = Color.BLACK
 ## The chapter opens with Mariane asleep; she gets up when the first
 ## conversation ends (Chapter One: Grandpa Tomas wakes her).
 @export var hero_starts_asleep: bool = false

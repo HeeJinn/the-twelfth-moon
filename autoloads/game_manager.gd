@@ -13,6 +13,10 @@ const PROLOGUE_PATH: String = "res://story/prologue/prologue.tscn"
 const LEVEL_SCENE_PATH: String = "res://levels/level.tscn"
 const TITLE_SCREEN_PATH: String = "res://ui/title_screen/title_screen.tscn"
 const END_SCREEN_PATH: String = "res://ui/end_screen/end_screen.tscn"
+## The last chapter's outro: the ending, then the credits and after-credits.
+const ENDING_PATH: String = "res://story/ending/ending.tscn"
+const CREDITS_PATH: String = "res://ui/credits/credits.tscn"
+const AFTER_CREDITS_PATH: String = "res://story/ending/after_credits.tscn"
 const SAVE_PATH: String = "user://save.cfg"
 ## Petals hidden across the whole story, one for each year of Mariane's life.
 const TOTAL_PETALS: int = 21
@@ -150,9 +154,16 @@ func _on_level_completed() -> void:
 				highest_unlocked_level, mini(current_level_index + 1, LEVELS.size() - 1))
 		save_progress()
 		await get_tree().create_timer(NEXT_LEVEL_DELAY).timeout
-		SceneManager.change_scene(outro)
+		SceneManager.change_scene(outro, get_current_level().outro_fade)
 		return
 	_advance()
+
+
+## Called by the after-credits scene, the very end of the story.
+func finish_story() -> void:
+	state = GameState.WON
+	save_progress()
+	SceneManager.change_scene(END_SCREEN_PATH)
 
 
 ## Goes on to the next chapter, or the end screen after the last one.

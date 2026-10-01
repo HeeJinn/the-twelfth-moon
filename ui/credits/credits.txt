@@ -1,0 +1,146 @@
+# The credits, read by ui/credits/credits.gd and scrolled up the screen.
+#
+# A line starting with "#" is a note and is not shown.
+# [Heading] is a heading, in pink. Any other line is shown as it is.
+# An empty line is a gap. Digits work here (the credits font has them).
+# Licence notes come from assets/music/CREDITS.txt, assets/audio/CREDITS.txt
+# and the plan's credit list; fix both places if one changes.
+
+[The Twelfth Moon]
+A story for Mariane
+made with love for her twenty-first birthday
+
+
+[Mariane]
+"Warrior Woman" from Characters Pack by Dreamir
+dreamir.itch.io
+
+[Kael the Ember Knight]
+Elementals: Fire Knight by chierit
+
+[The village and its people]
+Platformer Assets and Character Asset Pack
+by GandalfHardcore
+
+[The Moon Witch]
+Blue Witch
+
+[The Shield Knight]
+Knight
+
+[The Grave Warden]
+Necromancer
+
+[Monsters]
+Monsters Creatures Fantasy by Luiz Melo (CC0)
+Skeleton Sprite Pack
+
+[The Lantern Forest]
+Stringstar Fields
+Starry Night sky
+
+[The Long Road]
+Pixel Valley: Forest and Cave (Revamped) by kauzz
+16x16 Fantasy Platformer Pack
+
+[Ember Keep and the undercroft]
+Pixel2DCastle created by Szadi art
+Crawling Depths by pingupollas
+
+[Skies]
+Backgrounds by CraftPix.net
+Pixel Skies by Digital Moons
+digitalmoons.itch.io/pixel-skies
+
+[Magic and effects]
+Magic Pack 9 by Luis Zuno (Ansimuz)
+Super Pixel Effects Gigapack
+by Will Tice / unTied Games
+Pixel art effects by Sentient Dream Studio
+
+[Buttons and bars]
+Complete UI Essential Pack by Crusenho
+CC BY 4.0
+creativecommons.org/licenses/by/4.0
+(the phone buttons were recomposed with drawn icons)
+Health & Stamina bars
+Pixelmax font
+
+
+[Music]
+All from OpenGameArt.org
+
+"Fairytale Dream" by Spencer Y.K.
+CC BY 4.0
+creativecommons.org/licenses/by/4.0
+
+"Caketown 1" by Matthew Pablo
+matthewpablo.com
+CC BY-SA 3.0
+creativecommons.org/licenses/by-sa/3.0
+
+"Medieval" by Miguel Herrero
+CC BY-SA 3.0
+creativecommons.org/licenses/by-sa/3.0
+
+"Stage 1" from Chiptune Adventures by Juhani Junkala (CC0)
+
+"Winter Wind" by wipics (CC0)
+
+"Bleeding Out" by Brandon Morris (CC0)
+
+"Forgoten tomb ambience" by kindland (CC0)
+
+"Battle Theme A" by The Cynic Project (CC0)
+cynicmusic.com
+
+"Fantasy: Lament for a Warrior's Soul" by RandomMind (CC0)
+
+"Dark Descent" by Matthew Pablo
+matthewpablo.com
+CC BY 3.0
+creativecommons.org/licenses/by/3.0
+
+"The Big Fight" by AigarsOz
+CC BY 4.0
+creativecommons.org/licenses/by/4.0
+
+"A Lucid Dream (Cello Version)" by CaliDerium
+CC BY 3.0
+creativecommons.org/licenses/by/3.0
+
+"Together" by hothxcc (CC0)
+
+"Together One Last Time" by ATMANAN
+CC BY 4.0
+creativecommons.org/licenses/by/4.0
+
+"A New Start" by Wolfgang_ (CC0)
+
+
+[Voices]
+Super Dialogue Audio Pack by Dillon Becker
+dillonbecker.com
+CC BY 4.0
+creativecommons.org/licenses/by/4.0
+Voice actors: Alex Brodie - Karen Cenon - Ian Lampert
+Meghan Christian - Sean Lenhart
+Clips were trimmed and level-matched
+resampled and made mono.
+The licensor does not endorse this game.
+
+[Sound effects]
+RPG Essentials SFX by leohpaz
+FreeSteps footsteps
+
+
+[Made with]
+Godot Engine
+godotengine.org
+Copyright (c) 2014-present Godot Engine contributors.
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+MIT licence
+
+
+[For Mariane]
+Happy birthday.

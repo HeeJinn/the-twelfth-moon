@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bgg64ij05gfmf"
+path="res://.godot/imported/pixelmax_digits.fnt-2ca0b3e92669aa9dfc27d819bca2096e.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/pixelmax_digits.fnt"
+dest_files=["res://.godot/imported/pixelmax_digits.fnt-2ca0b3e92669aa9dfc27d819bca2096e.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
