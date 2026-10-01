@@ -42,6 +42,10 @@ var collectibles_in_level: int = 0
 var total_collected: int = 0
 ## Saved progress: the furthest chapter reached.
 var highest_unlocked_level: int = 0
+## Saved: the most petals ever found in each chapter (chapter index -> count).
+## The petal journal reads its lines from the sum, so a petal found once stays
+## found, and replaying a chapter never counts its petals twice.
+var petals_best: Dictionary[int, int] = {}
 
 
 func _ready() -> void:
@@ -93,6 +97,18 @@ func get_current_level() -> LevelData:
 	return LEVELS[current_level_index]
 
 
+## Every petal found so far: the saved best of each chapter, with the chapter
+## being played counted as it goes. At most TOTAL_PETALS.
+func petals_found() -> int:
+	var found: int = 0
+	for index: int in LEVELS.size():
+		var best: int = petals_best.get(index, 0)
+		if index == current_level_index and state in [GameState.PLAYING, GameState.PAUSED]:
+			best = maxi(best, collected_in_level)
+		found += best
+	return mini(found, TOTAL_PETALS)
+
+
 func is_playing() -> bool:
 	return state == GameState.PLAYING
 
@@ -111,6 +127,7 @@ func toggle_pause() -> void:
 func save_progress() -> void:
 	var config: ConfigFile = ConfigFile.new()
 	config.set_value("progress", "highest_unlocked_level", highest_unlocked_level)
+	config.set_value("progress", "petals", petals_best)
 	var error: Error = config.save(save_path)
 	if error != OK:
 		push_warning("Could not save progress: %s" % error_string(error))
@@ -124,6 +141,16 @@ func load_progress() -> void:
 	if saved is int:  # Never trust file contents to have the right type.
 		var level_index: int = saved
 		highest_unlocked_level = clampi(level_index, 0, LEVELS.size() - 1)
+	petals_best.clear()
+	var petals: Variant = config.get_value("progress", "petals", {})
+	if petals is Dictionary:
+		for key: Variant in (petals as Dictionary):
+			var count: Variant = (petals as Dictionary)[key]
+			if key is int and count is int:
+				var index: int = key
+				var found: int = count
+				if index >= 0 and index < LEVELS.size():
+					petals_best[index] = clampi(found, 0, TOTAL_PETALS)
 
 
 func _on_level_started(_level_data: LevelData, collectibles_total: int) -> void:
@@ -148,6 +175,8 @@ func _on_level_completed() -> void:
 		return
 	state = GameState.TRANSITIONING
 	total_collected += collected_in_level
+	petals_best[current_level_index] = maxi(
+			petals_best.get(current_level_index, 0), collected_in_level)
 	var outro: String = get_current_level().outro_scene
 	if not outro.is_empty():
 		highest_unlocked_level = maxi(

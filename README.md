@@ -28,7 +28,7 @@ Headless, one at a time (run from this folder; use the `_console` build of Godot
 godot --headless --path . res://tools/tests/<name>.tscn
 ```
 
-`flow_test`, `chapter_test`, `moves_test`, `enemies_test`, `chapter2_test`, `chapter3_test`, `chapter4_test`, `chapter5_test`, `scripts_test`, `story_flow_test`, `critter_test`, `audio_test`, `touch_test`, `music_test`, `sfx_test`, `ending_test`. Each prints PASS/FAIL lines and a `RESULT` line, and exits non-zero on failure. Don't run two Godot processes on the project at once.
+`flow_test`, `chapter_test`, `moves_test`, `enemies_test`, `chapter2_test`, `chapter3_test`, `chapter4_test`, `chapter5_test`, `scripts_test`, `story_flow_test`, `critter_test`, `audio_test`, `touch_test`, `music_test`, `sfx_test`, `ending_test`, `journal_test`. Each prints PASS/FAIL lines and a `RESULT` line, and exits non-zero on failure. Don't run two Godot processes on the project at once.
 
 ## Layout
 - `levels/` ASCII-map chapters built into tile maps at runtime, backgrounds, tilesets

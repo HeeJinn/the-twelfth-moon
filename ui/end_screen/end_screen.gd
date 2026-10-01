@@ -27,7 +27,7 @@ const NUMBER_WORDS: Array[String] = [
 func _ready() -> void:
 	Music.play(&"credits")
 	_message_label.text = message
-	var petals: int = GameManager.total_collected
+	var petals: int = GameManager.petals_found()
 	var word: String = NUMBER_WORDS[clampi(petals, 0, NUMBER_WORDS.size() - 1)]
 	_stats_label.text = "You found %s petal%s." % [word, "" if petals == 1 else "s"]
 	_play_again_button.pressed.connect(GameManager.start_new_game)

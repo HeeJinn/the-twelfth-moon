@@ -1,0 +1,146 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/journal/petal_journal.gd" id="1_journal"]
+[ext_resource type="Texture2D" path="res://assets/ui/journal_book.png" id="2_book"]
+
+[node name="PetalJournal" type="CanvasLayer"]
+process_mode = 3
+layer = 22
+script = ExtResource("1_journal")
+
+[node name="Toast" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 60.0
+offset_right = -40.0
+offset_bottom = 80.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.84, 0.9, 1)
+horizontal_alignment = 1
+
+[node name="OpenButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -34.0
+offset_right = 70.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Petal journal"
+
+[node name="Book" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shade" type="ColorRect" parent="Book"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.02, 0.08, 0.93)
+
+[node name="Art" type="TextureRect" parent="Book"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 476.0
+offset_bottom = 242.0
+mouse_filter = 2
+texture = ExtResource("2_book")
+
+[node name="LeftPage" type="VBoxContainer" parent="Book"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 54.0
+offset_top = 26.0
+offset_right = 194.0
+offset_bottom = 152.0
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="Entry1" type="Label" parent="Book/LeftPage"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.18, 0.19, 1)
+theme_override_constants/outline_size = 0
+autowrap_mode = 3
+
+[node name="Entry2" type="Label" parent="Book/LeftPage"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.18, 0.19, 1)
+theme_override_constants/outline_size = 0
+autowrap_mode = 3
+
+[node name="RightPage" type="VBoxContainer" parent="Book"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 286.0
+offset_top = 26.0
+offset_right = 426.0
+offset_bottom = 152.0
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="Entry1" type="Label" parent="Book/RightPage"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.18, 0.19, 1)
+theme_override_constants/outline_size = 0
+autowrap_mode = 3
+
+[node name="Entry2" type="Label" parent="Book/RightPage"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.18, 0.19, 1)
+theme_override_constants/outline_size = 0
+autowrap_mode = 3
+
+[node name="PrevButton" type="Button" parent="Book"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 54.0
+offset_top = 158.0
+offset_right = 90.0
+offset_bottom = 182.0
+text = "<"
+
+[node name="NextButton" type="Button" parent="Book"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 390.0
+offset_top = 158.0
+offset_right = 426.0
+offset_bottom = 182.0
+text = ">"
+
+[node name="BackButton" type="Button" parent="Book"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -27.0
+offset_right = 50.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
