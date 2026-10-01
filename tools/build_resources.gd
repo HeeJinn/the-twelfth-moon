@@ -122,15 +122,23 @@ func _build_witch_frames() -> void:
 				spec[0], spec[1])
 	_save(frames, "res://entities/boss/moon_witch_frames.tres")
 
-	# The mushroom's "Attack3" sheet (11 frames): 0-2 a standing sway, used
-	# as its walk; 3-6 it hunkers down (the warning), 7-10 spores burst out.
-	var mushroom: Texture2D = load("res://assets/monster_creatures/mushroom_attack3.png")
-	var spores: Array[Texture2D] = _row(mushroom, 0, 11, Vector2(150, 150))
-	var walk: SpriteFrames = SpriteFrames.new()
-	walk.remove_animation(&"default")
-	_add_animation(walk, &"walk", _frames_between(spores, 0, 3), 5.0, true)
-	_add_animation(walk, &"attack", _frames_between(spores, 3, 11), 9.0, false)
-	_save(walk, "res://entities/enemy/mushroom_frames.tres")
+	# The Minotaur (import_minotaur.py; mushroom.tscn kept its first name): 96x96
+	# frames, the body at x 45. Its chop: the axe held high for four frames (the
+	# warning, with frame 0 repeated), 4-6 it comes down ahead, 7-11 dragged back.
+	var minotaur: SpriteFrames = SpriteFrames.new()
+	minotaur.remove_animation(&"default")
+	var minotaur_size: Vector2 = Vector2(96, 96)
+	_add_animation(minotaur, &"walk",
+			_grid(load("res://assets/minotaur/walk.png"), 8, minotaur_size), 8.0, true)
+	var chop: Array[Texture2D] = _grid(load("res://assets/minotaur/attack.png"), 9, minotaur_size)
+	var held: Array[Texture2D] = [chop[0], chop[0], chop[0]]
+	held.append_array(chop)
+	_add_animation(minotaur, &"attack", held, 8.0, false)
+	_add_animation(minotaur, &"hurt",
+			_grid(load("res://assets/minotaur/hurt.png"), 3, minotaur_size), 10.0, false)
+	_add_animation(minotaur, &"death",
+			_grid(load("res://assets/minotaur/death.png"), 6, minotaur_size), 8.0, false)
+	_save(minotaur, "res://entities/enemy/mushroom_frames.tres")
 
 	var forge: Texture2D = load("res://assets/gandalfhardcore/forge_sheet.png")
 	var fire: SpriteFrames = SpriteFrames.new()

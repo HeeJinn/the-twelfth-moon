@@ -574,9 +574,9 @@ func _check_monsters() -> void:
 	mushroom.take_hit(1, mushroom.global_position + Vector2(10.0, 0.0))
 	mushroom.take_hit(99, mushroom.global_position + Vector2(10.0, 0.0))
 	_expect(Audio.play_count(&"voice/alex/hurt") == 1 and Audio.play_count(&"voice/alex/death") == 1,
-			"a mushroom hurts and falls with a voice too")
+			"a Minotaur hurts and falls with a voice too")
 	_expect(goblin.voice_pitch < 1.0 and mushroom.voice_pitch < goblin.voice_pitch,
-			"the soldier's voice is a little low and the mushroom's lower")
+			"the soldier's voice is a little low and the Minotaur's lower")
 	Audio.reset()
 	var skeleton: Enemy = _spawn(SKELETON_SCENE, Vector2(34.0 * TILE, FLOOR_Y)) as Enemy
 	var eye: Enemy = _spawn(EYE_SCENE, Vector2(36.0 * TILE, FLOOR_Y)) as Enemy

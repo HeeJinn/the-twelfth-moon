@@ -1,8 +1,8 @@
 extends Node
 ## Headless check of the monsters' attacks on the moves test course: Kael's
 ## soldier (goblin.tscn) raises its sword under a "!" and its slash lands up
-## close, the mushroom bursts spores up close, and a sword hit interrupts an
-## attack.
+## close, the Minotaur (mushroom.tscn) brings its axe down up close, and a
+## sword hit interrupts an attack.
 ##
 ## Run from the project folder:
 ##   godot --headless --path . res://tools/tests/enemies_test.tscn
@@ -72,7 +72,7 @@ func _check_mushroom_burst() -> void:
 		if _health < start_health:
 			break
 		await get_tree().physics_frame
-	_expect(_health < start_health, "the mushroom bursts spores when she's close")
+	_expect(_health < start_health, "the Minotaur's axe lands when she's close")
 	mushroom.queue_free()
 
 

@@ -35,7 +35,7 @@ Necromancer
 Warrior by Clembod
 
 [Monsters]
-Monsters Creatures Fantasy by Luiz Melo (CC0)
+The Minotaur
 The moon-eye from Crawling Depths by pingupollas
 Skeleton Sprite Pack
 The flail skeleton (skeletonAsset)
