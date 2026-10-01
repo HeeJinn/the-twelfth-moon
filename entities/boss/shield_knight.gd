@@ -256,8 +256,9 @@ func _raise_spikes() -> void:
 		var spikes: FrostSpikes = SPIKES_SCENE.instantiate() as FrostSpikes
 		spikes.repeating = false
 		spikes.start_delay = 0.12 * i
-		spikes.position = Vector2(x, global_position.y)
-		get_parent().add_child(spikes)
+		var arena: Node2D = get_parent() as Node2D
+		spikes.position = arena.to_local(Vector2(x, global_position.y))
+		arena.add_child(spikes)
 
 
 func _open() -> void:

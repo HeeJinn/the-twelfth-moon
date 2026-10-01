@@ -94,6 +94,7 @@ func _init() -> void:
 	_build_road_resources()
 	_build_castle_resources()
 	_build_depths_resources()
+	_build_warden_resources()
 	print("build_resources: done")
 	quit()
 
@@ -954,3 +955,54 @@ func _build_depths_resources() -> void:
 		sprite.offset = Vector2(0.0, -texture.get_height() / 2.0 + 1.0)
 		sprite.z_index = -3
 		_save_scene(sprite, "res://entities/prop/depths/%s.tscn" % prop)
+
+
+## The Grave Warden (import_warden_assets.py): his animations on 96x96 cells (body
+## at x 52, feet at y 64, facing right), his Dark-Bolt and the blood creature he
+## summons. Both of those are played by the frost spikes' script: warn, then hurt.
+func _build_warden_resources() -> void:
+	# animation -> [frame count in its sheet, first frame used, frames used, fps, loops]
+	var specs: Dictionary[String, Array] = {
+		"idle": [50, 0, 50, 12.0, true],
+		"walk": [10, 0, 10, 10.0, true],
+		# Attack: 8-30 he lifts the skull and it glows, 31-32 he thrusts it down
+		# (the bolts strike), 33-36 he lowers it again.
+		"cast": [47, 8, 29, 14.0, false],
+		# Spawn: 9-14 he conjures at his feet (the creature itself is cut out).
+		"summon": [20, 0, 20, 12.0, false],
+		# GetHit with its ghost: he reels away, the blink.
+		"blink": [9, 0, 9, 14.0, false],
+		# Death: he crumbles into a skeleton, then a pile of bones.
+		"death": [52, 0, 52, 14.0, false],
+	}
+	var warden: SpriteFrames = SpriteFrames.new()
+	warden.remove_animation(&"default")
+	for animation: String in specs:
+		var spec: Array = specs[animation]
+		var cells: Array[Texture2D] = _grid(load("res://assets/warden/warden_%s.png" % animation),
+				spec[0], Vector2(96, 96))
+		_add_animation(warden, StringName(animation),
+				_frames_between(cells, spec[1], spec[1] + spec[2]), spec[3], spec[4])
+	_save(warden, "res://entities/boss/grave_warden_frames.tres")
+
+	# The Dark-Bolt (19 of 64x88): 0-7 a mark opens on the ground and 8-11 the bolt
+	# falls onto it (the warning, one second), 12-15 it bursts, 16-18 it fades.
+	var bolt: Array[Texture2D] = _row(load("res://assets/warden/dark_bolt.png"), 0, 19,
+			Vector2(64, 88))
+	var strike: SpriteFrames = SpriteFrames.new()
+	strike.remove_animation(&"default")
+	_add_animation(strike, &"warn", _frames_between(bolt, 0, 12), 12.0, false)
+	_add_animation(strike, &"burst", _frames_between(bolt, 12, 16), 14.0, false)
+	_add_animation(strike, &"sink", _frames_between(bolt, 16, 19), 12.0, false)
+	_save(strike, "res://entities/hazard/dark_bolt_frames.tres")
+
+	# The blood creature (10 of 48x64): 0-3 a blob wells up (the warning), 4-7 it
+	# rears up (it hurts), 8-9 it dissolves.
+	var creature: Array[Texture2D] = _row(load("res://assets/warden/blood_spawn.png"), 0, 10,
+			Vector2(48, 64))
+	var rise: SpriteFrames = SpriteFrames.new()
+	rise.remove_animation(&"default")
+	_add_animation(rise, &"warn", _frames_between(creature, 0, 4), 4.0, false)
+	_add_animation(rise, &"burst", _frames_between(creature, 4, 8), 10.0, false)
+	_add_animation(rise, &"sink", _frames_between(creature, 8, 10), 10.0, false)
+	_save(rise, "res://entities/hazard/blood_spawn_frames.tres")

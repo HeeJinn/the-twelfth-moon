@@ -33,3 +33,26 @@ Mariane: It's watching the way back up. Toward him.
 [thought_altar]
 Mariane: A book, left open on the altar. Every page says the same thing, in the same hand.
 Mariane: "In every life."
+
+# The Grave Warden's crypt, at the end of the undercroft (story/chapter_04/crypt_arena.gd).
+
+[warden_intro]
+Warden: So. The girl with the red ribbon comes down into the dark at last.
+Mariane: Where is he? Where is the Ember Knight?
+Warden: Above us, on the roof of his keep, counting the nights.
+Warden: He bade me test you one last time. The dead are patient teachers.
+Warden: When the ground glows, step toward me. When the blood stirs, step away.
+Warden: And strike when I lean on my staff. I am old. I tire.
+
+[warden_again]
+Warden: Again, then. Step toward me when the ground glows, and strike when I tire.
+
+[warden_falls]
+Warden: Enough... my bones remember their rest.
+Warden: Strange. The moon should hunger for you, girl. But it only watches him.
+Mariane: Watches him? What do you mean?
+Warden: Go up and ask him. While there is still a him to ask.
+
+[warden_after]
+Mariane: The moon watches him... not me?
+Mariane: The way up is open. Whatever he has done, I'll hear it from him.

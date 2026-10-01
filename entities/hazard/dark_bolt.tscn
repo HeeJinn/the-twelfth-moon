@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/hazard/frost_spikes.gd" id="1_spikes"]
+[ext_resource type="SpriteFrames" path="res://entities/hazard/dark_bolt_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_burst"]
+size = Vector2(26, 36)
+
+[node name="DarkBolt" type="Node2D"]
+z_index = 2
+script = ExtResource("1_spikes")
+repeating = false
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"warn"
+offset = Vector2(0, -40)
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -18)
+enabled = false
+shape = SubResource("RectangleShape2D_burst")
+target_position = Vector2(0, 0)
+collision_mask = 4

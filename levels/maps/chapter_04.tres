@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" path="res://story/chapter_04/thought_altar.tscn" id="116_s"]
 [ext_resource type="PackedScene" path="res://entities/hint/hint_mouth.tscn" id="117_s"]
 [ext_resource type="PackedScene" path="res://entities/hint/hint_tentacle.tscn" id="118_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_04/crypt_arena.tscn" id="119_s"]
 
 [resource]
 script = ExtResource("1_data")
@@ -64,7 +65,9 @@ background_scene = ExtResource("3_background")
 step_surface = "tiles"
 terrain_switch_column = 248
 terrain_after_switch = 1
+outro_scene = "res://story/memories/memory_oath.tscn"
 spawn_overrides = Dictionary[String, PackedScene]({
+"N": ExtResource("119_s"),
 "o": ExtResource("100_s"),
 "m": ExtResource("101_s"),
 "t": ExtResource("102_s"),

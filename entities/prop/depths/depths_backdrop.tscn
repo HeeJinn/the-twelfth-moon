@@ -9,4 +9,4 @@ texture = ExtResource("1_wall")
 centered = false
 offset = Vector2(-8, -448)
 region_enabled = true
-region_rect = Rect2(0, 0, 1616, 448)
+region_rect = Rect2(0, 0, 2272, 448)

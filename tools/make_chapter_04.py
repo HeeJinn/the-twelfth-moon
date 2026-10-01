@@ -3,7 +3,8 @@
 Run from the project folder:
     python tools/make_chapter_04.py
 
-The map is 16 px cells, 210 wide and 28 tall. It is easier to lay out with
+The map is 16 px cells, 372 wide and 28 tall: the keep to column 210, its cellar
+and the chasm, the undercroft, and the Grave Warden's crypt from column 330. It is easier to lay out with
 coordinates than by typing rows, so this script places the ground, ledges and
 everything on it, then writes the rows. Edit the numbers here and run it again.
 Cell (x, y): x counts from the left, y from the top. An entity stands on the
@@ -32,10 +33,13 @@ Legend (Chapter Four's own letters, see spawn_overrides in chapter_04.tres):
     %  vein statue         &  blinking eyes             $  veins
     }  the undercroft thought   <  the face thought     >  the altar thought
     u  mouth hint          i  tentacle hint
+  The crypt:
+    N  the Grave Warden's arena (its middle; the walls of light stand 14.5 cells
+       either side, and the fight there ends the chapter)
 """
 from pathlib import Path
 
-WIDTH, HEIGHT = 330, 28
+WIDTH, HEIGHT = 372, 28
 OUT = Path(__file__).resolve().parent.parent / "levels" / "maps" / "chapter_04.txt"
 
 grid = [["."] * WIDTH for _ in range(HEIGHT)]
@@ -138,7 +142,7 @@ put(218, 23, "K")
 put(222, 23, "}")
 for x, y in ((233, 23), (237, 22), (241, 23), (245, 22)):
     put(x, y, "o")          # floating rocks over the chasm, bobbing a little
-block(248, 329, 24, 27)     # the undercroft floor
+block(248, 371, 24, 27)     # the undercroft floor, on into the crypt
 block(248, 329, 0, 9)       # and its low ceiling
 put(231, 27, "D")           # the cave wall behind everything from the chasm on
 put(250, 23, "K")
@@ -154,10 +158,20 @@ put(300, 23, "<")
 put(305, 23, "X")           # the Eldritch Entity, asleep in the wall
 put(313, 23, ">")
 put(315, 23, "b")           # the book altar
-put(322, 23, "G")           # for now the chapter ends here; the Grave Warden comes next
+put(325, 23, "K")           # a last campfire before the crypt
 for x, y, char in ((252, 14, "&"), (276, 12, "&"), (292, 15, "&"), (259, 12, "$"),
                    (284, 13, "$"), (282, 23, "j"), (310, 23, "k"), (293, 23, "e"),
                    (319, 23, "f"), (226, 23, "%")):
+    put(x, y, char)
+
+# --- The Grave Warden's crypt ----------------------------------------------------------
+# A taller vault at the end of the undercroft; the fight fills one screen.
+block(330, 371, 0, 6)
+block(369, 371, 7, 23)      # the far wall
+put(350, 23, "N")           # the arena's middle; he waits east of it
+for x, y, char in ((333, 23, "f"), (366, 23, "f"), (337, 23, "j"), (363, 23, "k"),
+                   (340, 23, "e"), (360, 23, "e"), (343, 23, "c"), (357, 23, "c"),
+                   (345, 10, "&"), (356, 11, "&"), (350, 8, "$"), (329, 13, "$")):
     put(x, y, char)
 
 OUT.write_text("\n".join("".join(row) for row in grid) + "\n", encoding="utf-8", newline="\n")

@@ -1,0 +1,20 @@
+# A past-life memory, after Chapter Four. "Her" and "Him" show as "???".
+
+[memory_opening]
+A memory. Autumn, a thousand years ago. Three nights before the red moon.
+
+[memory_oath]
+Him: You've been quiet all day. Even the sparks can't make you laugh.
+Her: The old women at the well say the red moon is coming back. That it marks someone first.
+Her: Ember... I think it's marked me. I dream of it every night, and it's always looking at me.
+Him: Then I'll stand in front of you. Let it look at me instead.
+Her: You can't fight the moon with a hammer, silly.
+Him: Watch me. Anything can be reforged. I'll find a way.
+Her: Then promise me something. Whatever happens, don't do anything foolish.
+Him: ...
+Her: Ember. Promise.
+Him: I promise I'll find you. That one I know I can keep.
+
+[memory_wake]
+Mariane: "Let it look at me instead."
+Mariane: The moon watches him now. Ember... what did you do?

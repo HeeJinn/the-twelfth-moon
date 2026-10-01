@@ -4,7 +4,11 @@ extends Node
 ## it hurts without a guard, sword hits make it flinch and crumble), the ember
 ## vents (a ring first, then fire, then calm), every petal within a jump, the two
 ## climbs in the courtyard, the three lifts up the shaft to the moon gallery, the
-## lift across the gap, and the stair at the end.
+## lift across the gap, and the stair at the end. Then the undercroft (mouths,
+## tentacles, the rocks over the chasm, the face) and the Grave Warden's crypt:
+## his Dark-Bolts and blood creature warn first, the bolts land on her far side
+## so stepping toward him is always safe, two hits make him blink away, a
+## knock-out resets the fight, and beating him ends the chapter.
 ##
 ## Run from the project folder:
 ##   godot --headless --path . res://tools/tests/chapter4_test.tscn
@@ -13,6 +17,8 @@ const LEVEL_SCENE: PackedScene = preload("res://levels/level.tscn")
 const VENT_SCENE: PackedScene = preload("res://entities/hazard/ember_vent.tscn")
 const MOUTH_SCENE: PackedScene = preload("res://entities/hazard/mouth.tscn")
 const TENTACLE_SCENE: PackedScene = preload("res://entities/hazard/tentacle.tscn")
+const BOLT_SCENE: PackedScene = preload("res://entities/hazard/dark_bolt.tscn")
+const BLOOD_SCENE: PackedScene = preload("res://entities/hazard/blood_spawn.tscn")
 const TILE: float = 16.0
 
 var _failures: int = 0
@@ -21,6 +27,7 @@ var _player: Player
 var _entities: Node2D
 var _chapter_completed: bool = false
 var _dialogue_open: bool = false
+var _dialogues_seen: Array[String] = []
 ## Where each lift stands when the chapter begins (its lower or western end).
 var _lift_home: Dictionary[MovingPlatform, Vector2] = {}
 
@@ -28,7 +35,9 @@ var _lift_home: Dictionary[MovingPlatform, Vector2] = {}
 func _ready() -> void:
 	GameManager.save_path = "user://test_save.cfg"
 	EventBus.level_completed.connect(func() -> void: _chapter_completed = true)
-	EventBus.dialogue_started.connect(func(_id: String) -> void: _dialogue_open = true)
+	EventBus.dialogue_started.connect(func(id: String) -> void:
+		_dialogue_open = true
+		_dialogues_seen.append(id))
 	EventBus.dialogue_finished.connect(func(_id: String) -> void: _dialogue_open = false)
 	GameManager.current_level_index = 3
 	_level = LEVEL_SCENE.instantiate() as LevelLoader
@@ -49,6 +58,10 @@ func _ready() -> void:
 			"then it snaps shut", "the snap hurts anyone standing on it", "then it lies shut again"])
 	await _check_warned_hazard(TENTACLE_SCENE, ["the ground rumbles at a crack first, and does no harm",
 			"then a tentacle rises", "it hurts anyone standing over the crack", "then it sinks again"])
+	await _check_warned_hazard(BOLT_SCENE, ["a Dark-Bolt marks the ground first, and the mark does no harm",
+			"then the bolt bursts on it", "the burst hurts anyone standing on the mark", "then it is gone"])
+	await _check_warned_hazard(BLOOD_SCENE, ["a blob of blood wells up first, and does no harm",
+			"then the creature rears up", "it hurts anyone standing over the blob", "then it is gone"])
 	_check_petals_within_a_jump()
 	# The rest is about getting around, so nothing else may interfere.
 	for child: Node in _entities.get_children():
@@ -61,6 +74,7 @@ func _ready() -> void:
 	await _check_chasm()
 	await _check_entity()
 	await _check_undercroft_walk()
+	await _check_warden_fight()
 	# A sound cut off by quitting would be reported as a leak on exit.
 	for wait: int in 120:
 		if not Audio.is_busy():
@@ -80,8 +94,9 @@ func _check_layout() -> void:
 			kind = "campfire"
 		counts[kind] = counts.get(kind, 0) + 1
 	print("  entities: ", counts)
-	_expect(counts.get("petal", 0) == 5 and counts.get("campfire", 0) == 9,
-			"five petals and nine campfires")
+	_expect(counts.get("petal", 0) == 5 and counts.get("campfire", 0) == 10,
+			"five petals and ten campfires")
+	_expect(counts.get("crypt_arena", 0) == 1, "the Grave Warden's crypt is at the end")
 	_expect(counts.get("amalgam", 0) == 1 and counts.get("mouth", 0) == 2
 			and counts.get("tentacle", 0) == 3 and counts.get("floating_rock", 0) == 4
 			and counts.get("eldritch_entity", 0) == 1 and counts.get("book_altar", 0) == 1,
@@ -116,6 +131,13 @@ func _check_story_text() -> void:
 				all_found = false
 				print("  no lines for ", child.get(&"dialogue_id"))
 	_expect(thoughts == 8 and all_found, "all eight thoughts have their lines")
+	var crypt_lines: bool = true
+	for id: String in ["warden_intro", "warden_again", "warden_falls", "warden_after"]:
+		crypt_lines = crypt_lines and ids.has(id)
+	_expect(crypt_lines, "the Grave Warden's scenes have their lines")
+	var memory: String = FileAccess.get_file_as_string("res://story/memories/memory_oath.txt")
+	_expect(memory.contains("[memory_oath]") and not _has_digit(_spoken_lines(memory)),
+			"the fourth memory has its lines, with no numerals")
 	_expect(not _has_digit(_spoken_lines(text)), "the chapter's text has no numerals (the font has none)")
 
 
@@ -186,9 +208,14 @@ func _check_warned_hazard(scene: PackedScene, labels: Array[String]) -> void:
 	_expect(struck, labels[1])
 	var hurt: bool = await _until(func() -> bool: return _player.health() < start_health, 70)
 	_expect(hurt, labels[2])
-	var calm: bool = await _until(func() -> bool: return not sprite.visible, 120)
+	# A one-shot (a spell) frees itself once it has sunk.
+	var sprite_ref: WeakRef = weakref(sprite)
+	var calm: bool = await _until(func() -> bool:
+			var left: AnimatedSprite2D = sprite_ref.get_ref() as AnimatedSprite2D
+			return left == null or not left.visible, 120)
 	_expect(calm, labels[3])
-	hazard.queue_free()
+	if is_instance_valid(hazard):
+		hazard.queue_free()
 
 
 ## Every petal is within a jump of the ground, a ledge, or a lift.
@@ -323,11 +350,110 @@ func _check_entity() -> void:
 	await _finish_dialogue()
 
 
-## From the far side of the chasm, walking on reaches the end of the chapter.
+## From the far side of the chasm, walking on reaches the crypt, where the
+## Grave Warden stops her.
 func _check_undercroft_walk() -> void:
 	await _place(Vector2(252.5 * TILE, 24.0 * TILE))
-	await _walk_right_until(func() -> bool: return _chapter_completed, 1500)
-	_expect(_chapter_completed, "the undercroft leads to the end of the chapter")
+	await _walk_right_until(func() -> bool: return _dialogues_seen.has("warden_intro"), 2000)
+	_expect(_dialogues_seen.has("warden_intro"), "the undercroft leads to the Grave Warden's crypt")
+
+
+## The fight: she steps toward him whenever the ground glows or blood stirs
+## (as he tells her to), and is never hurt; two hits make him blink away; a
+## knock-out resets it; beaten, he speaks, crumbles, and the chapter ends.
+func _check_warden_fight() -> void:
+	var arena: Cutscene = null
+	for child: Node in _entities.get_children():
+		if child is Cutscene and child.has_node("%Warden"):
+			arena = child
+	var warden: GraveWarden = arena.get_node("%Warden") as GraveWarden
+	await _finish_dialogue()
+	await _until(func() -> bool: return warden.collision_layer == 8, 300)
+	_expect(warden.collision_layer == 8, "the fight begins after his greeting")
+	_expect(arena.call(&"is_holding_view"), "the camera holds the whole crypt in the fight")
+
+	# Three spells (two volleys of bolts, then a summon), dodged by stepping toward him.
+	var start_health: int = _player.health()
+	var far_side: bool = true
+	var under_her: int = 0
+	var spells: int = 0
+	var seen: Array[Node] = []
+	for i: int in 1500:
+		if spells >= 3:
+			break
+		var fresh: Array[FrostSpikes] = []
+		for child: Node in arena.get_children():
+			if child is FrostSpikes and not seen.has(child):
+				seen.append(child)
+				fresh.append(child as FrostSpikes)
+		if not fresh.is_empty():
+			spells += 1
+			var away: float = signf(_player.global_position.x - warden.global_position.x)
+			for spell: FrostSpikes in fresh:
+				var offset: float = spell.global_position.x - _player.global_position.x
+				if absf(offset) <= 1.0:
+					under_her += 1
+				elif signf(offset) != away:
+					far_side = false
+			var toward: StringName = &"move_left" if away > 0.0 else &"move_right"
+			Input.action_press(toward)
+			await _frames(30)
+			Input.action_release(toward)
+			await _frames(10)
+		await get_tree().physics_frame
+	print("  spells: %d, her health %d of %d" % [spells, _player.health(), start_health])
+	_expect(spells >= 3, "he casts Dark-Bolts and summons, over and over")
+	_expect(under_her >= 3 and far_side,
+			"every spell lands right under her, and beyond her, never between them")
+	_expect(_player.health() == start_health, "stepping toward him dodges every spell")
+
+	# Two hits while he's weary: he blinks away to the far end.
+	await _until(func() -> bool: return warden.is_weary(), 400)
+	var health: int = warden.get(&"_health")
+	warden.take_hit(1, _player.global_position)
+	warden.take_hit(1, _player.global_position)
+	_expect(warden.get(&"_health") == health - 2
+			and warden.get(&"_phase") == GraveWarden.Phase.BLINKING, "two hits and he blinks away")
+	await _until(func() -> bool: return warden.get(&"_phase") == GraveWarden.Phase.DRIFTING, 120)
+	_expect(absf(warden.global_position.x - _player.global_position.x) > 150.0,
+			"he appears again at the far end of the crypt")
+
+	# Knocked out mid-fight: everything resets, his spells too.
+	_player.die()
+	await _frames(200)
+	var spells_left: int = 0
+	for child: Node in arena.get_children():
+		if child is FrostSpikes and not child.is_queued_for_deletion():
+			spells_left += 1
+	_expect(warden.get(&"_health") == warden.max_health and spells_left == 0,
+			"a knock-out resets the fight and clears his spells")
+	Input.action_press("move_right")
+	await _until(func() -> bool: return _dialogue_open, 1200)
+	Input.action_release("move_right")
+	_expect(_dialogues_seen.has("warden_again"), "walking back in starts it again")
+	await _finish_dialogue()
+
+	# Strike whenever he leans on his staff (her sword's reach is tested elsewhere).
+	for i: int in 9000:
+		if _dialogue_open or _chapter_completed:
+			break
+		if i % 10 == 0 and warden.is_weary():
+			warden.take_hit(1, _player.global_position)
+		if i % 30 == 0 and _player.health() < 3:
+			_player.heal_full()
+		await get_tree().physics_frame
+	_expect(_dialogues_seen.has("warden_falls"), "beaten, he speaks his last words")
+	for i: int in 3000:
+		if _chapter_completed:
+			break
+		if _dialogue_open:
+			await _finish_dialogue()
+		else:
+			await get_tree().physics_frame
+	var sprite: AnimatedSprite2D = warden.get_node("%AnimatedSprite2D") as AnimatedSprite2D
+	_expect(sprite.animation == &"death", "he crumbles into bones")
+	_expect(_dialogues_seen.has("warden_after") and _chapter_completed,
+			"Mariane looks up toward the roof, and the chapter ends")
 
 
 # --- Helpers ----------------------------------------------------------------------
