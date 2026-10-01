@@ -1,0 +1,48 @@
+# Chapter Five: the Twelfth Night
+#
+# Same format as chapter_03.txt. Speakers: Mariane, Kael (shown as "The Ember Knight"),
+# and Ember (Kael once she remembers him). Plain lines are narration.
+# Numbers as words: the font has no digits.
+
+[thought_roof]
+Mariane: The roof of the keep. The storm is sitting right on top of us.
+Mariane: And the moon... it's so close I could touch it.
+
+[thought_towers]
+Mariane: Every night of the twelve led here.
+Mariane: Grandpa, Rosa, Pell, Hild... I promised all of them I would come home.
+
+[thought_summit]
+Mariane: He's up there, with his back to me, looking at the moon.
+Mariane: Like someone saying goodbye.
+
+[kael_intro]
+Kael: You came. Twelve nights, and not once did you turn back.
+Mariane: You burned our shrine. You sent monsters into my village.
+Kael: I did.
+Mariane: Then it ends tonight, Ember Knight.
+Kael: Yes. Tonight it ends.
+Kael: Show me how strong you've grown. Guard when my sword rises, and strike when it falls.
+
+[kael_again]
+Kael: Again. Guard when my sword rises. Strike when it falls.
+
+[kael_fire]
+Kael: Good. You were always stronger than you knew.
+Kael: Now the fire. It falls only where the rings glow. Step toward me, and it cannot touch you.
+Mariane: ...Why would you tell me that?
+Kael: ...
+
+[reveal]
+The red moon's light pours down into him, and everything comes back at once.
+Mariane: ...Ember?
+Ember: You remembered. That's more than I hoped for.
+Mariane: Why? The monsters, the shrines...
+Ember: The moon marks one soul. I just changed which one.
+Ember: It had to be your hand, Mariane. I needed you strong enough to reach me... and angry enough to finish it.
+Ember: Last time, I watched the sky take you. This time, you get to live.
+Ember: Happy birthday, Mariane.
+
+[reveal_after]
+Mariane: The last petal...
+Mariane: Ember. You kept your promise. You found me.

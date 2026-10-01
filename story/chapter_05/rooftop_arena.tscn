@@ -1,0 +1,89 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://story/chapter_05/rooftop_arena.gd" id="1_arena"]
+[ext_resource type="PackedScene" path="res://entities/boss/ember_knight.tscn" id="2_kael"]
+[ext_resource type="Texture2D" path="res://assets/forest/glow_violet.png" id="3_glow"]
+[ext_resource type="Texture2D" path="res://assets/generated/glow_red.png" id="4_red_glow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(16, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(16, 480)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
+blend_mode = 1
+
+[node name="RooftopArena" type="Area2D"]
+collision_layer = 64
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_arena")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-200, -48)
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+enabled = false
+
+[node name="Kael" parent="." instance=ExtResource("2_kael")]
+unique_name_in_owner = true
+position = Vector2(96, 0)
+
+[node name="Barrier" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 1
+collision_mask = 0
+
+[node name="West" type="CollisionShape2D" parent="Barrier"]
+position = Vector2(-232, -240)
+shape = SubResource("RectangleShape2D_wall")
+disabled = true
+
+[node name="East" type="CollisionShape2D" parent="Barrier"]
+position = Vector2(232, -240)
+shape = SubResource("RectangleShape2D_wall")
+disabled = true
+
+[node name="BarrierGlow" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1.5, 0.65, 0.25, 1)
+z_index = 3
+
+[node name="WestGlow" type="Sprite2D" parent="BarrierGlow"]
+modulate = Color(1, 1, 1, 0.8)
+material = SubResource("CanvasItemMaterial_add")
+position = Vector2(-232, -110)
+scale = Vector2(1.2, 10)
+texture = ExtResource("3_glow")
+
+[node name="EastGlow" type="Sprite2D" parent="BarrierGlow"]
+modulate = Color(1, 1, 1, 0.8)
+material = SubResource("CanvasItemMaterial_add")
+position = Vector2(232, -110)
+scale = Vector2(1.2, 10)
+texture = ExtResource("3_glow")
+
+[node name="MoonLight" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1.4, 0.45, 0.45, 0)
+z_index = 4
+material = SubResource("CanvasItemMaterial_add")
+scale = Vector2(0.9, 5)
+texture = ExtResource("4_red_glow")
+
+[node name="FlashLayer" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="Flash" type="ColorRect" parent="FlashLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.94, 0.94, 0)

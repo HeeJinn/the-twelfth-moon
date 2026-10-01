@@ -1,7 +1,8 @@
 class_name Enemy
 extends Damageable
-## A monster that walks back and forth, turning at walls and ledges, and
-## hurts Mariane on contact. When she comes within `attack_reach` it stops,
+## A monster that walks back and forth, turning at walls and ledges. Touching
+## it pushes Mariane back but doesn't hurt (unless `hurts_on_touch`): only its
+## attacks do, and they always warn first. When she comes within `attack_reach` it stops,
 ## turns to her and plays its "attack" animation, which can throw a
 ## projectile (the goblin's bomb, the skeleton's sword, the eye's spit)
 ## and/or burst around it (the mushroom's spores). Every attack has a
@@ -32,6 +33,9 @@ const CRY_GROUPS: Array[StringName] = [&"hurt", &"death"]
 
 @export var speed: float = 30.0
 @export var damage: int = 1
+## Touching it costs her a heart. Off for every monster: the game's rule is that
+## every danger warns first, and walking into a monster gives no warning.
+@export var hurts_on_touch: bool = false
 @export var max_health: int = 2
 ## The player's feet must be at least this far above the enemy's feet to
 ## count as a stomp. About half the enemy's height works well.
@@ -302,4 +306,7 @@ func _check_player_contact() -> void:
 			player.bounce()
 			die()
 			return
-		player.take_damage(damage, global_position)
+		if hurts_on_touch:
+			player.take_damage(damage, global_position)
+		else:
+			player.bump(global_position)

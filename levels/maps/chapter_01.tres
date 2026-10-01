@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_data")
+music = &"village"
 title = "Chapter One"
 subtitle = "The Village"
 night_text = "Twelve nights remain"

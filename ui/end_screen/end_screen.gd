@@ -25,6 +25,7 @@ const NUMBER_WORDS: Array[String] = [
 
 
 func _ready() -> void:
+	Music.play(&"credits")
 	_message_label.text = message
 	var petals: int = GameManager.total_collected
 	var word: String = NUMBER_WORDS[clampi(petals, 0, NUMBER_WORDS.size() - 1)]

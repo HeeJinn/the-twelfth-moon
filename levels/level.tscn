@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" path="res://entities/prop/weeping_willow.tscn" id="16_willow"]
 [ext_resource type="PackedScene" path="res://entities/prop/tall_grass.tscn" id="17_grass"]
 [ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="18_hud"]
+[ext_resource type="PackedScene" path="res://ui/touch/touch_controls.tscn" id="90_touch"]
 [ext_resource type="PackedScene" path="res://ui/dialogue/dialogue_box.tscn" id="19_dialogue"]
 [ext_resource type="PackedScene" path="res://story/chapter_01/shrine_cutscene.tscn" id="20_shrine_scene"]
 [ext_resource type="PackedScene" path="res://entities/npc/villagers/tomas.tscn" id="21_tomas"]
@@ -166,6 +167,8 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="HUD" parent="." instance=ExtResource("18_hud")]
+
+[node name="TouchControls" parent="." instance=ExtResource("90_touch")]
 
 [node name="DialogueBox" parent="." instance=ExtResource("19_dialogue")]
 unique_name_in_owner = true

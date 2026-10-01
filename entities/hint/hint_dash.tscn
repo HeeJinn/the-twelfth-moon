@@ -4,3 +4,4 @@
 
 [node name="HintDash" instance=ExtResource("1_hint")]
 text = "Press Shift to dash. You can dash once in the air, too"
+touch_text = "Tap the double arrow to dash. You can dash once in the air, too"

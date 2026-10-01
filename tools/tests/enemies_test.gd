@@ -66,7 +66,12 @@ func _check_mushroom_burst() -> void:
 	await _frames(100)  # Past the respawn blink.
 	_player.heal_full()
 	var start_health: int = _health
-	await _frames(120)
+	# Touching it doesn't hurt (it only pushes her), so wait for a burst: the
+	# first may come while it has nudged her just out of its reach.
+	for i: int in 300:
+		if _health < start_health:
+			break
+		await get_tree().physics_frame
 	_expect(_health < start_health, "the mushroom bursts spores when she's close")
 	mushroom.queue_free()
 

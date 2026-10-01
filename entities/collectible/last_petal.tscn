@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/collectible/petal.tscn" id="1_petal"]
+[ext_resource type="Script" path="res://entities/collectible/last_petal.gd" id="2_last"]
+
+[node name="LastPetal" instance=ExtResource("1_petal")]
+script = ExtResource("2_last")

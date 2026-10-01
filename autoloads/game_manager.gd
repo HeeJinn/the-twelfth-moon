@@ -24,6 +24,7 @@ const LEVELS: Array[LevelData] = [
 	preload("res://levels/maps/chapter_02.tres"),
 	preload("res://levels/maps/chapter_03.tres"),
 	preload("res://levels/maps/chapter_04.tres"),
+	preload("res://levels/maps/chapter_05.tres"),
 ]
 
 ## Where progress is saved. Tests point this at a scratch file so they never
@@ -42,6 +43,7 @@ var highest_unlocked_level: int = 0
 func _ready() -> void:
 	# Keep receiving the pause action while the tree is paused.
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	TouchControls.adapt_input_map()
 	EventBus.level_started.connect(_on_level_started)
 	EventBus.collectible_collected.connect(_on_collectible_collected)
 	EventBus.level_completed.connect(_on_level_completed)

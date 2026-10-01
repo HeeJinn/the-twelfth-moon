@@ -4,3 +4,4 @@
 
 [node name="HintJump" instance=ExtResource("1_hint")]
 text = "Jump with Space"
+touch_text = "Jump with the button on the far right"

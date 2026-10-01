@@ -27,6 +27,7 @@ var _is_leaving: bool = false
 
 
 func _ready() -> void:
+	Music.play(&"memory")
 	_paint_ground()
 	var hint: Tween = create_tween()
 	hint.tween_interval(4.0)

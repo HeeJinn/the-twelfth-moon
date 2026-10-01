@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/hazard/frost_spikes.gd" id="1_spikes"]
+[ext_resource type="SpriteFrames" path="res://entities/hazard/lightning_frames.tres" id="2_frames"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/lightning_rod.png" id="3_rod"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_strike"]
+size = Vector2(26, 40)
+
+[node name="LightningRod" type="Node2D"]
+z_index = 1
+script = ExtResource("1_spikes")
+calm_time = 2.4
+
+[node name="Rod" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_rod")
+offset = Vector2(0, -14)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"warn"
+offset = Vector2(0, -64)
+
+[node name="Hitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -20)
+enabled = false
+shape = SubResource("RectangleShape2D_strike")
+target_position = Vector2(0, 0)
+collision_mask = 4

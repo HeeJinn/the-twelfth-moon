@@ -4,4 +4,5 @@
 
 [node name="HintMove" instance=ExtResource("1_hint")]
 text = "Walk with A and D, or the arrow keys"
+touch_text = "Walk with the arrows on the left"
 start_delay = 4.8

@@ -1,0 +1,145 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/touch/touch_controls.gd" id="1_touch"]
+[ext_resource type="Script" path="res://ui/touch/direction_pad.gd" id="2_pad"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/left.png" id="10_left"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/left_pressed.png" id="11_leftp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/right.png" id="12_right"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/right_pressed.png" id="13_rightp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/up.png" id="14_up"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/up_pressed.png" id="15_upp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/down.png" id="16_down"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/down_pressed.png" id="17_downp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/jump.png" id="18_jump"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/jump_pressed.png" id="19_jumpp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/attack.png" id="20_attack"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/attack_pressed.png" id="21_attackp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/guard.png" id="22_guard"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/guard_pressed.png" id="23_guardp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/spark.png" id="24_spark"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/spark_pressed.png" id="25_sparkp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/dash.png" id="26_dash"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/dash_pressed.png" id="27_dashp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/talk.png" id="28_talk"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/talk_pressed.png" id="29_talkp"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/pause.png" id="30_pause"]
+[ext_resource type="Texture2D" path="res://assets/ui/touch/pause_pressed.png" id="31_pausep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_button"]
+size = Vector2(36, 36)
+
+[node name="TouchControls" type="CanvasLayer"]
+process_mode = 3
+layer = 25
+script = ExtResource("1_touch")
+
+[node name="Pad" type="Node2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.6)
+position = Vector2(56, 222)
+script = ExtResource("2_pad")
+
+[node name="Left" type="Sprite2D" parent="Pad"]
+unique_name_in_owner = true
+position = Vector2(-34, 0)
+texture = ExtResource("10_left")
+
+[node name="Right" type="Sprite2D" parent="Pad"]
+unique_name_in_owner = true
+position = Vector2(34, 0)
+texture = ExtResource("12_right")
+
+[node name="Up" type="Sprite2D" parent="Pad"]
+unique_name_in_owner = true
+position = Vector2(0, -34)
+texture = ExtResource("14_up")
+
+[node name="Down" type="Sprite2D" parent="Pad"]
+unique_name_in_owner = true
+position = Vector2(0, 32)
+texture = ExtResource("16_down")
+
+[node name="Buttons" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Jump" type="TouchScreenButton" parent="Buttons"]
+position = Vector2(444, 232)
+texture_normal = ExtResource("18_jump")
+texture_pressed = ExtResource("19_jumpp")
+shape = SubResource("RectangleShape2D_button")
+action = "jump"
+
+[node name="Attack" type="TouchScreenButton" parent="Buttons"]
+position = Vector2(406, 232)
+texture_normal = ExtResource("20_attack")
+texture_pressed = ExtResource("21_attackp")
+shape = SubResource("RectangleShape2D_button")
+action = "attack"
+
+[node name="Dash" type="TouchScreenButton" parent="Buttons"]
+position = Vector2(368, 232)
+texture_normal = ExtResource("26_dash")
+texture_pressed = ExtResource("27_dashp")
+shape = SubResource("RectangleShape2D_button")
+action = "dash"
+
+[node name="Guard" type="TouchScreenButton" parent="Buttons"]
+position = Vector2(444, 194)
+texture_normal = ExtResource("22_guard")
+texture_pressed = ExtResource("23_guardp")
+shape = SubResource("RectangleShape2D_button")
+action = "block"
+
+[node name="Spark" type="TouchScreenButton" parent="Buttons"]
+position = Vector2(406, 194)
+texture_normal = ExtResource("24_spark")
+texture_pressed = ExtResource("25_sparkp")
+shape = SubResource("RectangleShape2D_button")
+action = "spell"
+
+[node name="Talk" type="TouchScreenButton" parent="Buttons"]
+position = Vector2(368, 194)
+texture_normal = ExtResource("28_talk")
+texture_pressed = ExtResource("29_talkp")
+shape = SubResource("RectangleShape2D_button")
+action = "interact"
+
+[node name="Pause" type="TouchScreenButton" parent="."]
+unique_name_in_owner = true
+position = Vector2(444, 24)
+texture_normal = ExtResource("30_pause")
+texture_pressed = ExtResource("31_pausep")
+shape = SubResource("RectangleShape2D_button")
+action = "pause"
+
+[node name="Upright" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shade" type="ColorRect" parent="Upright"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.02, 0.06, 0.94)
+
+[node name="Note" type="Label" parent="Upright"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.9, 1)
+text = "Turn your phone sideways to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -4,3 +4,4 @@
 
 [node name="HintCharge" instance=ExtResource("1_hint")]
 text = "Keep holding J after a swing to fill your sword with moonlight. Let go for a Moon Slash"
+touch_text = "Keep holding the sword button after a swing to fill your sword with moonlight. Let go for a Moon Slash"

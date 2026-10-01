@@ -22,6 +22,7 @@ EventBus="*res://autoloads/event_bus.gd"
 GameManager="*res://autoloads/game_manager.gd"
 SceneManager="*res://autoloads/scene_manager.gd"
 Audio="*res://autoloads/audio.gd"
+Music="*res://autoloads/music.gd"
 
 [debug]
 

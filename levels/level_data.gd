@@ -42,6 +42,10 @@ extends Resource
 @export_enum("dirt", "gravel", "snow", "wood", "tiles", "water") var step_surface: String = "dirt"
 ## The ground's sound from terrain_switch_column on (snow after the river).
 @export_enum("dirt", "gravel", "snow", "wood", "tiles", "water") var step_surface_after_switch: String = "snow"
+## The chapter's music (a file name in assets/music, see the Music autoload).
+@export var music: StringName = &""
+## Its music from terrain_switch_column on (empty: the same all the way).
+@export var music_after_switch: StringName = &""
 
 @export_group("Map symbols")
 ## Map characters that mean something else in this chapter. They replace

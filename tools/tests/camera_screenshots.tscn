@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://tools/tests/camera_screenshots.gd" id="1_shots"]
+
+[node name="CameraScreenshots" type="Node"]
+process_mode = 3
+script = ExtResource("1_shots")

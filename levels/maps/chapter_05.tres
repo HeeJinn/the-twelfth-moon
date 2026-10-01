@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="LevelData" format=3]
+
+[ext_resource type="Script" path="res://levels/level_data.gd" id="1_data"]
+[ext_resource type="TileSet" path="res://levels/tilesets/castle_tileset.tres" id="2_tiles"]
+[ext_resource type="PackedScene" path="res://levels/backgrounds/rooftop_background.tscn" id="3_background"]
+[ext_resource type="PackedScene" path="res://entities/hazard/lightning_rod.tscn" id="10_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_05/rooftop_arena.tscn" id="11_s"]
+[ext_resource type="PackedScene" path="res://entities/collectible/last_petal.tscn" id="12_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/brazier.tscn" id="13_s"]
+[ext_resource type="PackedScene" path="res://entities/prop/castle/gold_brazier.tscn" id="14_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_05/thought_roof.tscn" id="15_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_05/thought_towers.tscn" id="16_s"]
+[ext_resource type="PackedScene" path="res://story/chapter_05/thought_summit.tscn" id="17_s"]
+[ext_resource type="PackedScene" path="res://entities/hint/hint_lightning.tscn" id="18_s"]
+
+[resource]
+script = ExtResource("1_data")
+music = &"rooftop"
+title = "Chapter Five"
+subtitle = "The Twelfth Night"
+night_text = "The last night"
+map_path = "res://levels/maps/chapter_05.txt"
+dialogue_path = "res://story/chapter_05.txt"
+background_color = Color(0.03, 0.08, 0.11, 1)
+tile_set = ExtResource("2_tiles")
+terrain = 0
+background_scene = ExtResource("3_background")
+step_surface = "tiles"
+spawn_overrides = Dictionary[String, PackedScene]({
+"Z": ExtResource("10_s"),
+"N": ExtResource("11_s"),
+"@": ExtResource("12_s"),
+"r": ExtResource("13_s"),
+"g": ExtResource("14_s"),
+"(": ExtResource("15_s"),
+")": ExtResource("16_s"),
+"[": ExtResource("17_s"),
+"l": ExtResource("18_s")
+})

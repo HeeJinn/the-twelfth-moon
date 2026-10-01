@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_data")
+music = &"lantern_forest"
 title = "Chapter Two"
 subtitle = "The Lantern Forest"
 night_text = "Nine nights remain"

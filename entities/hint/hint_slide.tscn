@@ -4,3 +4,4 @@
 
 [node name="HintSlide" instance=ExtResource("1_hint")]
 text = "Hold down while running to slide under low places"
+touch_text = "Hold down and toward while running to slide under low places"

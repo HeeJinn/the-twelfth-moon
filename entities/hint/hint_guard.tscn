@@ -4,3 +4,4 @@
 
 [node name="HintGuard" instance=ExtResource("1_hint")]
 text = "Hold I to raise your guard. Blows from the front can't hurt you"
+touch_text = "Hold the shield button to raise your guard. Blows from the front can't hurt you"

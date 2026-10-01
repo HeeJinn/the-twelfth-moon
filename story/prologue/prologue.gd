@@ -28,6 +28,7 @@ var _is_leaving: bool = false
 
 
 func _ready() -> void:
+	Music.play(&"memory")
 	_paint_ground()
 	_her.play("idle")
 	_him.play("idle")

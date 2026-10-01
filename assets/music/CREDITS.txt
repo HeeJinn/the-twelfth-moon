@@ -1,0 +1,47 @@
+Music credits (for the game's credits screen)
+=============================================
+
+Every track below must be credited unless it is CC0 (credit is still kind).
+"To confirm": the author and licence still need checking on the track's
+OpenGameArt page (the file carried no tags). Changes made: none, except that
+"Together" is compressed by Godot (QOA) and set to loop.
+
+title.mp3 (also the credits)   "Fairytale Dream", by Spencer Y.K. (spenceryk99).
+                               Licence: CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+                               https://opengameart.org/content/fairytale-dream
+memory.wav                     "Together". Author and licence: to confirm. Link: to add.
+village.mp3                    "Caketown 1", by Matthew Pablo (www.matthewpablo.com).
+                               Licence: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/
+                               https://opengameart.org/content/caketown-cuteplayful
+lantern_forest.ogg             "Medieval", by Miguel Herrero.
+                               Licence: CC BY-SA 3.0 (in the file's tags),
+                               https://creativecommons.org/licenses/by-sa/3.0/. Link: to add.
+boss.mp3 (also Kael's fight)   "The Big Fight". Author and licence: to confirm. Link: to add.
+long_road.ogg                  "Stage 1", from "Chiptune Adventures" by Juhani Junkala.
+                               Licence: CC0 (says the pack's INFO.txt). https://juhanijunkala.com/
+ember_keep.ogg                 "Bleeding Out", by Brandon Morris. Licence: CC0 (or OGA-BY 3.0).
+                               https://opengameart.org/content/bleeding-out
+rooftop.mp3                    "Battle Theme A (redone)", by The Cynic Project (cynicmusic.com).
+                               Licence: CC0. https://opengameart.org/content/battle-theme-a
+reveal.ogg                     "A Lucid Dream (Cello Version)", by CaliDerium.
+                               Licence: CC BY 3.0, https://creativecommons.org/licenses/by/3.0/
+                               https://opengameart.org/content/a-lucid-dream
+
+winter_pass.mp3                "Winter Wind", by wipics. Licence: CC0.
+                               https://opengameart.org/content/winter-wind
+undercroft.mp3                 "Forgoten tomb ambience", by kindland. Licence: CC0.
+                               https://opengameart.org/content/forgoten-tomb-ambience
+kael_theme.mp3                 "Fantasy: Lament for a Warrior's Soul", by RandomMind. Licence: CC0.
+                               https://opengameart.org/content/fantasy-lament-for-a-warriors-soul
+kael_fire.mp3                  "Dark Descent", by Matthew Pablo (www.matthewpablo.com).
+                               Licence: CC BY 3.0, https://creativecommons.org/licenses/by/3.0/
+                               https://opengameart.org/content/dark-descent
+ending.mp3                     "Together One Last Time", by ATMANAN.
+                               Licence: CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+                               https://opengameart.org/content/together-one-last-time
+after_credits.wav              "A New Start - Short Solo Piano", by Wolfgang_. Licence: CC0.
+                               https://opengameart.org/content/a-new-start-short-solo-piano
+                               (compressed by Godot and set to loop)
+
+The original downloads (with any licence files) are kept outside the game in
+GameDevAsset/Music sources/.

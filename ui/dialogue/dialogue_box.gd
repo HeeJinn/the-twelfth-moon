@@ -73,9 +73,21 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not _is_open or not _is_advance(event):
-		return
-	get_viewport().set_input_as_handled()
+	if _is_open and _is_advance(event):
+		get_viewport().set_input_as_handled()
+		_advance()
+
+
+## A tap on a touch screen reads on. Caught here, before the box's own panel
+## (a GUI control) would take the touch for itself.
+func _input(event: InputEvent) -> void:
+	var touch: InputEventScreenTouch = event as InputEventScreenTouch
+	if _is_open and touch != null and touch.pressed:
+		get_viewport().set_input_as_handled()
+		_advance()
+
+
+func _advance() -> void:
 	if _is_typing:
 		_finish_typing()
 	else:

@@ -13,6 +13,7 @@ extends Control
 
 
 func _ready() -> void:
+	Music.play(&"title")
 	_start_button.pressed.connect(GameManager.start_new_game)
 	_continue_button.pressed.connect(GameManager.continue_game)
 	_quit_button.pressed.connect(get_tree().quit)

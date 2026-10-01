@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/boss/ember_knight.gd" id="1_kael"]
+[ext_resource type="SpriteFrames" path="res://entities/boss/ember_knight_frames.tres" id="2_frames"]
+[ext_resource type="SpriteFrames" path="res://entities/effects/alert_frames.tres" id="3_alert"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(18, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blade"]
+resource_local_to_scene = true
+size = Vector2(64, 70)
+
+[node name="EmberKnight" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_kael")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_frames")
+animation = &"idle"
+offset = Vector2(-14, -56)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="BladeHitbox" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(32, -35)
+enabled = false
+shape = SubResource("RectangleShape2D_blade")
+target_position = Vector2(0, 0)
+collision_mask = 4
+
+[node name="Alert" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 5
+modulate = Color(1, 0.42, 0.32, 1)
+position = Vector2(0, -78)
+sprite_frames = ExtResource("3_alert")
+animation = &"play"

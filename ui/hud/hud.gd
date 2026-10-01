@@ -12,7 +12,8 @@ extends CanvasLayer
 ##     %Petals (HBoxContainer)   filled at runtime
 ##   %IntroCard (VBoxContainer, centred)
 ##     %TitleLabel, %SubtitleLabel, %NightLabel
-##   %PauseLabel (Label, centred, hidden)
+##   %PauseDim (ColorRect over the screen), %PauseLabel and %PauseControls
+##   (Labels, centred): shown only while paused
 ##   %BossBar (VBoxContainer, top centre, hidden) > %BossName, %BossHealth
 
 const HEART_FULL: Texture2D = preload("res://assets/generated/heart_full.png")
@@ -27,6 +28,16 @@ const HEART_SCALE: float = 2.0
 const INTRO_HOLD: float = 2.5
 const INTRO_FADE: float = 0.8
 
+## The pause screen's list on a touch screen, where the keys are buttons.
+const TOUCH_CONTROLS: String = (
+	"The arrows on the left walk, climb and crouch\n"
+	+ "The button on the far right jumps\n"
+	+ "The sword swings. Hold it for a Moon Slash\n"
+	+ "Hold the shield to guard. The moon throws a spark\n"
+	+ "The double arrow dashes. The bubble talks\n"
+	+ "Tap pause again to go back to the game"
+)
+
 @onready var _hearts: HBoxContainer = %Hearts
 @onready var _moons: HBoxContainer = %Moons
 @onready var _petals: HBoxContainer = %Petals
@@ -35,6 +46,8 @@ const INTRO_FADE: float = 0.8
 @onready var _subtitle_label: Label = %SubtitleLabel
 @onready var _night_label: Label = %NightLabel
 @onready var _pause_label: Label = %PauseLabel
+@onready var _pause_dim: ColorRect = %PauseDim
+@onready var _pause_controls: Label = %PauseControls
 @onready var _boss_bar: VBoxContainer = %BossBar
 @onready var _boss_name: Label = %BossName
 @onready var _boss_health: TextureProgressBar = %BossHealth
@@ -49,7 +62,9 @@ func _ready() -> void:
 	EventBus.boss_started.connect(_on_boss_started)
 	EventBus.boss_health_changed.connect(_on_boss_health_changed)
 	EventBus.boss_finished.connect(_boss_bar.hide)
-	_pause_label.hide()
+	if TouchControls.is_touch():
+		_pause_controls.text = TOUCH_CONTROLS
+	_on_pause_toggled(false)
 	_boss_bar.hide()
 	_intro_card.modulate.a = 0.0
 
@@ -89,8 +104,11 @@ func _on_player_moonlight_changed(current: int, maximum: int) -> void:
 		icon.custom_minimum_size = MOON_FULL.get_size() * HEART_SCALE
 
 
+## Paused: the screen dims and the controls are listed, for whoever forgot a key.
 func _on_pause_toggled(is_paused: bool) -> void:
 	_pause_label.visible = is_paused
+	_pause_dim.visible = is_paused
+	_pause_controls.visible = is_paused
 
 
 func _on_boss_started(boss_name: String, maximum: int) -> void:

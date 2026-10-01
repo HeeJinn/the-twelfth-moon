@@ -53,6 +53,8 @@
 
 [resource]
 script = ExtResource("1_data")
+music = &"long_road"
+music_after_switch = &"winter_pass"
 title = "Chapter Three"
 subtitle = "The Long Road"
 night_text = "Six nights remain"

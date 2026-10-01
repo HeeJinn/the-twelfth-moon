@@ -46,6 +46,7 @@ func _play() -> void:
 	await say("shrine_arrive")
 
 	take_camera()
+	Music.play(&"kael_theme")
 	await pan_camera(global_position + Vector2(24.0, -64.0), 1.2)
 	await wait(0.4)
 

@@ -64,7 +64,7 @@ func _check_layout() -> void:
 		enemies += 1 if child is Enemy else 0
 		campfires += 1 if child is Checkpoint else 0
 	print("petals %d, monsters %d, campfires %d" % [petals, enemies, campfires])
-	_expect(petals == 5 and campfires == 4 and enemies == 8, "chapter two is populated")
+	_expect(petals == 5 and campfires == 5 and enemies == 8, "chapter two is populated")
 	var terrain: TileMapLayer = _level.get_node("%TerrainLayer") as TileMapLayer
 	_expect(terrain.tile_set.tile_size == Vector2i(16, 16), "forest uses 16 px tiles")
 

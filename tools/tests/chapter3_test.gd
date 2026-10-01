@@ -69,8 +69,8 @@ func _check_layout() -> void:
 			kind = "campfire"
 		counts[kind] = counts.get(kind, 0) + 1
 	print("  entities: ", counts)
-	_expect(counts.get("petal", 0) == 5 and counts.get("campfire", 0) == 4,
-			"five petals and four campfires")
+	_expect(counts.get("petal", 0) == 5 and counts.get("campfire", 0) == 5,
+			"five petals and five campfires")
 	_expect(counts.get("skeleton", 0) == 4 and counts.get("flying_eye", 0) == 4,
 			"skeletons and flying eyes on the road")
 	_expect(counts.get("sheep_white", 0) == 3 and counts.get("sheep_black", 0) == 1

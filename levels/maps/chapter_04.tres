@@ -53,6 +53,8 @@
 
 [resource]
 script = ExtResource("1_data")
+music = &"ember_keep"
+music_after_switch = &"undercroft"
 title = "Chapter Four"
 subtitle = "Ember Keep"
 night_text = "Three nights remain"

@@ -1,0 +1,91 @@
+The Twelfth Moon: the music it plays
+=====================================
+
+Save each track in this folder under the name on the left, as .ogg (or .mp3).
+The game picks it up by itself (open the project in Godot once so it imports
+the file). A track that isn't here yet is silent, or plays the stand-in named
+in brackets.
+
+Where to look: opengameart.org > Browse > Music, and put the words after
+"Tags" in the search's Tags box (a few at a time). Prefer licences CC0,
+CC-BY 3.0/4.0 or OGA-BY; write down the title, the author, the licence and
+the page's link for every track you use: they all go in the credits.
+Prefer orchestral, piano or acoustic music over chiptune (8-bit) to match the
+art. Loops ("loop" in the tags or the title) are best for everything except
+the reveal and the ending. Keep each file under about 3 MB, so the game still
+loads fast on a phone.
+
+MUST HAVE (all in since 2026-10-01; Kael's fight and the credits share the
+boss and title tracks for now; who made each is in CREDITS.txt)
+---------
+title.ogg           Title screen, "A story for Mariane".
+                    Gentle and a little mysterious: a red moon, a love story.
+                    Tags: music box, lullaby, piano, calm, romantic, mysterious, fantasy
+
+memory.ogg          The prologue and all four past-life memories (one shared theme).
+                    The heart of the game: an old memory, sweet and sad.
+                    Tags: music box, nostalgia, melancholy, sad, waltz, dreamy
+
+village.ogg         Chapter One, the village by day.
+                    Warm, peaceful, folk: flute, lute or acoustic guitar.
+                    Tags: village, town, peaceful, pastoral, folk, medieval, happy, flute
+
+lantern_forest.ogg  Chapter Two, the forest at night with lanterns and fireflies.
+                    Magical and calm, a bit of wonder: harp, bells, soft pads.
+                    Tags: forest, night, magical, mysterious, calm, ambient, fantasy, harp
+
+boss.ogg            The three mini-bosses (Moon Witch, Shield Knight, Grave Warden).
+                    Exciting but not grim; she should feel brave, not scared.
+                    Tags: boss, battle, fight, action, epic, orchestral, fantasy
+
+long_road.ogg       Chapter Three, the autumn road (fields, farm, golden wood).
+                    A journey: hopeful and adventurous.
+                    Tags: adventure, journey, travel, overworld, uplifting, folk, autumn
+
+ember_keep.ogg      Chapter Four, inside the castle.
+                    Tense and dark, building suspense: low strings, drums.
+                    Tags: castle, dungeon, dark, tense, suspense, mysterious
+
+rooftop.ogg         Chapter Five, the roof in a storm under a huge red moon.
+                    The last climb: dramatic, a storm, rising tension, choir.
+                    Tags: epic, dramatic, storm, final, climax, orchestral, choir
+
+kael_sword.ogg      The fight with Kael (the Ember Knight).
+                    The final boss, but tragic: epic and sad at once.
+                    Tags: final boss, epic, tragic, emotional, orchestral, battle
+
+reveal.ogg          He kneels, she remembers, "Happy birthday, Mariane". Plays once.
+                    Solo piano: tender, heartbreaking, romantic, slow.
+                    Tags: piano, sad, emotional, romantic, tender, slow
+                    (Mayra Gandra's free emotional piano pack on itch.io is a good fit;
+                    credit required.)
+
+credits.ogg         The end screen and the credits.
+                    Warm and bittersweet, a love theme: piano and strings.
+                    Tags: credits, ending, love, romantic, warm, piano, strings, bittersweet
+
+NICE TO HAVE (all in since 2026-10-01, chosen by Claude from OpenGameArt)
+---------------------------------------------
+winter_pass.ogg     Chapter Three after the river: snow, the ice cave.   [long_road]
+                    Cold, lonely, quiet: sparse piano or strings.
+                    Tags: winter, snow, ice, cold, melancholy, lonely, calm
+
+undercroft.ogg      Chapter Four below the keep: the breathing stone, the face.   [ember_keep]
+                    Eerie ambient, not a horror jump-scare: drones, a slow pulse.
+                    Tags: ambient, eerie, creepy, cave, dark, drone, atmospheric
+
+kael_theme.ogg      Kael appears (the shrine in Chapter One, the roof before the fight).   [rooftop]
+                    His theme: ominous but sorrowful: cello, low choir.
+                    Tags: villain, dark, ominous, sad, cello, choir, mysterious
+
+kael_fire.ogg       Kael's fight from half health, when the embers fall.   [kael_sword]
+                    The same fight, more intense: faster, fire.
+                    Tags: final boss, intense, epic, fire, fast, climax
+
+ending.ogg          The moon shatters into falling stars and fireworks, then dawn in the
+                    village. Plays once (the ending is not built yet).   [credits]
+                    Tags: hopeful, triumphant, celebration, festival, bittersweet, uplifting
+
+after_credits.ogg   Spring, the flowering tree, "Sorry... have we met before?"   [title]
+                    Light and hopeful, a gentle reprise.
+                    Tags: spring, hopeful, gentle, peaceful, morning, music box, piano

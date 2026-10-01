@@ -95,6 +95,7 @@ func _init() -> void:
 	_build_castle_resources()
 	_build_depths_resources()
 	_build_warden_resources()
+	_build_rooftop_resources()
 	print("build_resources: done")
 	quit()
 
@@ -1006,3 +1007,46 @@ func _build_warden_resources() -> void:
 	_add_animation(rise, &"burst", _frames_between(creature, 4, 8), 10.0, false)
 	_add_animation(rise, &"sink", _frames_between(creature, 8, 10), 10.0, false)
 	_save(rise, "res://entities/hazard/blood_spawn_frames.tres")
+
+
+## Chapter Five (import_rooftop_assets.py): Kael's fight animations on 200x112 cells
+## (body at x 86, feet at y 112, facing right), and the lightning that strikes the
+## rods on the roof (played by the frost spikes' script: warn, then hurt).
+func _build_rooftop_resources() -> void:
+	# animation -> [sheet, first frame, frames used, fps, loops]
+	var specs: Dictionary[String, Array] = {
+		"idle": ["idle", 0, 8, 10.0, true],
+		"run": ["run", 0, 8, 12.0, true],
+		"slash": ["slash", 0, 11, 12.0, false],
+		"double": ["double", 0, 19, 13.0, false],
+		"fire_combo": ["fire_combo", 0, 28, 13.0, false],
+		"cast": ["cast", 0, 15, 12.0, false],
+		"hurt": ["hurt", 0, 6, 14.0, false],
+		# Death 0-4: he plants his sword and sinks to one knee beside it (the
+		# reveal is played there); 4-12: he falls.
+		"kneel": ["death", 0, 5, 8.0, false],
+		"fall": ["death", 4, 9, 8.0, false],
+		"hop_up": ["hop_up", 0, 3, 10.0, false],
+		"hop_down": ["hop_down", 0, 3, 10.0, false],
+	}
+	var kael: SpriteFrames = SpriteFrames.new()
+	kael.remove_animation(&"default")
+	for animation: String in specs:
+		var spec: Array = specs[animation]
+		var sheet: Texture2D = load("res://assets/rooftop/kael_%s.png" % spec[0])
+		var count: int = int(sheet.get_width() / 200.0) * int(sheet.get_height() / 112.0)
+		var cells: Array[Texture2D] = _grid(sheet, count, Vector2(200, 112))
+		_add_animation(kael, StringName(animation),
+				_frames_between(cells, spec[1], spec[1] + spec[2]), spec[3], spec[4])
+	_save(kael, "res://entities/boss/ember_knight_frames.tres")
+
+	# Lightning (19 of 64x128): 0-7 sparks crackle round the rod's tip and 8-11 the
+	# bolt comes down (the warning, a second), 12-15 it bursts, 16-18 it fades.
+	var bolt: Array[Texture2D] = _row(load("res://assets/rooftop/lightning.png"), 0, 19,
+			Vector2(64, 128))
+	var strike: SpriteFrames = SpriteFrames.new()
+	strike.remove_animation(&"default")
+	_add_animation(strike, &"warn", _frames_between(bolt, 0, 12), 12.0, false)
+	_add_animation(strike, &"burst", _frames_between(bolt, 12, 16), 14.0, false)
+	_add_animation(strike, &"sink", _frames_between(bolt, 16, 19), 12.0, false)
+	_save(strike, "res://entities/hazard/lightning_frames.tres")

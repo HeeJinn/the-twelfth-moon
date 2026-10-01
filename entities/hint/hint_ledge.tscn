@@ -4,3 +4,4 @@
 
 [node name="HintLedge" instance=ExtResource("1_hint")]
 text = "Too high? Jump at the edge while holding toward it to grab on. Press W to climb up"
+touch_text = "Too high? Jump at the edge while holding toward it to grab on. Push up to climb"

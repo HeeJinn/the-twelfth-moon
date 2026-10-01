@@ -4,3 +4,4 @@
 
 [node name="HintClimb" instance=ExtResource("1_hint")]
 text = "Climb vines with W and S, or the arrow keys"
+touch_text = "Climb vines with the up and down arrows"

@@ -3,7 +3,8 @@ extends Node
 ## Chapter Two plays the Ember memory and then loads Chapter Three; finishing
 ## Chapter Three plays the Red Ribbon memory (read all the way through) and
 ## then loads Chapter Four, Ember Keep; finishing that plays the Oath memory
-## (read all the way through) and then shows the end screen.
+## (read all the way through) and then loads Chapter Five, the Twelfth Night;
+## finishing that shows the end screen.
 ## Progress is saved to a scratch file.
 ##
 ## The checks run on a watcher node added to the root, because the scene
@@ -65,10 +66,16 @@ class Watcher:
 		EventBus.level_completed.emit()
 		await _until_scene(OATH_MEMORY, 400)
 		_expect(_scene_is(OATH_MEMORY), "finishing Chapter Four plays the Oath memory")
-		await _read_until_scene(GameManager.END_SCREEN_PATH, 6000)
-		_expect(_scene_is(GameManager.END_SCREEN_PATH), "the memory leads to the end screen")
+		await _read_until_scene(GameManager.LEVEL_SCENE_PATH, 6000)
+		await _frames(30)
+		_expect(GameManager.current_level_index == 4
+				and GameManager.get_current_level().title == "Chapter Five",
+				"the memory leads into Chapter Five, the Twelfth Night")
 		_expect(dialogues.has("memory_oath"), "the whole Oath memory was read")
-		_expect(GameManager.highest_unlocked_level == 3, "Chapter Four stays unlocked")
+		EventBus.level_completed.emit()
+		await _until_scene(GameManager.END_SCREEN_PATH, 400)
+		_expect(_scene_is(GameManager.END_SCREEN_PATH), "finishing Chapter Five shows the end screen")
+		_expect(GameManager.highest_unlocked_level == 4, "Chapter Five stays unlocked")
 		_expect(FileAccess.file_exists(SCRATCH_SAVE), "progress went to the scratch save")
 
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SCRATCH_SAVE))

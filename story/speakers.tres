@@ -225,6 +225,14 @@ portrait = SubResource("AtlasTexture_warden")
 name_color = Color(0.85, 0.65, 0.95, 1)
 voice_bank = &"ian"
 
+[sub_resource type="Resource" id="Resource_ember"]
+script = ExtResource("2_speaker")
+display_name = "Ember"
+shown_as = "Ember"
+portrait = SubResource("AtlasTexture_kael")
+name_color = Color(1, 0.72, 0.5, 1)
+voice_bank = &"ian"
+
 [resource]
 script = ExtResource("1_library")
-speakers = Array[ExtResource("2_speaker")]([SubResource("Resource_mariane"), SubResource("Resource_kael"), SubResource("Resource_tomas"), SubResource("Resource_rosa"), SubResource("Resource_lina"), SubResource("Resource_mara"), SubResource("Resource_joss"), SubResource("Resource_bram"), SubResource("Resource_theo"), SubResource("Resource_her"), SubResource("Resource_him"), SubResource("Resource_wren"), SubResource("Resource_pell"), SubResource("Resource_witch"), SubResource("Resource_hild"), SubResource("Resource_knight"), SubResource("Resource_warden")])
+speakers = Array[ExtResource("2_speaker")]([SubResource("Resource_mariane"), SubResource("Resource_kael"), SubResource("Resource_tomas"), SubResource("Resource_rosa"), SubResource("Resource_lina"), SubResource("Resource_mara"), SubResource("Resource_joss"), SubResource("Resource_bram"), SubResource("Resource_theo"), SubResource("Resource_her"), SubResource("Resource_him"), SubResource("Resource_wren"), SubResource("Resource_pell"), SubResource("Resource_witch"), SubResource("Resource_hild"), SubResource("Resource_knight"), SubResource("Resource_warden"), SubResource("Resource_ember")])

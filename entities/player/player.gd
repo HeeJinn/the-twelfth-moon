@@ -53,6 +53,8 @@ const PLATFORM_LAYER: int = 2
 const DROP_THROUGH_TIME: float = 0.2
 ## Stomp bounce speed as a fraction of a full jump.
 const STOMP_BOUNCE_RATIO: float = 0.75
+## How hard a monster she walks into pushes her back, px/s.
+const BUMP_SPEED: float = 90.0
 const BLINK_PERIOD: float = 0.1
 ## Every frame is 80x64 with her feet at y 48 and her body at x 44, so the
 ## frame centre (40, 32) sits this far from her feet when she faces right.
@@ -122,6 +124,22 @@ const STEP_FRAMES: Dictionary[StringName, Array] = {
 ## A landing is heard as a step this much louder than a normal one (dB).
 const LANDING_STEP_DB: float = 3.0
 const LANDING_VOICE_DB: float = -3.0
+## The follow camera leads her a little in the direction she runs, and keeps
+## the height of the ground she last stood on while she jumps (so a jump
+## doesn't bob the view). It follows her at once when she drops below that
+## ground, and looks further down while she falls fast, to show where she'll
+## land. Its smoothing (on the Camera2D) eases every move.
+const CAMERA_HEIGHT: float = 24.0
+const CAMERA_LEAD: float = 40.0
+## How fast the lead swings over when she turns, px/s.
+const CAMERA_LEAD_SPEED: float = 90.0
+## She may rise this far above the last ground before the view follows her up.
+const CAMERA_RISE_ROOM: float = 72.0
+const CAMERA_LOOK_DOWN: float = 48.0
+## Falling faster than this (px/s), the view starts to look down.
+const CAMERA_LOOK_DOWN_SPEED: float = 200.0
+## States where she holds on to something: they count as ground for the camera.
+const CAMERA_FOOTING_STATES: Array[StringName] = [&"Climb", &"LedgeHang", &"LedgeClimb", &"WallSlide"]
 
 @export var stats: PlayerStats
 ## The Moon Spark she casts (Cast state).
@@ -133,6 +151,9 @@ const LANDING_VOICE_DB: float = -3.0
 var fall_limit_y: float = INF
 ## 1 = facing right, -1 = facing left. States change it with face().
 var facing: float = 1.0
+## The camera keeps to the height of the ground she last stood on (see CAMERA_*).
+var _camera_ground_y: float = 0.0
+var _camera_lead: float = 0.0
 ## One air dash per jump; landing, walls, ledges and ladders refill it.
 var air_dash_available: bool = true
 ## Seconds her steering is ignored after a wall jump.
@@ -207,13 +228,19 @@ func _ready() -> void:
 	EventBus.player_moonlight_changed.emit(_moonlight, stats.max_moonlight)
 	face(facing)
 	_state_machine.setup(self)
+	_camera_ground_y = global_position.y
 
 
 func _physics_process(delta: float) -> void:
 	_update_timers(delta)
+	# The give-up timer counts here, once a frame: states may ask for the
+	# walk's direction several times a frame.
+	if _is_scripted_walking:
+		_walk_timer -= delta
 	_state_machine.physics_update(delta)
 	if uses_physics:
 		move_and_slide()
+	_update_camera(delta)
 	if is_on_floor():
 		if _fall_time >= DUST_FALL_TIME and not is_dead():
 			OneShot.play(get_parent(), LANDING_DUST, global_position + Vector2(0.0, -16.0), 1)
@@ -252,6 +279,17 @@ func take_damage(amount: int, source_position: Vector2) -> void:
 		away = -facing
 	velocity = Vector2(away * stats.knockback.x, stats.knockback.y)
 	_state_machine.transition_to(&"Hurt")
+
+
+## Called by a monster she walks into: a gentle push away from it, no harm.
+## Repeated every frame they touch, so she can't walk through it.
+func bump(source_position: Vector2) -> void:
+	if is_dead() or not uses_physics:
+		return
+	var away: float = signf(global_position.x - source_position.x)
+	if away == 0.0:
+		away = -facing
+	velocity.x = away * maxf(absf(velocity.x), BUMP_SPEED)
 
 
 ## Called by an enemy that was stomped.
@@ -321,6 +359,8 @@ func respawn(at: Vector2, wake_up: bool = false) -> void:
 	_invulnerable_timer = stats.invulnerability_time
 	uses_physics = true
 	_state_machine.transition_to(&"GetUp" if wake_up else &"Idle", true)
+	_camera_ground_y = global_position.y
+	_update_camera(0.0)
 	reset_physics_interpolation()
 	_camera.reset_smoothing()
 	EventBus.player_health_changed.emit(_health, stats.max_health)
@@ -377,6 +417,25 @@ func face(direction: float) -> void:
 ## Her follow camera, so a cutscene can start its own camera from the same view.
 func get_camera() -> Camera2D:
 	return _camera
+
+
+## Where the follow camera aims, relative to her: a lead toward where she runs,
+## and the height of her last ground (see the CAMERA_* constants).
+func _update_camera(delta: float) -> void:
+	if is_dead():
+		return
+	if is_on_floor() or CAMERA_FOOTING_STATES.any(_state_machine.is_in):
+		_camera_ground_y = global_position.y
+	var target_y: float = _camera_ground_y
+	if global_position.y > _camera_ground_y:
+		target_y = global_position.y
+		if velocity.y > CAMERA_LOOK_DOWN_SPEED:
+			target_y += minf((velocity.y - CAMERA_LOOK_DOWN_SPEED) / 2.0, CAMERA_LOOK_DOWN)
+	elif global_position.y < _camera_ground_y - CAMERA_RISE_ROOM:
+		target_y = global_position.y + CAMERA_RISE_ROOM
+	if absf(velocity.x) > 30.0:
+		_camera_lead = move_toward(_camera_lead, facing * CAMERA_LEAD, CAMERA_LEAD_SPEED * delta)
+	_camera.position = Vector2(_camera_lead, target_y - global_position.y - CAMERA_HEIGHT)
 
 
 ## Called by the level loader so the camera never shows outside the map.
@@ -751,7 +810,6 @@ func _is_controllable() -> bool:
 
 func _get_scripted_direction() -> float:
 	var remaining: float = _walk_target_x - global_position.x
-	_walk_timer -= get_physics_process_delta_time()
 	if absf(remaining) <= ARRIVE_DISTANCE or _walk_timer <= 0.0:
 		_is_scripted_walking = false
 		velocity.x = 0.0

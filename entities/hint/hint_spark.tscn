@@ -4,3 +4,4 @@
 
 [node name="HintSpark" instance=ExtResource("1_hint")]
 text = "Press U to throw a Moon Spark. The moons by your hearts come back with time"
+touch_text = "Tap the moon button to throw a Moon Spark. The moons by your hearts come back with time"

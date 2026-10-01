@@ -4,3 +4,4 @@
 
 [node name="HintHighJump" instance=ExtResource("1_hint")]
 text = "Hold jump to leap higher"
+touch_text = "Hold the jump button to leap higher"

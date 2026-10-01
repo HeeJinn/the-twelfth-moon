@@ -4,3 +4,4 @@
 
 [node name="HintAttack" instance=ExtResource("1_hint")]
 text = "Swing your sword with J. Keep pressing for a three-slash combo"
+touch_text = "Tap the sword button to swing. Keep tapping for a three-slash combo"

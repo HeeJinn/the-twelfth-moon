@@ -4,3 +4,4 @@
 
 [node name="HintDashAttack" instance=ExtResource("1_hint")]
 text = "Attack while dashing for a strong lunge"
+touch_text = "Tap the sword while dashing for a strong lunge"

@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://levels/backgrounds/rooftop_background.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/storm_sky.png" id="2_sky"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/storm_far.png" id="3_far"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/storm_near.png" id="4_near"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/moon_glow_huge.png" id="5_glow"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/red_moon_huge.png" id="6_moon"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/storm_ceiling.png" id="7_ceiling"]
+[ext_resource type="Texture2D" path="res://assets/rooftop/storm_bolts.png" id="8_bolts"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
+blend_mode = 1
+
+[node name="RooftopBackground" type="Node2D"]
+z_index = -100
+script = ExtResource("1_script")
+
+[node name="Sky" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.02, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture = ExtResource("2_sky")
+centered = false
+
+[node name="Far" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.05, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Far"]
+texture = ExtResource("3_far")
+centered = false
+
+[node name="Near" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Near"]
+texture = ExtResource("4_near")
+centered = false
+
+[node name="Ceiling" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.14, 0)
+repeat_size = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ceiling"]
+texture = ExtResource("7_ceiling")
+centered = false
+
+[node name="Bolts" type="Sprite2D" parent="Ceiling"]
+unique_name_in_owner = true
+texture = ExtResource("8_bolts")
+centered = false
+
+[node name="Moon" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+
+[node name="Glow" type="Sprite2D" parent="Moon"]
+modulate = Color(1, 1, 1, 0.55)
+material = SubResource("CanvasItemMaterial_add")
+position = Vector2(330, 112)
+texture = ExtResource("5_glow")
+
+[node name="Moon" type="Sprite2D" parent="Moon"]
+position = Vector2(330, 112)
+texture = ExtResource("6_moon")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
