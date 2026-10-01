@@ -385,14 +385,23 @@ func _build_knight_frames() -> void:
 
 
 func _build_road_monster_frames() -> void:
-	# Skeleton "Attack3" (6 frames of 150): 0-1 sword raised behind its
-	# shield (its walk), 2 the wind-up, 3 the throw, 4-5 the follow-through.
-	var skeleton: Array[Texture2D] = _row(
-			load("res://assets/monster_creatures/skeleton_attack3.png"), 0, 6, Vector2(150, 150))
+	# The flail skeleton (import_flail_skeleton.py): 146x64 frames, eight to a row,
+	# the body at x 76. Attack: 0-12 it gathers the flail and raises it high (the
+	# warning), 13-15 the slam lands ahead of it, 16-22 it drags it back.
 	var frames: SpriteFrames = SpriteFrames.new()
 	frames.remove_animation(&"default")
-	_add_animation(frames, &"walk", _frames_between(skeleton, 0, 2), 4.0, true)
-	_add_animation(frames, &"attack", _frames_between(skeleton, 0, 6), 6.0, false)
+	# animation -> [sheet, frame count, fps, loops]
+	var skeleton_sheets: Dictionary[String, Array] = {
+		"walk": ["walk", 10, 10.0, true],
+		"attack": ["attack", 23, 12.0, false],
+		"hurt": ["hurt", 3, 10.0, false],
+		"death": ["death", 24, 14.0, false],
+	}
+	for animation: String in skeleton_sheets:
+		var spec: Array = skeleton_sheets[animation]
+		var sheet: Texture2D = load("res://assets/flail_skeleton/%s.png" % spec[0])
+		_add_animation(frames, StringName(animation), _grid(sheet, spec[1], Vector2(146, 64)),
+				spec[2], spec[3])
 	_save(frames, "res://entities/enemy/skeleton_frames.tres")
 
 	# The thrown sword (8 frames of 92x102): 0-2 spinning, 3-7 it shatters.

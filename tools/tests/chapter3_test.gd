@@ -1,6 +1,6 @@
 extends Node
 ## Headless check of Chapter Three on the real map: the layout and seasons,
-## Pell's warning and a skeleton's sword stopped by her guard, Hild, the
+## Pell's warning and a skeleton's flail stopped by her guard, Hild, the
 ## flying eyes, each obstacle played with simulated input (the hay loft,
 ## the footbridge, the ladders up the tall rock, its ledge, the broken
 ## bridge, the snowy steps, the frost spikes in the ice cave), then the
@@ -36,7 +36,7 @@ func _ready() -> void:
 	_player = _level.player
 	_check_layout()
 	await _check_pell()
-	await _check_skeleton_throw()
+	await _check_skeleton_flail()
 	await _check_hild()
 	await _check_flying_eye()
 	for child: Node in _level.get_node("%Entities").get_children():
@@ -93,19 +93,26 @@ func _check_pell() -> void:
 	await _finish_dialogue()
 
 
-## The first skeleton throws its sword; raised, her guard stops it.
-func _check_skeleton_throw() -> void:
+## The first skeleton raises its flail (under a "!") and slams it down ahead
+## of it; raised, her guard stops the slam, and without it the slam lands.
+func _check_skeleton_flail() -> void:
 	var skeleton: Enemy = _nearest(Enemy, Vector2(32.5 * TILE, FLOOR_Y))
-	await _place(skeleton.global_position + Vector2(-130.0, 0.0))
+	var sprite: AnimatedSprite2D = skeleton.get_node(^"%AnimatedSprite2D") as AnimatedSprite2D
+	await _place(skeleton.global_position + Vector2(-50.0, 0.0))
 	_player.face(1.0)
 	Input.action_press("block")
 	var start: int = _player.health()
-	var thrown: bool = await _until(func() -> bool: return _has(ThrownProjectile), 300)
-	_expect(thrown, "the skeleton throws its sword")
-	await _until(func() -> bool: return not _has(ThrownProjectile), 200)
-	_expect(_player.health() == start, "her guard stops the thrown sword")
+	var raised: bool = await _until(func() -> bool: return sprite.animation == &"attack", 300)
+	_expect(raised, "the skeleton raises its flail")
+	await _until(func() -> bool: return sprite.animation != &"attack", 200)
+	_expect(_player.health() == start, "her guard stops the flail")
 	Input.action_release("block")
-	await _frames(20)
+	await _place(skeleton.global_position + Vector2(-50.0, 0.0))
+	_player.face(1.0)
+	await _until(func() -> bool: return sprite.animation == &"attack", 400)
+	await _until(func() -> bool: return _player.health() < start, 200)
+	_expect(_player.health() < start, "without her guard the slam lands")
+	await _frames(90)
 
 
 func _check_hild() -> void:

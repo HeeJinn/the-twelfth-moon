@@ -71,6 +71,9 @@ const CRY_GROUPS: Array[StringName] = [&"hurt", &"death"]
 ## Frames of "attack" that hurt Mariane within burst_radius of its body.
 @export var burst_frames: PackedInt32Array = PackedInt32Array()
 @export var burst_radius: float = 0.0
+## Where the burst lands, from the body (x is ahead of it): the flail
+## skeleton's slam lands in front, the keep guard's sweep around itself.
+@export var burst_offset: Vector2 = Vector2.ZERO
 
 var _direction: float = -1.0
 var _home_x: float = 0.0
@@ -235,7 +238,8 @@ func _update_attack() -> void:
 		_throw()
 	if burst_radius > 0.0 and not _burst_landed and frame in burst_frames:
 		var target: Player = get_tree().get_first_node_in_group(&"player") as Player
-		var centre: Vector2 = global_position + Vector2(0.0, -14.0)
+		var centre: Vector2 = global_position + Vector2(
+				burst_offset.x * _direction, burst_offset.y - 14.0)
 		var her_centre: Vector2 = target.global_position + Vector2(0.0, -14.0) if target else centre
 		_alert.hide()
 		if target != null and her_centre.distance_to(centre) <= burst_radius:

@@ -34,6 +34,7 @@ Necromancer
 [Monsters]
 Monsters Creatures Fantasy by Luiz Melo (CC0)
 Skeleton Sprite Pack
+The flail skeleton (skeletonAsset)
 
 [The Lantern Forest]
 Stringstar Fields

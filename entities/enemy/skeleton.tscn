@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_enemy"]
 [ext_resource type="SpriteFrames" path="res://entities/enemy/skeleton_frames.tres" id="2_frames"]
-[ext_resource type="PackedScene" path="res://entities/enemy/skeleton_sword.tscn" id="3_sword"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(16, 34)
@@ -14,20 +13,20 @@ script = ExtResource("1_enemy")
 speed = 22.0
 max_health = 3
 stomp_height = 16.0
-sprite_offset = Vector2(2, -26)
+sprite_offset = Vector2(-3, -32)
 patrol_distance = 80.0
-alert_height = 60.0
-attack_reach = Vector2(170, 40)
+alert_height = 50.0
+attack_reach = Vector2(74, 24)
 attack_cooldown = 3.2
-release_frame = 3
-projectile_scene = ExtResource("3_sword")
-projectile_offset = Vector2(12, -24)
+burst_frames = PackedInt32Array(13, 14, 15)
+burst_radius = 40.0
+burst_offset = Vector2(40, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = ExtResource("2_frames")
 animation = &"walk"
-offset = Vector2(2, -26)
+offset = Vector2(-3, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -17)
