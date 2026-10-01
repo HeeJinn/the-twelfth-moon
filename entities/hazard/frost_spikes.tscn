@@ -9,6 +9,7 @@ size = Vector2(18, 26)
 [node name="FrostSpikes" type="Node2D"]
 z_index = 1
 script = ExtResource("1_spikes")
+burst_sound = &"ice"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

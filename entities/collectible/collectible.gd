@@ -11,6 +11,8 @@ extends Area2D
 const BOB_HEIGHT: float = 3.0
 const BOB_TIME: float = 0.9
 const GLIMMER: SpriteFrames = preload("res://entities/effects/glimmer_frames.tres")
+## A burst of hearts when she takes it.
+const HEART_BURST: SpriteFrames = preload("res://entities/effects/heart_burst_frames.tres")
 
 var _glimmer: AnimatedSprite2D
 
@@ -43,6 +45,8 @@ func _on_body_entered(body: Node2D) -> void:
 	# Physics state cannot change inside a physics callback: defer it.
 	set_deferred("monitoring", false)
 	EventBus.collectible_collected.emit(value)
+	Audio.effect(&"petal")
+	OneShot.play(get_parent(), HEART_BURST, global_position + Vector2(0.0, -16.0))
 
 	var tween: Tween = create_tween().set_parallel()
 	tween.tween_property(_glimmer, "modulate:a", 0.0, 0.2)

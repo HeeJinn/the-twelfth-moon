@@ -92,6 +92,8 @@ const ARRIVE_DISTANCE: float = 2.0
 const WALK_SPARE_TIME: float = 2.0
 ## A spark where her sword lands, and dust when she lands from a real fall.
 const HIT_SPARK: SpriteFrames = preload("res://entities/effects/hit_spark_frames.tres")
+## Where moonlight lands, or her sword lands on a boss: a bigger, blue impact.
+const MOON_IMPACT: SpriteFrames = preload("res://entities/effects/moon_impact_frames.tres")
 const LANDING_DUST: SpriteFrames = preload("res://entities/effects/landing_dust_frames.tres")
 ## Seconds of falling before a landing kicks up dust (about a three-tile drop).
 const DUST_FALL_TIME: float = 0.32
@@ -108,6 +110,12 @@ const ANIMATION_VOICES: Dictionary[StringName, StringName] = {
 	&"get_up": &"gasp",
 	&"heal": &"sigh",
 	&"death": &"death",
+}
+## Sound effects that start with an animation (assets/audio/sfx/).
+const ANIMATION_EFFECTS: Dictionary[StringName, StringName] = {
+	&"jump": &"jump", &"dash": &"dash", &"climb": &"climb", &"ledge_grab": &"climb",
+	&"ledge_climb": &"climb", &"charge": &"charge", &"moon_slash": &"moon_slash",
+	&"heal": &"heal", &"restore": &"absorb", &"get_up": &"revive",
 }
 ## Sword swings, each with a small chance of an effort grunt.
 const SWING_ANIMATIONS: Array[StringName] = [
@@ -246,6 +254,7 @@ func _physics_process(delta: float) -> void:
 			OneShot.play(get_parent(), LANDING_DUST, global_position + Vector2(0.0, -16.0), 1)
 			Audio.step(step_surface(), LANDING_STEP_DB)
 			Audio.voice(VOICE, &"land", 1.0, 1.0, LANDING_VOICE_DB)
+			Audio.effect(&"land")
 		_fall_time = 0.0
 		_coyote_timer = stats.coyote_time
 		air_dash_available = true
@@ -273,6 +282,7 @@ func take_damage(amount: int, source_position: Vector2) -> void:
 		die()
 		return
 	Audio.voice(VOICE, &"hurt")
+	Audio.effect(&"hurt")
 	_invulnerable_timer = stats.invulnerability_time
 	var away: float = signf(global_position.x - source_position.x)
 	if away == 0.0:
@@ -706,6 +716,9 @@ func play_animation(animation_name: StringName) -> void:
 			Audio.voice(VOICE, ANIMATION_VOICES[animation_name])
 		elif animation_name in SWING_ANIMATIONS:
 			Audio.voice(VOICE, &"grunt", stats.swing_grunt_chance)
+			Audio.effect(&"swing")
+		if ANIMATION_EFFECTS.has(animation_name):
+			Audio.effect(ANIMATION_EFFECTS[animation_name])
 
 
 ## Hits every enemy within `reach` once per swing (tracked in `hits`). The
@@ -722,7 +735,12 @@ func hit_enemies(reach: Reach, damage: int, hits: Array[Damageable]) -> void:
 		var blocked: bool = reach != Reach.CRESCENT and enemy.is_guarding_against(global_position)
 		if not blocked:
 			var between: Vector2 = (global_position + enemy.global_position) / 2.0
-			OneShot.play(get_parent(), HIT_SPARK, between + Vector2(0.0, -16.0), 5)
+			var heavy: bool = reach == Reach.CRESCENT or not enemy is Enemy
+			OneShot.play(get_parent(), MOON_IMPACT if heavy else HIT_SPARK,
+					between + Vector2(0.0, -16.0), 5)
+			Audio.effect(&"hit")
+		else:
+			Audio.effect(&"block")
 		if reach == Reach.CRESCENT:
 			enemy.take_moon_hit(damage, global_position)
 		else:
@@ -737,6 +755,8 @@ func launch(scene: PackedScene, offset: Vector2) -> void:
 	projectile.global_position = global_position + Vector2(offset.x * facing, offset.y)
 	projectile.call(&"fly", facing, stats)
 	Audio.voice(VOICE, &"shout")
+	if scene == spark_scene:
+		Audio.effect(&"spark")
 
 
 ## A fading copy of her current frame, left behind while she dashes.
@@ -838,6 +858,7 @@ func _block(source_position: Vector2) -> void:
 	if _block_cooldown > 0.0:
 		return
 	_block_cooldown = stats.block_cooldown
+	Audio.effect(&"block")
 	var away: float = signf(global_position.x - source_position.x)
 	velocity.x = (away if away != 0.0 else -facing) * stats.block_push
 

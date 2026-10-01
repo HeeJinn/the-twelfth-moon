@@ -9,6 +9,7 @@ size = Vector2(28, 40)
 [node name="BloodSpawn" type="Node2D"]
 z_index = 1
 script = ExtResource("1_spikes")
+burst_sound = &"poison"
 repeating = false
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

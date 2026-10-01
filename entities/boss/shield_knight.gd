@@ -376,6 +376,8 @@ func _apply_facing() -> void:
 
 ## Moves that travel carry his body along with the art, frame by frame.
 func _on_frame_changed() -> void:
+	if _phase == Phase.ATTACKING and _sprite.frame == _first_active_frame():
+		Audio.effect_at(&"slash", global_position)
 	if not MOTION.has(_sprite.animation):
 		_apply_facing()
 		return

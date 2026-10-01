@@ -16,6 +16,8 @@ extends Node2D
 ## Seconds before the first warning, to stagger a row of them.
 @export var start_delay: float = 0.0
 @export var damage: int = 1
+## The effect heard as it strikes (a name in assets/audio/sfx/), if any.
+@export var burst_sound: StringName = &""
 
 var _hurting: bool = false
 
@@ -51,6 +53,8 @@ func _on_animation_finished() -> void:
 		&"warn":
 			_hurting = true
 			_sprite.play(&"burst")
+			if not burst_sound.is_empty():
+				Audio.effect_at(burst_sound, global_position)
 		&"burst":
 			_hurting = false
 			_sprite.play(&"sink")

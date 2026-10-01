@@ -9,6 +9,7 @@ size = Vector2(26, 36)
 [node name="DarkBolt" type="Node2D"]
 z_index = 2
 script = ExtResource("1_spikes")
+burst_sound = &"earth"
 repeating = false
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

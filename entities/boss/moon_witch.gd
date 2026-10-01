@@ -99,6 +99,7 @@ func start_fight(player: Player) -> void:
 ## Makes her appear at a spot and wait, for the introduction.
 func appear_at(spot: Vector2) -> void:
 	global_position = spot
+	Audio.effect_at(&"teleport", spot)
 	_show_up()
 
 

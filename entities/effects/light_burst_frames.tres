@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/effects/light_burst.png" id="1_vuswq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04ijx"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(0, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xytnw"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(128, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2wk8"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(256, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2eot"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(384, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x72mk"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(512, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6k6w"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(640, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbi30"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(768, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv54s"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(896, 0, 128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr181"]
+atlas = ExtResource("1_vuswq")
+region = Rect2(1024, 0, 128, 72)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04ijx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xytnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2wk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2eot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x72mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6k6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbi30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv54s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr181")
+}],
+"loop": 0,
+"name": &"play",
+"speed": 18.0
+}]

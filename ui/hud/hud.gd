@@ -1,13 +1,13 @@
 extends CanvasLayer
 ## In-chapter HUD. Only listens to EventBus; it never polls or holds game state.
-## Shows hearts for health, moons for moonlight (Moon Spark charges), one
+## Shows her health and moonlight (Moon Spark charges) as bars, one
 ## petal icon per petal in the chapter, the chapter intro card, and the
 ## pause label. No digits: the Pixelmax font has none, so counts are drawn
 ## as icons.
 ##
 ## Scene: HUD (CanvasLayer)
 ##   MarginContainer (full rect) > HBoxContainer
-##     VBoxContainer > %Hearts, %Moons (HBoxContainers)   filled at runtime
+##     VBoxContainer > %HealthBar, %MoonBar (TextureProgressBars, Health & Stamina)
 ##     spacer
 ##     %Petals (HBoxContainer)   filled at runtime
 ##   %IntroCard (VBoxContainer, centred)
@@ -16,14 +16,8 @@ extends CanvasLayer
 ##   (Labels, centred): shown only while paused
 ##   %BossBar (VBoxContainer, top centre, hidden) > %BossName, %BossHealth
 
-const HEART_FULL: Texture2D = preload("res://assets/generated/heart_full.png")
-const HEART_EMPTY: Texture2D = preload("res://assets/generated/heart_empty.png")
-const MOON_FULL: Texture2D = preload("res://assets/generated/moon_full.png")
-const MOON_EMPTY: Texture2D = preload("res://assets/generated/moon_empty.png")
 const PETAL: Texture2D = preload("res://assets/generated/petal.png")
 const PETAL_MISSING_COLOR: Color = Color(0.25, 0.25, 0.35, 0.6)
-## Hearts (9x8) and moons (7x7) are tiny, so they are drawn at a whole-number 2x scale.
-const HEART_SCALE: float = 2.0
 ## Seconds the chapter card stays fully visible.
 const INTRO_HOLD: float = 2.5
 const INTRO_FADE: float = 0.8
@@ -38,8 +32,8 @@ const TOUCH_CONTROLS: String = (
 	+ "Tap pause again to go back to the game"
 )
 
-@onready var _hearts: HBoxContainer = %Hearts
-@onready var _moons: HBoxContainer = %Moons
+@onready var _health_bar: TextureProgressBar = %HealthBar
+@onready var _moon_bar: TextureProgressBar = %MoonBar
 @onready var _petals: HBoxContainer = %Petals
 @onready var _intro_card: VBoxContainer = %IntroCard
 @onready var _title_label: Label = %TitleLabel
@@ -88,20 +82,19 @@ func _on_collectibles_changed(collected: int, total: int) -> void:
 		icon.modulate = Color.WHITE if i < collected else PETAL_MISSING_COLOR
 
 
+## Her health (Red bar, a notch per heart) and moonlight (Silver bar, a notch per
+## moon), from Health & Stamina. A lost heart flashes the bar.
 func _on_player_health_changed(current: int, maximum: int) -> void:
-	_fill_icons(_hearts, maximum)
-	for i: int in maximum:
-		var icon: TextureRect = _hearts.get_child(i) as TextureRect
-		icon.texture = HEART_FULL if i < current else HEART_EMPTY
-		icon.custom_minimum_size = HEART_FULL.get_size() * HEART_SCALE
+	if current < _health_bar.value:
+		_health_bar.modulate = Color(1.8, 1.2, 1.2)
+		create_tween().tween_property(_health_bar, "modulate", Color.WHITE, 0.35)
+	_health_bar.max_value = maximum
+	_health_bar.value = current
 
 
 func _on_player_moonlight_changed(current: int, maximum: int) -> void:
-	_fill_icons(_moons, maximum)
-	for i: int in maximum:
-		var icon: TextureRect = _moons.get_child(i) as TextureRect
-		icon.texture = MOON_FULL if i < current else MOON_EMPTY
-		icon.custom_minimum_size = MOON_FULL.get_size() * HEART_SCALE
+	_moon_bar.max_value = maximum
+	_moon_bar.value = current
 
 
 ## Paused: the screen dims and the controls are listed, for whoever forgot a key.

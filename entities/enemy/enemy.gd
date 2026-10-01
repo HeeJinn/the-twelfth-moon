@@ -166,6 +166,7 @@ func die() -> void:
 		return
 	_is_dead = true
 	_cry(&"death")
+	Audio.effect_at(&"enemy_death", global_position)
 	_alert.hide()
 	set_physics_process(false)
 	set_deferred("collision_layer", 0)

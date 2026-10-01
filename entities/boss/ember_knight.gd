@@ -374,6 +374,10 @@ func _apply_facing() -> void:
 
 
 func _on_frame_changed() -> void:
+	if _phase == Phase.ATTACKING:
+		for strike: Array in SWINGS[_swing]:
+			if _sprite.frame == (strike[0] as Array)[0]:
+				Audio.effect_at(&"slash", global_position)
 	if _phase == Phase.ATTACKING and _sprite.frame == HOLD_FRAME and not _hold_done:
 		_held = true
 		_hold_done = true

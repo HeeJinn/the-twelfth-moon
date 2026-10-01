@@ -10,6 +10,7 @@ size = Vector2(34, 30)
 [node name="EmberVent" type="Node2D"]
 z_index = 1
 script = ExtResource("1_spikes")
+burst_sound = &"fire"
 calm_time = 2.2
 
 [node name="Grate" type="Sprite2D" parent="."]

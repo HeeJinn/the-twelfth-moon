@@ -11,6 +11,8 @@ extends Area2D
 signal activated(checkpoint: Checkpoint)
 
 const UNLIT_COLOR: Color = Color(0.3, 0.3, 0.4)
+## A flare of light as it catches.
+const FLARE: SpriteFrames = preload("res://entities/effects/light_burst_frames.tres")
 
 ## Where she wakes up, relative to the fire (so she isn't standing in it).
 @export var respawn_offset: Vector2 = Vector2(-24.0, 0.0)
@@ -37,6 +39,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	is_lit = true
 	_sprite.play("burn")
+	OneShot.play(get_parent(), FLARE, global_position + Vector2(0.0, -20.0))
 	var tween: Tween = create_tween()
 	tween.tween_property(_sprite, "modulate", Color.WHITE, 0.4)
 	activated.emit(self)

@@ -583,7 +583,10 @@ func _check_monsters() -> void:
 	for enemy: Enemy in [skeleton, eye]:
 		enemy.take_hit(1, enemy.global_position + Vector2(10.0, 0.0))
 		enemy.take_hit(99, enemy.global_position + Vector2(10.0, 0.0))
-	_expect(Audio.plays.is_empty(), "skeletons and flying eyes stay silent")
+	var voiced: Array = Audio.plays.keys().filter(
+			func(key: StringName) -> bool: return String(key).begins_with("voice/"))
+	_expect(voiced.is_empty() and Audio.play_count(&"sfx/enemy_death") >= 1,
+			"skeletons and flying eyes have no voice (only the death sound)")
 
 
 func _check_dialogue() -> void:

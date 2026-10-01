@@ -14,6 +14,10 @@ extends Control
 
 func _ready() -> void:
 	Music.play(&"title")
+	for button: Button in [_start_button, _continue_button, _quit_button]:
+		button.mouse_entered.connect(Audio.effect.bind(&"ui_hover"))
+		button.focus_entered.connect(Audio.effect.bind(&"ui_hover"))
+		button.pressed.connect(Audio.effect.bind(&"ui_confirm"))
 	_start_button.pressed.connect(GameManager.start_new_game)
 	_continue_button.pressed.connect(GameManager.continue_game)
 	_quit_button.pressed.connect(get_tree().quit)

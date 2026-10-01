@@ -50,6 +50,12 @@ const EFFECTS: Dictionary[String, Array] = {
 	# hearts, silver-blue for the moons).
 	"heal_gold": [64, 64, 14.0, false],
 	"heal_moon": [64, 64, 14.0, false],
+	# From the Gigapack (2026-10-02): petals, campfires, moonlight hits, the ending.
+	"heart_burst": [64, 64, 24.0, false],
+	"light_burst": [128, 72, 18.0, false],
+	"moon_impact": [48, 48, 24.0, false],
+	"firework_green": [48, 48, 18.0, false],
+	"firework_yellow": [48, 48, 20.0, false],
 }
 ## Village decor prop -> [texture, z_index]. Big backdrop pieces sit at -3,
 ## small clutter at -2, villagers at -1 and Mariane at 0.

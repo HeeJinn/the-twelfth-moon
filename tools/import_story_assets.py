@@ -113,6 +113,14 @@ EFFECT_STRIPS = {
     "Fantasy Spells/status_sparkling_001/status_sparkling_001_small_yellow": "sparkle",
     "Magic Bursts/round_sparkle_burst_003/round_sparkle_burst_003_small_red": "shard_burst",
     "Smoke Bursts/symmetrical_smoke_burst_001/symmetrical_smoke_burst_001_small_brown": "dust_puff",
+    # Added 2026-10-02: a burst of hearts when she takes a petal, a flare when a
+    # campfire lights, a blue impact when moonlight (or her sword on a boss) lands,
+    # and two fireworks for the ending.
+    "Magic Bursts/round_heart_burst_001/round_heart_burst_001_small_red": "heart_burst",
+    "Magic Bursts/round_light_burst_001/round_light_burst_001_small_yellow": "light_burst",
+    "Impacts/symmetrical_impact_002/symmetrical_impact_002_small_blue": "moon_impact",
+    "Magic Bursts/round_firework_burst_001/round_firework_burst_001_small_green": "firework_green",
+    "Magic Bursts/round_firework_burst_002/round_firework_burst_002_small_yellow": "firework_yellow",
 }
 
 

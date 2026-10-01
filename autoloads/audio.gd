@@ -14,6 +14,8 @@ extends Node
 ##   Audio.voice(&"mariane", &"hurt")         one of her hurt takes
 ##   Audio.voice(&"alex", &"death", 1.0, 1.4) the same bank, pitched up
 ##   Audio.sfx(stream)                        any stream, on the effects bus
+##   Audio.effect(&"swing")                   a named effect (assets/audio/sfx/)
+##   Audio.effect_at(&"fire", where)          one in the world, fading with distance
 ## Each call plays a random take that is never the one it played last, with a
 ## little pitch and volume jitter. Voices keep quiet for a while after
 ## speaking (BANK_COOLDOWN, GROUP_COOLDOWNS), so they never spam.
@@ -35,7 +37,29 @@ const STEP_PATH: String = "res://assets/audio/steps/%s/step_%%02d.ogg"
 const VOICE_PATH: String = "res://assets/audio/voice/%s/%s_%%02d.wav"
 ## Most takes of one sound that get looked for.
 const MAX_TAKES: int = 32
-const SFX_PLAYERS: int = 6
+const SFX_PLAYERS: int = 8
+const SFX_PATH: String = "res://assets/audio/sfx/%s.wav"
+## Seconds the same effect stays quiet after it plays, so a burst of identical
+## events (two hazards bursting together) makes one sound.
+const EFFECT_COOLDOWN: float = 0.07
+const EFFECT_PITCH_JITTER: float = 0.05
+const EFFECT_VOLUME_JITTER_DB: float = 1.0
+## Effects in the world beyond this distance (px) from the middle of the screen
+## aren't heard; nearer ones fade by up to DISTANCE_FADE_DB.
+const HEARING_DISTANCE: float = 360.0
+const DISTANCE_FADE_DB: float = 12.0
+## Each effect's level (dB). The clips are levelled like the voices
+## (tools/import_sfx.py); these sit them under the voices, set by ear-less
+## judgement: small movement sounds lowest, hits and story moments higher.
+const EFFECT_DB: Dictionary[StringName, float] = {
+	&"swing": -10.0, &"hit": -6.0, &"block": -6.0, &"jump": -14.0, &"land": -12.0,
+	&"climb": -12.0, &"dash": -10.0, &"hurt": -4.0, &"charge": -8.0, &"moon_slash": -4.0,
+	&"spark": -6.0, &"heal": -6.0, &"absorb": -6.0, &"revive": -6.0, &"petal": -4.0,
+	&"slash": -8.0, &"enemy_death": -6.0, &"encounter": -4.0, &"teleport": -8.0,
+	&"fire": -10.0, &"thunder": -6.0, &"ice": -10.0, &"earth": -8.0, &"poison": -10.0,
+	&"bite": -8.0, &"claw": -8.0, &"ui_hover": -14.0, &"ui_confirm": -6.0,
+	&"pause": -8.0, &"unpause": -8.0,
+}
 const VOICE_PLAYERS: int = 3
 
 ## What a footstep on planks sounds like, whatever the chapter's ground is.
@@ -99,6 +123,7 @@ var _takes: Dictionary[StringName, Array] = {}
 var _ready_at: Dictionary[StringName, float] = {}
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _voice_players: Array[AudioStreamPlayer] = []
+var _effects: Dictionary[StringName, AudioStream] = {}
 
 
 func _ready() -> void:
@@ -110,6 +135,9 @@ func _ready() -> void:
 	_voice_players = _make_players(VOICE_BUS, VOICE_PLAYERS)
 	_load_settings()
 	EventBus.level_started.connect(_on_level_started)
+	EventBus.boss_started.connect(func(_name: String, _maximum: int) -> void: effect(&"encounter"))
+	EventBus.pause_toggled.connect(func(is_paused: bool) -> void:
+		effect(&"pause" if is_paused else &"unpause"))
 
 
 ## Lets go of every clip when the game closes, so one still playing at that
@@ -188,6 +216,35 @@ func sfx(stream: AudioStream, volume_db: float = 0.0, pitch: float = 1.0) -> boo
 		return false
 	_start(_sfx_players, stream, &"sfx", 0, volume_db, pitch)
 	return true
+
+
+## A named effect from assets/audio/sfx/ (tools/import_sfx.py). The same name
+## keeps quiet for EFFECT_COOLDOWN after it plays. Returns false when it stayed
+## quiet (cooling down, or the clip is missing).
+func effect(name: StringName, volume_db: float = 0.0, pitch: float = 1.0) -> bool:
+	var key: StringName = StringName("sfx/" + name)
+	if _is_waiting(key):
+		return false
+	var stream: AudioStream = _effect_stream(name)
+	if stream == null:
+		return false
+	_ready_at[key] = _now() + EFFECT_COOLDOWN
+	_start(_sfx_players, stream, key, 0,
+			EFFECT_DB.get(name, 0.0) + volume_db + _jitter(EFFECT_VOLUME_JITTER_DB),
+			pitch * (1.0 + _jitter(EFFECT_PITCH_JITTER)))
+	return true
+
+
+## An effect at a place in the world: quieter the further it is from the middle
+## of the screen, and not heard at all beyond HEARING_DISTANCE.
+func effect_at(name: StringName, at: Vector2, volume_db: float = 0.0) -> bool:
+	var camera: Camera2D = get_viewport().get_camera_2d()
+	if camera != null:
+		var distance: float = at.distance_to(camera.get_screen_center_position())
+		if distance > HEARING_DISTANCE:
+			return false
+		volume_db -= DISTANCE_FADE_DB * distance / HEARING_DISTANCE
+	return effect(name, volume_db)
 
 
 ## Forgets every cooldown, so the next call plays (tests, scene starts).
@@ -284,6 +341,13 @@ func set_muted(muted: bool) -> void:
 
 func _on_level_started(level_data: LevelData, _collectibles_total: int) -> void:
 	use_level(level_data)
+
+
+func _effect_stream(name: StringName) -> AudioStream:
+	if not _effects.has(name):
+		var path: String = SFX_PATH % name
+		_effects[name] = load(path) as AudioStream if ResourceLoader.exists(path) else null
+	return _effects[name]
 
 
 func _now() -> float:

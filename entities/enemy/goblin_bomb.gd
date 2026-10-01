@@ -64,6 +64,7 @@ func _start_fuse() -> void:
 
 func _explode() -> void:
 	_phase = Phase.EXPLODING
+	Audio.effect_at(&"fire", global_position)
 	_sprite.modulate = Color.WHITE
 	_sprite.play("explode")
 	var target: Player = get_tree().get_first_node_in_group(&"player") as Player

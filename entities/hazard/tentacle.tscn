@@ -10,6 +10,7 @@ size = Vector2(14, 44)
 [node name="Tentacle" type="Node2D"]
 z_index = 1
 script = ExtResource("1_spikes")
+burst_sound = &"claw"
 calm_time = 1.8
 
 [node name="Crack" type="Sprite2D" parent="."]

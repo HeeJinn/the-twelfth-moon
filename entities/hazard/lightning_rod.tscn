@@ -10,6 +10,7 @@ size = Vector2(26, 40)
 [node name="LightningRod" type="Node2D"]
 z_index = 1
 script = ExtResource("1_spikes")
+burst_sound = &"thunder"
 calm_time = 2.4
 
 [node name="Rod" type="Sprite2D" parent="."]

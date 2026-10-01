@@ -257,6 +257,7 @@ func _hurt(amount: int) -> void:
 ## He reels away as a ghost, and appears again at the far end of the crypt.
 func _blink() -> void:
 	_phase = Phase.BLINKING
+	Audio.effect_at(&"teleport", global_position)
 	_alert.hide()
 	_sprite.speed_scale = 1.0
 	collision_layer = 0

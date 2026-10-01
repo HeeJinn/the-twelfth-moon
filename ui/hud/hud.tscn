@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" path="res://assets/ui/boss_bar_under.png" id="2_bar_under"]
 [ext_resource type="Texture2D" path="res://assets/ui/boss_bar_fill.png" id="3_bar_fill"]
 [ext_resource type="Texture2D" path="res://assets/ui/boss_bar_frame.png" id="4_bar_frame"]
+[ext_resource type="Texture2D" path="res://assets/ui/player_health_under.png" id="5_health_under"]
+[ext_resource type="Texture2D" path="res://assets/ui/player_health_fill.png" id="6_health_fill"]
+[ext_resource type="Texture2D" path="res://assets/ui/player_health_frame.png" id="7_health_frame"]
+[ext_resource type="Texture2D" path="res://assets/ui/player_moon_under.png" id="8_moon_under"]
+[ext_resource type="Texture2D" path="res://assets/ui/player_moon_fill.png" id="9_moon_fill"]
+[ext_resource type="Texture2D" path="res://assets/ui/player_moon_frame.png" id="10_moon_frame"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
@@ -30,17 +36,27 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 3
 
-[node name="Hearts" type="HBoxContainer" parent="MarginContainer/TopBar/Status"]
+[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer/TopBar/Status"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 mouse_filter = 2
-theme_override_constants/separation = 2
+max_value = 5.0
+value = 5.0
+texture_under = ExtResource("5_health_under")
+texture_over = ExtResource("7_health_frame")
+texture_progress = ExtResource("6_health_fill")
 
-[node name="Moons" type="HBoxContainer" parent="MarginContainer/TopBar/Status"]
+[node name="MoonBar" type="TextureProgressBar" parent="MarginContainer/TopBar/Status"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 mouse_filter = 2
-theme_override_constants/separation = 3
+max_value = 3.0
+value = 3.0
+texture_under = ExtResource("8_moon_under")
+texture_over = ExtResource("10_moon_frame")
+texture_progress = ExtResource("9_moon_fill")
 
 [node name="Spacer" type="Control" parent="MarginContainer/TopBar"]
 layout_mode = 2
