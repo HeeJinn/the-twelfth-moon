@@ -17,7 +17,8 @@ func _ready() -> void:
 	for shot: Array in [["title", TITLE_SCENE], ["end", END_SCENE]]:
 		var screen: Node = (shot[1] as PackedScene).instantiate()
 		add_child(screen)
-		for i: int in 40:
+		# The title fades in over about five seconds.
+		for i: int in 330:
 			await get_tree().physics_frame
 		await RenderingServer.frame_post_draw
 		get_viewport().get_texture().get_image().save_png(

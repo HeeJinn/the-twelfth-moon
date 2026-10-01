@@ -3,6 +3,18 @@
 [ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_title"]
 [ext_resource type="Texture2D" path="res://assets/skies/title_night.png" id="2_sky"]
 [ext_resource type="Texture2D" path="res://assets/generated/red_moon.png" id="3_moon"]
+[ext_resource type="Texture2D" path="res://assets/generated/glow_red.png" id="4_glow"]
+[ext_resource type="PackedScene" path="res://levels/backgrounds/shooting_stars.tscn" id="5_stars"]
+[ext_resource type="PackedScene" path="res://entities/prop/flowering_tree.tscn" id="6_tree"]
+[ext_resource type="SpriteFrames" path="res://entities/player/player_frames.tres" id="7_hero"]
+[ext_resource type="Texture2D" path="res://assets/generated/petal_particle.png" id="8_petal"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_petals"]
+offsets = PackedFloat32Array(0, 0.08, 0.85, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.9, 1, 1, 1, 0.9, 1, 1, 1, 0)
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -24,7 +36,16 @@ texture = ExtResource("2_sky")
 expand_mode = 1
 stretch_mode = 3
 
+[node name="MoonGlow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_add")
+position = Vector2(395, 58)
+scale = Vector2(2, 2)
+texture = ExtResource("4_glow")
+
 [node name="RedMoon" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 355.0
 offset_top = 18.0
@@ -33,6 +54,45 @@ offset_bottom = 98.0
 mouse_filter = 2
 texture = ExtResource("3_moon")
 expand_mode = 1
+
+[node name="ShootingStars" parent="." instance=ExtResource("5_stars")]
+delay = Vector2(4, 9)
+area = Rect2(30, 6, 300, 50)
+
+[node name="Hill" type="Polygon2D" parent="."]
+color = Color(0.08, 0.05, 0.13, 1)
+polygon = PackedVector2Array(0, 270, 0, 246, 24, 242, 64, 238, 112, 238, 150, 242, 182, 250, 206, 262, 216, 270)
+
+[node name="FloweringTree" parent="." instance=ExtResource("6_tree")]
+z_index = 0
+modulate = Color(0.62, 0.52, 0.78, 1)
+position = Vector2(88, 240)
+
+[node name="Sleeper" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.7, 0.62, 0.85, 1)
+position = Vector2(116, 240)
+sprite_frames = ExtResource("7_hero")
+animation = &"asleep"
+offset = Vector2(4, -16)
+flip_h = true
+
+[node name="PetalWind" type="CPUParticles2D" parent="."]
+position = Vector2(90, 170)
+amount = 18
+lifetime = 16.0
+preprocess = 16.0
+texture = ExtResource("8_petal")
+emission_shape = 3
+emission_rect_extents = Vector2(34, 20)
+direction = Vector2(1, 0.15)
+spread = 18.0
+gravity = Vector2(0, 3)
+initial_velocity_min = 14.0
+initial_velocity_max = 26.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+color_ramp = SubResource("Gradient_petals")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -47,15 +107,17 @@ layout_mode = 2
 theme_override_constants/separation = 6
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "The Twelfth Moon"
 horizontal_alignment = 1
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.88, 1)
-text = "A story for Mariane"
+text = "To the girl who loves matcha and Fifty Shades"
 horizontal_alignment = 1
 
 [node name="Gap" type="Control" parent="CenterContainer/VBoxContainer"]

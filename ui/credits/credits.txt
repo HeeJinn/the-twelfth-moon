@@ -7,8 +7,8 @@
 # and the plan's credit list; fix both places if one changes.
 
 [The Twelfth Moon]
-A story for Mariane
-made with love for her twenty-first birthday
+To the girl who loves matcha
+and Fifty Shades
 
 
 [Mariane]
@@ -145,5 +145,4 @@ Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
 MIT licence
 
 
-[For Mariane]
-Happy birthday.
+Happy birthday, Mariane.

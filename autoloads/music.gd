@@ -81,6 +81,8 @@ var _check_timer: float = 0.0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# Declared in default_bus_layout.tres (a bus added from code is silent on the
+	# web); this is only a fallback.
 	if AudioServer.get_bus_index(BUS) < 0:
 		AudioServer.add_bus()
 		var index: int = AudioServer.bus_count - 1

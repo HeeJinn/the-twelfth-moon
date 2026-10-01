@@ -18,7 +18,7 @@ loads fast on a phone.
 MUST HAVE (all in since 2026-10-01; Kael's fight and the credits share the
 boss and title tracks for now; who made each is in CREDITS.txt)
 ---------
-title.ogg           Title screen, "A story for Mariane".
+title.ogg           Title screen.
                     Gentle and a little mysterious: a red moon, a love story.
                     Tags: music box, lullaby, piano, calm, romantic, mysterious, fantasy
 

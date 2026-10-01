@@ -418,6 +418,9 @@ func _free_player(pool: Array[AudioStreamPlayer]) -> AudioStreamPlayer:
 	return oldest
 
 
+## The buses are declared in default_bus_layout.tres, so this only runs if one is
+## missing. Declare new buses there too: on the web, a bus added from code is
+## wired into a loop that never reaches the speakers, and the game is silent.
 func _make_bus(bus_name: StringName) -> void:
 	if AudioServer.get_bus_index(bus_name) != -1:
 		return
