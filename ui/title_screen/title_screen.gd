@@ -10,7 +10,8 @@ extends Control
 ##   %MoonGlow (Sprite2D, additive), %RedMoon (TextureRect)
 ##   ShootingStars, Hill (Polygon2D), FloweringTree, %Sleeper, PetalWind
 ##   CenterContainer > VBoxContainer
-##     %TitleLabel, %SubtitleLabel, Gap, %StartButton, %ContinueButton, %QuitButton
+##     %TitleLabel, %SubtitleLabel, Gap, %StartButton, %ContinueButton,
+##     %FullscreenButton (not in the Android app, always fullscreen), %QuitButton
 
 ## How far below its place the moon starts, and how long it takes to rise (s).
 const MOON_RISE: float = 40.0
@@ -37,19 +38,27 @@ var _intro: Tween
 @onready var _subtitle_label: Label = %SubtitleLabel
 @onready var _start_button: Button = %StartButton
 @onready var _continue_button: Button = %ContinueButton
+@onready var _fullscreen_button: Button = %FullscreenButton
 @onready var _quit_button: Button = %QuitButton
 
 
 func _ready() -> void:
 	Music.play(&"title")
-	for button: Button in [_start_button, _continue_button, _quit_button]:
+	for button: Button in _buttons():
 		button.mouse_entered.connect(Audio.effect.bind(&"ui_hover"))
 		button.focus_entered.connect(Audio.effect.bind(&"ui_hover"))
 		button.pressed.connect(Audio.effect.bind(&"ui_confirm"))
+	# On a phone's browser the game goes fullscreen as it starts (the address
+	# bar takes a third of a sideways screen); the tap allows it.
+	if OS.has_feature("web") and TouchControls.is_touch():
+		_start_button.pressed.connect(GameManager.set_fullscreen.bind(true))
+		_continue_button.pressed.connect(GameManager.set_fullscreen.bind(true))
 	_start_button.pressed.connect(GameManager.start_new_game)
 	_continue_button.pressed.connect(GameManager.continue_game)
+	_fullscreen_button.pressed.connect(GameManager.toggle_fullscreen)
 	_quit_button.pressed.connect(get_tree().quit)
 	_continue_button.visible = GameManager.has_progress()
+	_fullscreen_button.visible = not OS.has_feature("android")
 	# A browser tab can't be quit from inside the page.
 	_quit_button.visible = not OS.has_feature("web")
 	_start_button.grab_focus()  # Keyboard and gamepad navigation.
@@ -62,6 +71,8 @@ func _process(delta: float) -> void:
 	if _intro == null or not _intro.is_running():
 		_red_moon.position.y = _moon_home.y + roundf(sin(_time * 0.9) * MOON_BOB)
 	_moon_glow.position = _red_moon.position + _red_moon.size * 0.5
+	# The browser can leave fullscreen on its own (Esc), so ask each frame.
+	_fullscreen_button.text = "Window" if GameManager.is_fullscreen() else "Fullscreen"
 	_moon_glow.modulate.a = (GLOW_ALPHA + GLOW_BREATH * sin(_time * 1.3)) * _glow
 
 
@@ -87,7 +98,7 @@ func _play_intro() -> void:
 	_intro.tween_property(self, "_glow", 1.0, RISE_TIME)
 	_intro.tween_property(_title_label, "modulate:a", 1.0, FADE_TIME).set_delay(TITLE_AT)
 	_intro.tween_property(_subtitle_label, "modulate:a", 1.0, FADE_TIME).set_delay(SUBTITLE_AT)
-	for button: Button in [_start_button, _continue_button, _quit_button]:
+	for button: Button in _buttons():
 		_intro.tween_property(button, "modulate:a", 1.0, FADE_TIME).set_delay(BUTTONS_AT)
 
 
@@ -102,4 +113,10 @@ func _finish_intro() -> void:
 
 
 func _fading_parts() -> Array[CanvasItem]:
-	return [_title_label, _subtitle_label, _start_button, _continue_button, _quit_button]
+	var parts: Array[CanvasItem] = [_title_label, _subtitle_label]
+	parts.append_array(_buttons())
+	return parts
+
+
+func _buttons() -> Array[Button]:
+	return [_start_button, _continue_button, _fullscreen_button, _quit_button]

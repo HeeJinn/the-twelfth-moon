@@ -149,7 +149,8 @@ Jump  Space          Climb  W
 Attack  J  (hold it for a Moon Slash)
 Guard  hold I          Dash  Shift
 Moon Spark  U          Slide  S while running
-Talk  E          Mute  M          Back to the game  Esc"
+Talk  E          Mute  M          Fullscreen  F
+Back to the game  Esc"
 horizontal_alignment = 1
 
 [node name="BossBar" type="VBoxContainer" parent="."]

@@ -62,6 +62,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and state in [GameState.PLAYING, GameState.PAUSED]:
 		toggle_pause()
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("fullscreen") and not event.is_echo():
+		toggle_fullscreen()
+		get_viewport().set_input_as_handled()
 
 
 ## A new story starts with the prologue, which then calls go_to_level(0).
@@ -91,6 +94,28 @@ func go_to_title() -> void:
 	state = GameState.MENU
 	get_tree().paused = false
 	SceneManager.change_scene(TITLE_SCREEN_PATH)
+
+
+func is_fullscreen() -> bool:
+	var mode: DisplayServer.WindowMode = DisplayServer.window_get_mode()
+	return mode in [DisplayServer.WINDOW_MODE_FULLSCREEN,
+			DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN]
+
+
+## Fullscreen on and off (the F key, the title's button). In a browser this
+## must come from a click, a tap or a key, which it always does here; on a
+## phone's browser it also turns the game sideways for good.
+func toggle_fullscreen() -> void:
+	set_fullscreen(not is_fullscreen())
+
+
+func set_fullscreen(on: bool) -> void:
+	DisplayServer.window_set_mode(
+			DisplayServer.WINDOW_MODE_FULLSCREEN if on else DisplayServer.WINDOW_MODE_WINDOWED)
+	if on and OS.has_feature("web") and TouchControls.is_touch():
+		JavaScriptBridge.eval(
+				"screen.orientation && screen.orientation.lock"
+				+ " && screen.orientation.lock('landscape').catch(() => {})", true)
 
 
 func get_current_level() -> LevelData:
